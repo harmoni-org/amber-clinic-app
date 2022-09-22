@@ -8,7 +8,7 @@ type MainNavigationProps = {
 };
 
 const MainNavigation: React.FC<MainNavigationProps> = ({ onClick }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <nav>
@@ -17,24 +17,24 @@ const MainNavigation: React.FC<MainNavigationProps> = ({ onClick }) => {
           <h1>
             <span>
               <span className="fas fa-star-half-alt" aria-hidden="true"></span>
-              Amber Ağız ve Diş Sağlığı
+              {t("navbar.TITLE")}
             </span>
           </h1>
         </li>
         <li>
-          <Link to="home">Anasayfa</Link>
+          <Link to="home">{t("navbar.HOME_PAGE")}</Link>
         </li>
         <li>
-          <Link to="about-us">Hizmetlerimiz</Link>
+          <Link to="about-us">{t("navbar.ABOUT_US")}</Link>
         </li>
         <li>
-          <Link to="services">Hakkımızda</Link>
+          <Link to="services">{t("navbar.SERVICES")}</Link>
         </li>
         <li>
-          <Link to="contact">İletişim</Link>
+          <Link to="contact">{t("navbar.CONTACT")}</Link>
         </li>
         <li>
-          <Link to="blog">Blog</Link>
+          <Link to="blog">{t("navbar.BLOG")}</Link>
         </li>
         <li>
           <a

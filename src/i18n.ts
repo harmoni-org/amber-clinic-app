@@ -7,24 +7,26 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en: {
     translation: {
-      "Welcome to React": "Welcome to React and react-i18next",
-      "Amber Oral and Dental Health": "Amber Oral and Dental Health",
-      "Home page": "Home page",
-      "About us": "About us",
-      "Our services": "Our services"
+      navbar: {
+        TITLE: "Amber Oral and Dental Health",
+        HOME_PAGE: "Homepage",
+        SERVICES: "Services",
+        ABOUT_US: "About us",
+        CONTACT: "Contact",
+        BLOG: "Blog",
+      },
     },
   },
   tr: {
     translation: {
-      "Amber Oral and Dental Health": "Amber Ağız ve Diş Sağlığı",
-      "Home page": "Ana sayfa",
-      "About us": "Hakkımızda",
-      "Our services": "Hizmetlerimiz"
-    },
-  },
-  fr: {
-    translation: {
-      "Welcome to React": "Bienvenue à React et react-i18next",
+      navbar: {
+        TITLE: "Amber Ağız ve Diş Sağlığı",
+        HOME_PAGE: "Anasayfa",
+        SERVICES: "Hizmetlerimiz",
+        ABOUT_US: "Hakkımızda",
+        CONTACT: "İletişim",
+        BLOG: "Blog",
+      },
     },
   },
 };
@@ -33,7 +35,7 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    lng: "en", // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
+    lng: "tr", // language to use, more information here: https://www.i18next.com/overview/configuration-options#languages-namespaces-resources
     // you can use the i18n.changeLanguage function to change the language manually: https://www.i18next.com/overview/api#changelanguage
     // if you're using a language detector, do not define the lng option
 
