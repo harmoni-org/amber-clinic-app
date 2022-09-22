@@ -1,12 +1,15 @@
 import React from "react";
 import "./MainNavigation.module.css";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 type MainNavigationProps = {
   onClick: (isValid: boolean) => void;
 };
 
 const MainNavigation: React.FC<MainNavigationProps> = ({ onClick }) => {
+  const { t, i18n } = useTranslation();
+
   return (
     <nav>
       <ul>
