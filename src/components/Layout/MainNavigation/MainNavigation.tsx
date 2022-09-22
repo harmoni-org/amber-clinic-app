@@ -1,5 +1,6 @@
 import React from "react";
 import "./MainNavigation.module.css";
+import { Link } from "react-router-dom";
 
 type MainNavigationProps = {
   onClick: (isValid: boolean) => void;
@@ -11,23 +12,34 @@ const MainNavigation: React.FC<MainNavigationProps> = ({ onClick }) => {
       <ul>
         <li>
           <h1>
-            <a href="index.html">
+            <span>
               <span className="fas fa-star-half-alt" aria-hidden="true"></span>
               Amber Ağız ve Diş Sağlığı
-            </a>
+            </span>
           </h1>
         </li>
         <li>
-          <a href="">Anasayfa</a>
+          <Link to="home">Anasayfa</Link>
         </li>
         <li>
-          <a href="">Hakkımızda</a>
+          <Link to="about-us">Hizmetlerimiz</Link>
         </li>
         <li>
-          <a href="">Hizmetlerimiz</a>
+          <Link to="services">Hakkımızda</Link>
         </li>
         <li>
-          <a href="" target="_blank" className="button">
+          <Link to="contact">İletişim</Link>
+        </li>
+        <li>
+          <Link to="blog">Blog</Link>
+        </li>
+        <li>
+          <a
+            href="https://api.whatsapp.com/send?phone="
+            target="_blank"
+            rel="noreferrer"
+            className="button"
+          >
             Whatsapp
           </a>
         </li>
