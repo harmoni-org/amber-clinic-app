@@ -1,11 +1,15 @@
 import React from "react";
 import "./MainNavigation.module.css";
+// the hook
+import { useTranslation } from 'react-i18next';
 
 type MainNavigationProps = {
   onClick: (isValid: boolean) => void;
 };
 
 const MainNavigation: React.FC<MainNavigationProps> = ({ onClick }) => {
+  const { t, i18n } = useTranslation();
+
   return (
     <nav>
       <ul>
@@ -13,18 +17,18 @@ const MainNavigation: React.FC<MainNavigationProps> = ({ onClick }) => {
           <h1>
             <a href="index.html">
               <span className="fas fa-star-half-alt" aria-hidden="true"></span>
-              Amber Ağız ve Diş Sağlığı
+              {t('Amber Oral and Dental Health')}
             </a>
           </h1>
         </li>
         <li>
-          <a href="">Anasayfa</a>
+          <a href="">{t('Home page')}</a>
         </li>
         <li>
-          <a href="">Hakkımızda</a>
+          <a href="">{t('About us')}</a>
         </li>
         <li>
-          <a href="">Hizmetlerimiz</a>
+          <a href="">{t('Our services')}</a>
         </li>
         <li>
           <a href="" target="_blank" className="button">
