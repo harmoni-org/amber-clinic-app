@@ -1,11 +1,14 @@
 import MainNavigation from "./MainNavigation/MainNavigation";
 import styles from "./Layout.module.css";
+import { Outlet } from "react-router-dom";
 
-const Layout = (props: any) => {
+const Layout = () => {
   return (
     <>
       <MainNavigation onClick={() => {}} />
-      <main className={styles.main}>{props.children}</main>
+      <main className={styles.main}>
+        <Outlet />
+      </main>
     </>
   );
 };
