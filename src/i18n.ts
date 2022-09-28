@@ -15,6 +15,9 @@ const resources = {
         CONTACT: "Contact",
         BLOG: "Blog",
       },
+      main_featured_post: {
+        TITLE: "Everything starts with a beautiful smile"
+      }
     },
   },
   tr: {
@@ -27,6 +30,9 @@ const resources = {
         CONTACT: "İletişim",
         BLOG: "Blog",
       },
+      main_featured_post: {
+        TITLE: "Her şey güzel bir gülümsemeyle başlar"
+      }
     },
   },
 };
