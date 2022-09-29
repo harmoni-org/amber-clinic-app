@@ -1,10 +1,11 @@
-import * as React from 'react';
-import Toolbar from '@mui/material/Toolbar';
+import * as React from "react";
+import Toolbar from "@mui/material/Toolbar";
 // import SearchIcon from '@mui/icons-material/Search';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import CardMedia from '@mui/material/CardMedia';
-import Box from '@mui/material/Box';
+import Typography from "@mui/material/Typography";
+// import Link from '@mui/material/Link';
+import { Link, animateScroll as scroll } from "react-scroll";
+import CardMedia from "@mui/material/CardMedia";
+import Box from "@mui/material/Box";
 
 interface HeaderProps {
   sections: ReadonlyArray<{
@@ -17,15 +18,20 @@ interface HeaderProps {
 export default function Header(props: HeaderProps) {
   const { sections, title } = props;
 
+  const scrollToTop = () => {
+    scroll.scrollToTop();
+  };
+
   return (
     <React.Fragment>
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
+      <Toolbar sx={{ borderBottom: 1, borderColor: "divider" }}>
         <Box sx={{ maxWidth: 345 }}>
           <CardMedia
             component="img"
             height="100"
             image="./transparent-turuncu.png"
             alt="amber logo"
+            onClick={scrollToTop}
           />
         </Box>
         <Typography
@@ -53,16 +59,16 @@ export default function Header(props: HeaderProps) {
       <Toolbar
         component="nav"
         variant="dense"
-        sx={{ justifyContent: 'space-between', overflowX: 'auto' }}
+        sx={{ justifyContent: "space-between", overflowX: "auto" }}
       >
         {sections.map((section) => (
           <Link
-            color="inherit"
-            noWrap
             key={section.title}
-            variant="body2"
-            href={section.url}
-            sx={{ p: 1, flexShrink: 0 }}
+            activeClass="active"
+            to={section.url}
+            spy={true}
+            smooth={true}
+            duration={500}
           >
             {section.title}
           </Link>
