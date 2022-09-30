@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Footer from "../Footer/Footer";
+import Footer from "./Footer/Footer";
 import MainNavigation from "./MainNavigation/MainNavigation";
 
 const theme = createTheme({

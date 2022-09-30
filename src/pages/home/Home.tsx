@@ -9,28 +9,16 @@ const Home: React.FC = () => {
     <>
       <MainFeaturedPost />
       <>
-        <section
-          id="about-us"
-          style={{ backgroundColor: "red", height: "800px" }}
-        >
+        <section id="about-us" style={{ height: "800px" }}>
           <AboutUs />
         </section>
-        <section
-          id="services"
-          style={{ backgroundColor: "blue", height: "800px" }}
-        >
+        <section id="services" style={{ height: "800px" }}>
           <Services />
         </section>
-        <section
-          id="contact"
-          style={{ backgroundColor: "pink", height: "800px" }}
-        >
+        <section id="contact" style={{ height: "800px" }}>
           <Contact />
         </section>
-        <section
-          id="blog"
-          style={{ backgroundColor: "purple", height: "700px" }}
-        >
+        <section id="blog" style={{ height: "700px" }}>
           <Blog />
         </section>
       </>

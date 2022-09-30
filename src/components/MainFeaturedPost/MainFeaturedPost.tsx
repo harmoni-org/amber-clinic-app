@@ -38,29 +38,6 @@ const MainFeaturedPost: React.FC = () => {
           height: "100%",
         }}
       />
-      <Grid container>
-        <Grid item md={6}>
-          <Box
-            sx={{
-              position: "relative",
-              p: { xs: 3, md: 6 },
-              pr: { md: 0 },
-            }}
-          >
-            <Typography
-              component="h1"
-              variant="h3"
-              color="inherit"
-              gutterBottom
-            >
-              {post.title}
-            </Typography>
-            <Typography variant="h5" color="inherit" paragraph>
-              {post.description}
-            </Typography>
-          </Box>
-        </Grid>
-      </Grid>
     </Paper>
   );
 };

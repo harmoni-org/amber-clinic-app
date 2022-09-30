@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import DentistCard from "../UI/DentistCard/DentistCard";
 import "./DentistList.scss";
 
-// @TODO : Oğuzhan will implement static data mapping, after that this constant will be removed.
+//  TODO:  Oğuzhan will implement static data mapping, after that this constant will be removed.
 const DENTISTS = [
   {
     id: 1,
