@@ -1,25 +1,13 @@
 import MainFeaturedPost from "../../components/MainFeaturedPost/MainFeaturedPost";
-import { useTranslation } from "react-i18next";
 import AboutUs from "../about-us/AboutUs";
 import Services from "../services/Services";
 import Contact from "../contact/Contact";
 import Blog from "../blog/Blog";
 
 const Home: React.FC = () => {
-  const { t } = useTranslation();
-
-  const mainFeaturedPost = {
-    title: t("main_featured_post.TITLE"),
-    description: "Amber ağız ve diş sağlığı kliniği.",
-    image: "./pexels-julia-avamotive.png",
-    // image: 'https://source.unsplash.com/random',
-    imageText: "main image description",
-    linkText: "Continue reading…",
-  };
-
   return (
     <>
-      <MainFeaturedPost post={mainFeaturedPost} />
+      <MainFeaturedPost />
       <>
         <section
           id="about-us"

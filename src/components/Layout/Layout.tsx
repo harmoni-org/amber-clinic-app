@@ -2,30 +2,25 @@ import { Outlet } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Header from "../Header/Header";
-import { useTranslation } from "react-i18next";
 import Footer from "../Footer/Footer";
+import MainNavigation from "./MainNavigation/MainNavigation";
 
-const theme = createTheme();
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#3D3732",
+    },
+    secondary: { main: "#F9B01D" },
+  },
+});
 
 const Layout = () => {
-  const { t } = useTranslation();
-
-  const sections = [
-    { title: t("navbar.HOME_PAGE"), url: "home" },
-    { title: t("navbar.ABOUT_US"), url: "about-us" },
-    { title: t("navbar.SERVICES"), url: "services" },
-    { title: t("navbar.CONTACT"), url: "contact" },
-    { title: t("navbar.BLOG"), url: "blog" },
-  ];
-
-  const title = t("navbar.TITLE");
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Container maxWidth={false}>
-        <Header title={title} sections={sections} />
+      <Container disableGutters maxWidth={false}>
+        {/* <Header title={title} sections={sections} /> */}
+        <MainNavigation />
         <main>
           <Outlet />
         </main>
