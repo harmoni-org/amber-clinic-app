@@ -63,16 +63,11 @@ const MainNavigation = () => {
             component="a"
             href="/"
             sx={{
-              mr: 2,
+              mr: 6,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
             }}
           >
-            <img src={logo} />
+            <img src={logo} alt="Amber Ağız ve Diş Sağlığı Polikliniği" />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -127,32 +122,27 @@ const MainNavigation = () => {
               textDecoration: "none",
             }}
           >
-            <img src={logo} />
+            <img src={logo} alt="Amber Ağız ve Diş Sağlığı Polikliniği" />
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex", gap: "50px" },
+            }}
+          >
             {sections.map((section) => (
-              //   <Button
-              //     key={page}
-              //     onClick={handleCloseNavMenu}
-              //     sx={{ my: 2, color: "white", display: "block" }}
-              //   >
-              //     {33}
-              //   </Button>
-              <div style={{ margin: "30px" }}>
-                <Link
-                  key={section.title}
-                  activeClass="active"
-                  to={section.url}
-                  spy={true}
-                  smooth={true}
-                  duration={500}
-                >
-                  {section.title}
-                </Link>
-              </div>
+              <Link
+                key={section.title}
+                activeClass="active"
+                to={section.url}
+                spy={true}
+                smooth={true}
+                duration={500}
+              >
+                {section.title}
+              </Link>
             ))}
           </Box>
-
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

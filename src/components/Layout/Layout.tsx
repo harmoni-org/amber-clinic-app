@@ -19,7 +19,6 @@ const Layout = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container disableGutters maxWidth={false}>
-        {/* <Header title={title} sections={sections} /> */}
         <MainNavigation />
         <main>
           <Outlet />
