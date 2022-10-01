@@ -1,0 +1,38 @@
+/* variables declare here - these are the colors for our pages, as well as the font stacks and sizes. */
+:root {
+  --colorWhite: #fff;
+  --colorError: #c72300;
+  --colorSuccess: #008348;
+  --colorInteractionPrimary: #e21b70;
+  --colorNeutralInactive: #cacaca;
+  --colorNeutralSurface: #707070;
+  --colorNeutralPrimary: #333333;
+  --colorNeutralDivider: #ebebeb;
+  --colorNeutralBorder: #dcdcdc;
+
+  --black: #042940;
+  --plum: #4b0d49;
+  --dkblue: #0d314b;
+  --warmorange: #f29325;
+  --dkred: #377d71;
+  --green: #9fc131;
+  --whey: #d6d58e;
+  --white: #f7f8fa;
+  --sda: #355764;
+  --font-size: 1.3rem;
+  --mono: "Rubik", sans-serif;
+  --sans: "Arima", cursive;
+}
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
