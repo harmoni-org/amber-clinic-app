@@ -31,7 +31,7 @@ const DentistCard: React.FC<DentistCardProps> = ({
   );
 
   return (
-    <Card sx={{ width: 205 }} onClick={handleOnClick}>
+    <Card sx={{ width: 255, mt: 5 }} onClick={handleOnClick}>
       <CardMedia
         component="img"
         alt={name}

@@ -29,7 +29,7 @@ const SectionBox: React.FC<SectionBoxProps> = ({ title, children }) => {
         </Typography>
       </Divider>
       <Container
-        maxWidth="xl"
+        maxWidth="lg"
         sx={{
           textAlign: "center",
         }}
