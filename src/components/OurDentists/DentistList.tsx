@@ -8,31 +8,25 @@ const DENTISTS = [
     id: 1,
     name: "Dt. Mehmet Ertuğrul Soysal",
     specialist: "Diş Hekimi",
-    imgUrl: "../../../assets/images/dentists/miray-uz.png",
+    imgName: "miray-uz",
   },
   {
     id: 2,
     name: "Doç. Dr. Osman Sami Ağlarcı",
     specialist: "Ortodonti Uzmanı",
-    imgUrl: "../../../assets/images/dentists/miray-uz.png",
+    imgName: "osman-sami",
   },
   {
     id: 3,
     name: "Dt. Miray Uz",
     specialist: "Diş Hekimi",
-    imgUrl: "../../../assets/images/dentists/miray-uz.png",
+    imgName: "miray-uz",
   },
   {
     id: 4,
-    name: "Dt. Mesut Kahraman",
-    specialist: "Diş Hekimi",
-    imgUrl: "../../../assets/images/dentists/miray-uz.png",
-  },
-  {
-    id: 5,
     name: "Dt. Volkan Arıkan",
     specialist: "Çene Cerrahisi",
-    imgUrl: "../../../assets/images/dentists/miray-uz.png",
+    imgName: "volkan-arikan",
   },
 ];
 const DentistList: React.FC = () => {
@@ -42,7 +36,7 @@ const DentistList: React.FC = () => {
         display: "flex",
         justifyContent: "space-around",
         p: 1,
-        m: 1,
+        m: 1
       }}
     >
       {DENTISTS.map((item) => (
@@ -50,7 +44,7 @@ const DentistList: React.FC = () => {
           key={item.id}
           id={item.id}
           name={item.name}
-          imgUrl={item.imgUrl}
+          imageName={item.imgName}
           specialist={item.specialist}
         />
       ))}

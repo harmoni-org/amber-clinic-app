@@ -1,8 +1,6 @@
 import SectionBox from "../../components/UI/SectionBox/SectionBox";
-import { useTranslation } from "react-i18next";
 
 const Services: React.FC = () => {
-  const { t } = useTranslation();
   return (
     <SectionBox id="services" title="HİZMETLERİMİZ">
       <article>

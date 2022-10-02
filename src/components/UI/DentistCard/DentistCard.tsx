@@ -9,13 +9,13 @@ export interface DentistCardProps {
   id: number;
   name: string;
   specialist: string;
-  imgUrl: any;
+  imageName: string;
 }
 
 const DentistCard: React.FC<DentistCardProps> = ({
   name,
   specialist,
-  imgUrl,
+  imageName,
 }) => {
   const styles = {
     media: {
@@ -29,13 +29,13 @@ const DentistCard: React.FC<DentistCardProps> = ({
   );
 
   return (
-    <Card sx={{ maxWidth: 205 }} onClick={handleOnClick}>
+    <Card sx={{ width: 205 }} onClick={handleOnClick}>
       <CardMedia
         component="img"
         alt={name}
         height="100"
         style={styles.media}
-        image={require("../../../assets/images/dentists/miray-uz.png")}
+        image={require('../../../assets/images/dentists/' + imageName + '.png')}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

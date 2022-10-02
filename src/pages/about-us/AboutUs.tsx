@@ -1,6 +1,4 @@
 import { useTranslation } from "react-i18next";
-import Divider from "@mui/material/Divider";
-import Typography from "@mui/material/Typography";
 
 import DentistList from "../../components/OurDentists/DentistList";
 import SectionBox from "../../components/UI/SectionBox/SectionBox";
