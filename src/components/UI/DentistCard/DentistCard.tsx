@@ -13,6 +13,7 @@ export interface DentistCardProps {
 }
 
 const DentistCard: React.FC<DentistCardProps> = ({
+  id,
   name,
   specialist,
   imageName,
@@ -23,8 +24,9 @@ const DentistCard: React.FC<DentistCardProps> = ({
     },
   };
   const navigate = useNavigate();
+
   const handleOnClick = useCallback(
-    () => navigate("/our-dentists", { state: { id: 1, name: "gvh" } }),
+    () => navigate(`/our-dentists/${id} `),
     [navigate]
   );
 
@@ -35,7 +37,7 @@ const DentistCard: React.FC<DentistCardProps> = ({
         alt={name}
         height="100"
         style={styles.media}
-        image={require('../../../assets/images/dentists/' + imageName + '.png')}
+        image={require("../../../assets/images/dentists/" + imageName + ".png")}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
