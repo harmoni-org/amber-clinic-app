@@ -1,4 +1,5 @@
 import SectionBox from "../../components/UI/SectionBox/SectionBox";
+import ContactUsForm from "./ContactUsForm";
 
 const Contact: React.FC = () => {
   return (
@@ -6,6 +7,7 @@ const Contact: React.FC = () => {
       <article>
         <div className="text">Welcome to Contact page!</div>
       </article>
+      <ContactUsForm />
     </SectionBox>
   );
 };
