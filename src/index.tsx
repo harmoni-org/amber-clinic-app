@@ -16,6 +16,7 @@ import Contact from "./pages/contact/Contact";
 import Blog from "./pages/blog/Blog";
 import DentistDetail from "./pages/dentist-detail/DentistDetail";
 import "./index.css";
+import ServiceDetail from "./pages/service-detail/ServiceDetail";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
       <Route path="services" element={<Services />} />
       <Route path="about-us" element={<AboutUs />} />
       <Route path="our-dentists/:id" element={<DentistDetail />} />
+      <Route path="our-services/:id" element={<ServiceDetail />} />
       <Route path="contact" element={<Contact />} />
       <Route path="blog" element={<Blog />} />
     </Route>

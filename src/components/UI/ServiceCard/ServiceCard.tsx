@@ -26,12 +26,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   const navigate = useNavigate();
 
   const handleOnClick = useCallback(
-    () => navigate(`/our-dentists/${1} `),
+    () => navigate(`/our-services/${1} `),
     [navigate]
   );
 
   return (
-    <Card sx={{ maxWidth: 250, boxShadow: 1 }}>
+    <Card sx={{ maxWidth: 250, boxShadow: 1, borderRadius: 4, height: "100%" }}>
       <CardMedia
         component="img"
         height="140"

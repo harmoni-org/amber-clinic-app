@@ -92,8 +92,9 @@ const ServiceList: React.FC = () => {
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 8, md: 12 }}
+        columns={{ xs: 4, sm: 6, md: 16 }}
         sx={{ width: "100%" }}
+        justifyContent="center"
       >
         {SERVICES.map((item) => (
           <Grid item xs={1} sm={3} md={3} key={item.id}>
