@@ -9,40 +9,41 @@ import { Button, CardActionArea, CardActions } from "@mui/material";
 type ServiceCardProps = {
   id: number;
   name: string;
-  specialist: string;
+  shortDesc: string;
   imageName: string;
 };
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
   id,
   name,
-  specialist,
+  shortDesc,
   imageName,
 }) => {
   const { t } = useTranslation();
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 250 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image="/static/images/cards/contemplative-reptile.jpg"
-          alt="green iguana"
+          image={require("../../../assets/images/services/" +
+            imageName +
+            ".png")}
+          alt={name}
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Lizard
+            {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {shortDesc}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions>
         <Button size="small" color="primary">
-          Share
+          Daha Fazlası
         </Button>
       </CardActions>
     </Card>
