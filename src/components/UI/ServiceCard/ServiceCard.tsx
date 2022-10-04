@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -22,6 +23,13 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 }) => {
   const { t } = useTranslation();
 
+  const navigate = useNavigate();
+
+  const handleOnClick = useCallback(
+    () => navigate(`/our-dentists/${1} `),
+    [navigate]
+  );
+
   return (
     <Card sx={{ maxWidth: 250, boxShadow: 1 }}>
       <CardMedia
@@ -39,7 +47,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "center" }}>
-        <Button variant="contained" size="small" color="primary">
+        <Button
+          variant="contained"
+          size="small"
+          color="primary"
+          onClick={handleOnClick}
+        >
           Daha Fazlası
         </Button>
       </CardActions>
