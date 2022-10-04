@@ -17,9 +17,12 @@ const validationSchema = yup.object({
     .string('Enter your phone number')
     .required('Phone number is required')
     .matches(
-      /^([0]{1}|\+?[234]{3})([7-9]{1})([0|1]{1})([\d]{1})([\d]{7})$/g,
+      /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/g,
             "Invalid phone number"
           ),
+  message: yup
+  .string('Enter your message')
+  .max(255, "Too Long!")
 });
 
 const ContactUsForm = () => {
@@ -28,6 +31,7 @@ const ContactUsForm = () => {
       name: 'Deniz',
       email: 'foobar@example.com',
       phoneNumber: '+1 650 555 12 34',
+      message: '',
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -43,12 +47,12 @@ const ContactUsForm = () => {
           id="name"
           name="name"
           label="Name"
-          type="text"
           value={formik.values.name}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.name && Boolean(formik.errors.name)}
           helperText={formik.touched.name && formik.errors.name}
+          sx={{marginTop: '1rem'}}
         />
         <TextField
           fullWidth
@@ -60,20 +64,36 @@ const ContactUsForm = () => {
           onBlur={formik.handleBlur}
           error={formik.touched.email && Boolean(formik.errors.email)}
           helperText={formik.touched.email && formik.errors.email}
+          sx={{marginTop: '1rem'}}
         />
         <TextField
           fullWidth
           id="phoneNumber"
           name="phoneNumber"
           label="phoneNumber"
-          type="phoneNumber"
           value={formik.values.phoneNumber}
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.phoneNumber && Boolean(formik.errors.phoneNumber)}
           helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
+          sx={{marginTop: '1rem'}}
         />
-        <Button color="primary" variant="contained" fullWidth type="submit">
+        <TextField
+          multiline
+          fullWidth
+          id="message"
+          name="message"
+          label="Message"
+          value={formik.values.message}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.message && Boolean(formik.errors.message)}
+          helperText={formik.touched.message && formik.errors.message}
+          rows={4}
+          defaultValue="Enter a message..."
+          sx={{marginTop: '1rem'}}
+        />
+        <Button color="primary" variant="contained" fullWidth type="submit" sx={{marginTop: '1rem'}}>
           Submit
         </Button>
       </form>
