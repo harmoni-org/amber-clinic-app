@@ -1,3 +1,4 @@
+import { Container } from "@mui/material";
 import { useTranslation } from "react-i18next";
 
 import DentistList from "../../components/OurDentists/DentistList";
@@ -8,7 +9,7 @@ const AboutUs: React.FC = () => {
 
   return (
     <SectionBox id="about-us" title="HAKKIMIZDA">
-      <article>
+      <Container maxWidth="xl">
         <div className="text">
           <p className="blackbox">
             {/* TODO: This static text will be defined as constant. */}
@@ -18,7 +19,7 @@ const AboutUs: React.FC = () => {
           </p>
           <DentistList />
         </div>
-      </article>
+      </Container>
     </SectionBox>
   );
 };

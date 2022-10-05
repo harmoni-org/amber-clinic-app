@@ -1,44 +1,36 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
 import "./i18n";
 import reportWebVitals from "./reportWebVitals";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/home/Home";
 import Services from "./pages/services/Services";
 import AboutUs from "./pages/about-us/AboutUs";
 import Contact from "./pages/contact/Contact";
 import Blog from "./pages/blog/Blog";
+import DentistDetail from "./pages/dentist-detail/DentistDetail";
+import "./index.css";
+import ServiceDetail from "./pages/service-detail/ServiceDetail";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Layout />,
-    children: [
-      {
-        path: "",
-        element: <Home />,
-      },
-      {
-        path: "services",
-        element: <Services />,
-      },
-      {
-        path: "about-us",
-        element: <AboutUs />,
-      },
-      {
-        path: "contact",
-        element: <Contact />,
-      },
-      {
-        path: "blog",
-        element: <Blog />,
-      },
-    ],
-  },
-]);
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route path="services" element={<Services />} />
+      <Route path="about-us" element={<AboutUs />} />
+      <Route path="our-dentists/:id" element={<DentistDetail />} />
+      <Route path="our-services/:id" element={<ServiceDetail />} />
+      <Route path="contact" element={<Contact />} />
+      <Route path="blog" element={<Blog />} />
+    </Route>
+  )
+);
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

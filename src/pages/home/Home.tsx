@@ -9,10 +9,10 @@ const Home: React.FC = () => {
     <>
       <MainFeaturedPost />
       <>
-        <section id="about-us" style={{ height: "800px" }}>
+        <section id="about-us">
           <AboutUs />
         </section>
-        <section id="services" style={{ height: "800px" }}>
+        <section id="services">
           <Services />
         </section>
         <section id="contact" style={{ height: "800px" }}>
