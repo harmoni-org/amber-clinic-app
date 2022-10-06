@@ -9,8 +9,10 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#3D3732",
+      light: "#8F6429",
     },
-    secondary: { main: "#F9B01D" },
+    secondary: { main: "#F2A81D", light: "#F5B80D" },
+    error: { main: "#D32F2F" },
   },
 });
 
@@ -24,10 +26,7 @@ const Layout = () => {
           <Outlet />
         </main>
       </Container>
-      <Footer
-        title="Footer"
-        description="Something here to give the footer a purpose!"
-      />
+      <Footer />
     </ThemeProvider>
   );
 };
