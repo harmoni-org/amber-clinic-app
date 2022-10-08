@@ -30,10 +30,8 @@ const SectionBox: React.FC<SectionBoxProps> = ({ title, children }) => {
         </Typography>
       </Divider>
       <Container
-        maxWidth="xl"
-        sx={{
-          textAlign: "center",
-        }}
+        maxWidth={false}
+        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
         {children}
       </Container>

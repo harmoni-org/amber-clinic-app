@@ -47,7 +47,6 @@ const sendEmail = (values) => {
       (result) => {
         console.log("result: ", result);
         console.log("values: ", values);
-        
       },
       (error) => {
         console.log(error.text);

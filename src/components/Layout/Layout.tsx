@@ -13,6 +13,12 @@ const theme = createTheme({
     },
     secondary: { main: "#F2A81D", light: "#F5B80D" },
     error: { main: "#D32F2F" },
+    text: { primary: "#0F0F0F", secondary: "#717171" },
+  },
+  typography: {
+    fontFamily: [" PoppinsRegular"].join(","),
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
   },
 });
 

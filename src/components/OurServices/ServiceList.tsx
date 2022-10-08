@@ -88,16 +88,10 @@ const SERVICES = [
 
 const ServiceList: React.FC = () => {
   return (
-    <Box sx={{ width: "100%" }}>
-      <Grid
-        container
-        spacing={{ xs: 2, md: 3 }}
-        columns={{ xs: 4, sm: 6, md: 16 }}
-        sx={{ width: "100%" }}
-        justifyContent="center"
-      >
+    <Box sx={{ width: "90%" }}>
+      <Grid container rowSpacing={3} columnSpacing={2} sx={{ width: "100%" }}>
         {SERVICES.map((item) => (
-          <Grid item xs={1} sm={3} md={3} key={item.id}>
+          <Grid item xs={12} sm={6} md={3} key={item.id}>
             <ServiceCard
               key={item.id}
               id={item.id}
