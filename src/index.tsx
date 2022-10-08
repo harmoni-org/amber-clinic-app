@@ -24,10 +24,11 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="services" element={<Services />} />
       <Route path="about-us" element={<AboutUs />} />
-      <Route path="our-dentists/:id" element={<DentistDetail />} />
-      <Route path="our-services/:id" element={<ServiceDetail />} />
       <Route path="contact" element={<Contact />} />
       <Route path="blog" element={<Blog />} />
+      <Route path="our-dentists/:id" element={<DentistDetail />} />
+      <Route path="our-services/:id" element={<ServiceDetail />} />
+      <Route path="blog/:id" element={<ServiceDetail />} />
     </Route>
   )
 );
