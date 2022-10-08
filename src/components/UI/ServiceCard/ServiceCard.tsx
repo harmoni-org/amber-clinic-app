@@ -76,7 +76,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           color="primary"
           endIcon={<NavigateNextIcon color="primary" sx={{ mr: 1 }} />}
           onClick={handleOnClick}
-          sx={{ textTransform: "none", borderColor: "primary" }}
+          sx={{ textTransform: "none", borderColor: "secondary", border: 1.5 }}
         >
           Daha Fazlası
         </Button>

@@ -15,6 +15,11 @@ const theme = createTheme({
     error: { main: "#D32F2F" },
     text: { primary: "#0F0F0F", secondary: "#717171" },
   },
+  typography: {
+    fontFamily: [" PoppinsRegular"].join(","),
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+  },
 });
 
 const Layout = () => {

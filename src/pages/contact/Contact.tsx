@@ -36,7 +36,7 @@ const Contact: React.FC = () => {
             gutterBottom
             variant="body1"
             component="div"
-            sx={{ paddingBottom: 7 }}
+            sx={{ paddingBottom: 3 }}
           >
             Orhangazi, Esenyalı Orhangazi Mah, Alparslan Türkeş Cd No:2/A.
             Pendik/İstanbul
