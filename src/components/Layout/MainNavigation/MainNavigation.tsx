@@ -9,11 +9,8 @@ import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
-import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../../../assets/images/amber-logo.png";
-
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 const MainNavigation = () => {
   const { t } = useTranslation();
@@ -29,23 +26,13 @@ const MainNavigation = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   return (
@@ -56,7 +43,6 @@ const MainNavigation = () => {
             variant="h6"
             noWrap
             component="a"
-            href="/"
             sx={{
               mr: 6,
               display: { xs: "none", md: "flex" },
@@ -95,8 +81,30 @@ const MainNavigation = () => {
               }}
             >
               {sections.map((section) => (
-                <MenuItem key={section.title} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{section.title}</Typography>
+                <MenuItem
+                  key={section.title}
+                  onClick={handleCloseNavMenu}
+                  sx={[
+                    {
+                      "&:hover": {
+                        color: "secondary.main",
+                        cursor: "pointer",
+                      },
+                    },
+                  ]}
+                >
+                  <Typography textAlign="center">
+                    <Link
+                      key={section.title}
+                      activeClass="active"
+                      to={section.url}
+                      spy={true}
+                      smooth={true}
+                      duration={500}
+                    >
+                      {section.title}
+                    </Link>
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -105,7 +113,6 @@ const MainNavigation = () => {
             variant="h5"
             noWrap
             component="a"
-            href=""
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -126,47 +133,29 @@ const MainNavigation = () => {
             }}
           >
             {sections.map((section) => (
-              <Link
-                key={section.title}
-                activeClass="active"
-                to={section.url}
-                spy={true}
-                smooth={true}
-                duration={500}
+              <Typography
+                textAlign="center"
+                sx={[
+                  {
+                    "&:hover": {
+                      color: "secondary.main",
+                      cursor: "pointer",
+                    },
+                  },
+                ]}
               >
-                {section.title}
-              </Link>
+                <Link
+                  key={section.title}
+                  activeClass="active"
+                  to={section.url}
+                  spy={true}
+                  smooth={true}
+                  duration={500}
+                >
+                  {section.title}
+                </Link>
+              </Typography>
             ))}
-          </Box>
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                {/* <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" /> */}
-                Whatsapp now!
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
           </Box>
         </Toolbar>
       </Container>
