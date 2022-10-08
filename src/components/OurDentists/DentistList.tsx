@@ -1,4 +1,6 @@
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+
 import DentistCard from "../UI/DentistCard/DentistCard";
 import "./DentistList.scss";
 
@@ -33,21 +35,23 @@ const DentistList: React.FC = () => {
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "space-around",
-        p: 1,
-        m: 1
+        margin: "auto",
+        width: "90%",
       }}
     >
-      {DENTISTS.map((item) => (
-        <DentistCard
-          key={item.id}
-          id={item.id}
-          name={item.name}
-          imageName={item.imgName}
-          specialist={item.specialist}
-        />
-      ))}
+      <Grid container columnSpacing={3} sx={{ width: "100%" }}>
+        {DENTISTS.map((item) => (
+          <Grid item xs={12} sm={6} md={3} key={item.id}>
+            <DentistCard
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              imageName={item.imgName}
+              specialist={item.specialist}
+            />
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 };
