@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import "./SectionBox.scss";
 
 type SectionBoxProps = {
   id: string;
@@ -13,7 +14,7 @@ const SectionBox: React.FC<SectionBoxProps> = ({ title, children }) => {
   const { t } = useTranslation();
 
   return (
-    <>
+    <div className="section-container">
       <Divider
         component="div"
         role="presentation"
@@ -29,14 +30,12 @@ const SectionBox: React.FC<SectionBoxProps> = ({ title, children }) => {
         </Typography>
       </Divider>
       <Container
-        maxWidth="xl"
-        sx={{
-          textAlign: "center",
-        }}
+        maxWidth={false}
+        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
         {children}
       </Container>
-    </>
+    </div>
   );
 };
 
