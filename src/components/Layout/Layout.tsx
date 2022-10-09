@@ -4,6 +4,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Footer from "./Footer/Footer";
 import MainNavigation from "./MainNavigation/MainNavigation";
+import AppointmentForm from "../AppointmentForm/AppointmentForm";
 
 const theme = createTheme({
   palette: {
@@ -28,6 +29,7 @@ const Layout = () => {
       <CssBaseline />
       <Container disableGutters maxWidth={false}>
         <MainNavigation />
+        <AppointmentForm />
         <main>
           <Outlet />
         </main>

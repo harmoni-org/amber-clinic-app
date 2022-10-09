@@ -15,7 +15,11 @@ export interface ContactInfo {
   message: string;
 }
 
-const ContactUsForm = () => {
+interface ContactUsFormProps {
+  formOrigin: string
+}
+
+const ContactUsForm : React.FC<ContactUsFormProps> = (props) => {
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [severity, setSeverity] = useState<AlertColor | undefined>(undefined);
   const [hideDuration, setHideDuration] = useState<number | null>(null);
@@ -100,20 +104,24 @@ const ContactUsForm = () => {
           helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
           sx={{ marginTop: "1rem" }}
         />
-        <TextField
-          multiline
-          fullWidth
-          id="message"
-          name="message"
-          label={t("contact_form_fields.MESSAGE")}
-          value={formik.values.message}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          error={formik.touched.message && Boolean(formik.errors.message)}
-          helperText={formik.touched.message && formik.errors.message}
-          rows={4}
-          sx={{ marginTop: "1rem" }}
-        />
+        {props.formOrigin === "contact" ?
+          <TextField
+            multiline
+            fullWidth
+            id="message"
+            name="message"
+            label={t("contact_form_fields.MESSAGE")}
+            value={formik.values.message}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.message && Boolean(formik.errors.message)}
+            helperText={formik.touched.message && formik.errors.message}
+            rows={4}
+            sx={{ marginTop: "1rem" }}
+          />
+        :
+        null
+        }
         <Button
           color="primary"
           variant="contained"

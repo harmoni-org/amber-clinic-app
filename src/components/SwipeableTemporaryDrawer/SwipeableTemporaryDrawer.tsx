@@ -1,0 +1,60 @@
+import * as React from 'react';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer';
+import Button from '@mui/material/Button';
+import { Box } from '@mui/material';
+
+type Anchor = 'top' | 'left' | 'bottom' | 'right';
+
+interface SwipeableTemporaryDrawerProps {
+  buttonLabel: string,
+  children: React.ReactElement
+}
+
+const SwipeableTemporaryDrawer : React.FC<SwipeableTemporaryDrawerProps> = (props) => {
+  const [state, setState] = React.useState({
+    top: false,
+    left: false,
+    bottom: false,
+    right: false,
+  });
+
+  const toggleDrawer =
+    (anchor: Anchor, open: boolean) =>
+    (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event &&
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
+
+      setState({ ...state, [anchor]: open });
+    };
+
+  const anchor = "right";
+
+  return (
+    <React.Fragment key={anchor}>
+      <Button onClick={toggleDrawer(anchor, true)} variant="contained">{props.buttonLabel}</Button>
+      <SwipeableDrawer
+        anchor={anchor}
+        open={state[anchor]}
+        onClose={toggleDrawer(anchor, false)}
+        onOpen={toggleDrawer(anchor, true)}
+      >
+        <Box
+          sx={{ width: 400, padding: 2 }}
+          role="presentation"
+          // onClick={toggleDrawer(anchor, false)}
+          // onKeyDown={toggleDrawer(anchor, false)}
+        >
+          {props.children}
+        </Box>
+      </SwipeableDrawer>
+    </React.Fragment>
+  );
+}
+
+export default SwipeableTemporaryDrawer;
