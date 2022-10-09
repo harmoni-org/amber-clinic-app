@@ -48,7 +48,7 @@ const MainNavigation = () => {
               display: { xs: "none", md: "flex" },
             }}
           >
-            <img src={logo} alt="Amber Ağız ve Diş Sağlığı Polikliniği" />
+            <img src={logo} alt={t("navbar.TITLE")} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -124,7 +124,7 @@ const MainNavigation = () => {
               textDecoration: "none",
             }}
           >
-            <img src={logo} alt="Amber Ağız ve Diş Sağlığı Polikliniği" />
+            <img src={logo} alt={t("navbar.TITLE")} />
           </Typography>
           <Box
             sx={{
