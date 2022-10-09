@@ -1,7 +1,7 @@
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import ServiceCard from "../UI/ServiceCard/ServiceCard";
 import BlogCard from "../UI/BlogCard/BlogCard";
+import Content from "../ContentRenderer/content.json";
 
 //  TODO:  Oğuzhan will implement static data mapping, after that this constant will be removed.
 const BLOG = [

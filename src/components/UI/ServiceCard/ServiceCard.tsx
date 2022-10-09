@@ -7,15 +7,12 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
-import { shadows } from "@mui/system";
 
 type ServiceCardProps = {
-  item: any
+  item: any;
 };
 
-const ServiceCard: React.FC<ServiceCardProps> = ({
-  item
-}) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -24,14 +21,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     () => navigate(`/our-services/${item.id} `),
     [navigate]
   );
-  // sx={{
-  //   maxWidth: "100%",
-  //   height: "100%",
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   border: "none",
-  //   boxShadow: "none",
-  // }}
+
   return (
     <Card
       sx={{

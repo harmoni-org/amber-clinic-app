@@ -1,28 +1,23 @@
-import { CardActionArea } from "@mui/material";
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import { CardActionArea } from "@mui/material";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
 export interface DentistCardProps {
-  id: number;
-  name: string;
-  specialist: string;
-  imageName: string;
+  item: any;
 }
 
-const DentistCard: React.FC<DentistCardProps> = ({
-  id,
-  name,
-  specialist,
-  imageName,
-}) => {
+const DentistCard: React.FC<DentistCardProps> = ({ item }) => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const handleOnClick = useCallback(
-    () => navigate(`/our-dentists/${id} `),
+    () => navigate(`/our-dentists/${item.id} `),
     [navigate]
   );
 
@@ -33,16 +28,16 @@ const DentistCard: React.FC<DentistCardProps> = ({
           component="img"
           height="300"
           image={require("../../../assets/images/dentists/" +
-            imageName +
+            item.sections[0].content +
             ".png")}
-          alt={name}
+          alt={item.title}
         />
         <CardContent>
           <Typography variant="body2" component="div">
-            {name}
+            {t(`${item.id}.${item.name}`, { ns: "dentists" })}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {specialist}
+            {t(`${item.specialization}`, { ns: "common" })}
           </Typography>
         </CardContent>
       </CardActionArea>

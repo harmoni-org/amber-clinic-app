@@ -26,7 +26,7 @@ const SectionBox: React.FC<SectionBoxProps> = ({ title, children }) => {
       >
         {/* any elements nested inside the role="presentation" preserve their semantics. */}
         <Typography variant="h5" pr={5} pl={5}>
-          {t(`${title}`)}
+          {t(`navbar.${title}`, { ns: "common" })}
         </Typography>
       </Divider>
       <Container
