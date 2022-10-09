@@ -231,11 +231,55 @@
         },
         {
           "type": "header",
+          "content": "SUBTITLE_3"
+        },
+        {
+          "type": "paragraph",
           "content": "PARAGRAPH_3"
+        },
+        {
+          "type": "header",
+          "content": "SUBTITLE_4"
         },
         {
           "type": "paragraph",
           "content": "PARAGRAPH_4"
+        },
+        {
+          "type": "list",
+          "content": ["ITEM_1", "ITEM_2"]
+        },
+        {
+          "type": "paragraph",
+          "content": "PARAGRAPH_5"
+        },
+        {
+          "type": "list",
+          "content": ["ITEM_3", "ITEM_4", "ITEM_5", "ITEM_6"]
+        },
+        {
+          "type": "header",
+          "content": "SUBTITLE_5"
+        },
+        {
+          "type": "paragraph",
+          "content": "PARAGRAPH_6"
+        },
+        {
+          "type": "header",
+          "content": "SUBTITLE_6"
+        },
+        {
+          "type": "list",
+          "content": ["ITEM_7", "ITEM_8", "ITEM_9", "ITEM_10", "ITEM_11", "ITEM_12"]
+        },
+        {
+          "type": "header",
+          "content": "SUBTITLE_7"
+        },
+        {
+          "type": "paragraph",
+          "content": "PARAGRAPH_7"
         }
       ]
     },
