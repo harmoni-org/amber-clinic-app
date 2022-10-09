@@ -9,5 +9,25 @@
   },
   "main_featured_post": {
     "TITLE": "Her şey güzel bir gülümsemeyle başlar"
+  },
+  "contact_form_fields": {
+    "NAME": "İsim",
+    "EMAIL": "E-Posta",
+    "PHONE_NUMBER": "Telefon Numarası",
+    "MESSAGE": "Mesaj",
+    "SUBMIT": "Gönder"
+  },
+  "contact_form_validations": {
+    "TOO_SHORT": "Çok kısa!",
+    "TOO_LONG": "Çok uzun!",
+    "NAME_REQUIRED": "İsim gerekli",
+    "EMAIL_REQUIRED": "E-posta gerekli",
+    "PHONE_NUMBER_REQUIRED": "Telefon numarası gerekli",
+    "INVALID_EMAIL": "Hatalı e-posta",
+    "INVALID_PHONE_NUMBER": "Hatalı telefon numarası"
+  },
+  "alert": {
+    "FAIL": "Bir hata oluştu, lütfen diğer iletişim kanallarını deneyiniz!",
+    "SUCCESS": "Mesajınız iletildi!"
   }
 }
