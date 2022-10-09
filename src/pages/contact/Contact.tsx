@@ -1,9 +1,8 @@
 import SectionBox from "../../components/UI/SectionBox/SectionBox";
-import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 
-import ContactUsForm from "./ContactUsForm";
+import ContactUsForm from "../../components/ContactUsForm/ContactUsForm";
 import logo from "../../assets/map.png";
 
 const Contact: React.FC = () => {
@@ -12,7 +11,6 @@ const Contact: React.FC = () => {
       <Grid
         container
         sx={{ maxWidth: "90%" }}
-        // columns={{ xs: 1, sm: 1, md: 12 }}
         rowSpacing={6}
         columnSpacing={6}
       >
