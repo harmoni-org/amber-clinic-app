@@ -1,3 +1,44 @@
 {
-    "test": "Bu bir test stringidir."
+    "ERTUGRUL_SOYSAL": {
+        "FULL_NAME": "Dt. Mehmet Ertuğrul Soysal",
+        "SUMMARY": "1993 İstanbul doğumludur. İlköğretimi İstanbul Borusan Otomotiv Z.N.K İlköğretim okulunda tamamlamıştır. 2011 yılında Beşiktaş Sakıp Sabancı Anadolu Lisesinden mezun olmuş ve aynı yıl Marmara Üniversitesi Diş Hekimliği Fakültesini kazanmıştır. 2017 yılında Marmara Üniversitesi Diş Hekimliği Fakültesini tamamlamıştır. 2017 yılında Marmara Üniversitesi Diş Hekimliği Fakültesi Pedodonti (Çocuk Diş Hekimliği) bölümünde Doktora programına başlamıştır. 2018 Yılı Şubat ayı itibariyle Fatih Ağız ve Diş Sağlığı Polikliniği’nde çalışmaya başlamış olup, 2021’ tarihinden sonra Özel Amber Ağız ve Diş Sağlığı Polikliniği’nde Mesul Müdürlük görevine başlamıştır. "
+    },
+    "OSMAN_SAMI": {
+        "FULL_NAME": "DT. Osman Sami AĞLARCI",
+        "SUMMARY": "1982 yılında Isparta'da doğan Doç Dr Osman Sami Ağlarcı 2000 yılında Darüşşafaka Lisesinden mezun olmuş ve aynı yıl İstanbul Üniversitesi Diş Hekimliği Fakültesinde eğitimine başlamıştır. Uzmanlık eğitimini Süleyman Demirel Üniversitesi Diş Hekimliği Fakültesinde tamamlamış ve 2016 yılında Doçent ünvanı almıştır. Ayrıca 2019 yılında Almanya'da Münster Üniversitesi ve Essen Üniversitesi tarafından düzenlenen Specialized Orthodontics Master programını tamamlamıştır. Meslek hayatında Isparta Devlet Hastanesi, Sadık Yağcı Ağız Diş Sağlığı Merkezi, Süleyman Demirel Üniversitesi Diş Hekimliği Fakültesi başta olmak üzere tüzel kurumlarda ve özel hastanelerde görev yapmıştır. 100'ün üzerinde bilimsel makalesi ve kitabı bulunan Dr Osman Sami Aglarcı bilimsel dergilerde editörlük ve hakemlik görevlerini sürdürmektedir. Evli ve iki çocuk babasıdır."
+    },
+    "MIRAY_UZ": {
+        "FULL_NAME": "Dt. Miray Uz",
+        "SUMMARY": "1995 Tekirdağ doğumludur. 2013 yılında Tekirdağ Fen Lisesini bitirdikten sonra aynı yılda İstanbul Üniversitesi Diş Hekimliği Fakültesini kazandı. 2018 yılında ‘Maksiller Defektli Hastalarda Tedavi Yöntemleri’ isimli tez çalışmasıyla mezun olmuştur.",
+        "SECTION_1": {
+            "TITLE": "Katıldığı Kongre, Seminer ve Kurslar",
+            "ITEM_1": "2. Dental Tribune Türkiye Sempozyumu IDEX, İstanbul, 2017",
+            "ITEM_2": "TDB 23. Uluslararası Diş Hekimliği Kongresi, İstanbul, 2017",
+            "ITEM_3": "Ağıziçi Porselen Tamiri- Kompozit Tabakalama Tekniği ve Makyaj, İstanbul, 2018",
+            "ITEM_4": "İmplantüstü Protezler, İstanbul,2019",
+            "ITEM_5": "Anterior Direk Restorasyonlar Temel Konseptlerden Yeniliklere, İstanbul,2019",
+            "ITEM_6": "Canlı Pulpadan Periapikal Cerrahiye Endodonti, İstanbul,2020",
+            "ITEM_7": "Fiber Destekli Adeziv Köprüler, İstanbul,2020",
+            "ITEM_8": "GC&Serhat Köken Kompozit Restorasyonlar, İstanbul,2020",
+            "ITEM_9": "Straumann&Estetik Bölge İmplant Uygulamalarında 5 Temel İpucu, İstanbul, 2020",
+            "ITEM_10": "Straumann&Dijital Diş Hekimliği, İstanbul, 2020"
+        }
+    },
+    "VOLKAN_ARIKAN": {
+        "FULL_NAME": "Dt. Volkan ARIKAN",
+        "SUMMARY": "1991 yılı İstanbul doğumludur. 2009 yılında İçel Anadolu Lisesinden mezun olduktan sonra Marmara Üniversitesi Diş Hekimliği Fakültesini kazandı. 2015 yılında mezun olduktan sonra Marmara Üniversitesi Diş Hekimliği Fakültesi Periodontoloji Anabilim Dalı’nda doktora eğitimine başladı.",
+        "SECTION_1": {
+            "TITLE": "Katıldığı Kongre, Seminer ve Kurslar",
+            "ITEM_1": "TDB 21.Uluslararası Diş Hekimliği Kongresi, İstanbul Mayıs, 2015",
+            "ITEM_2": "TDB 22. Uluslararası Diş Hekimliği Kongresi, İzmir Mayıs, 2016",
+            "ITEM_3": "TPD 46. Uluslararası Periodontoloji Kongresi, İzmir   Mayıs, 2016",
+            "ITEM_4": "TPD 47. Uluslararası Periodontoloji Kongresi, İstanbul Kasım, 2017",
+            "ITEM_5": "Denttoloji Botox ve Dermal Dolgu Kursu,  Ocak, 2018",
+            "ITEM_6": "23. BASS Kongresi,  Mayıs, 2018",
+            "ITEM_7": "TPD 49. Uluslararası Periodontoloji Kongresi, Antalya Kasım, 2019",
+            "ITEM_8": "3rd International Symposium \"Soft tissue management around teeth and implants\", Floransa",
+            "ITEM_9": "Straumann&Estetik Bölge İmplant Uygulamalarında 5 Temel İpucu, İstanbul, 2020",
+            "ITEM_10": "Straumann&Dijital Diş Hekimliği, İstanbul, 2020"
+        }
+    }
 }
