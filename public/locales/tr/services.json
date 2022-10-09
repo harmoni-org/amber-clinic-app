@@ -1,5 +1,5 @@
 {
-    "IMPLANT_SURGERY": {
+    "implant-surgery": {
         "TITLE": "İmplant Tedavisi",
         "SHORT_DESCRIPTION": "İmplant; eksik dişlerin yerine çene kemiği içerisine yerleştirilen titanyum vidadır.",
         "SUBTITLE_1": "Dental İmplant Nedir ?",
@@ -8,14 +8,14 @@
         "PARAGRAPH_2": "Eksik dişlerin yerine uygulanan, uzun ömürlü ve yaşam boyu kullanılabilecek  bu yapay köklerin üzerine yapılan sabit ya da hareketli protezler hastanın çiğneme fonksiyonunu ve estetiğini yerine getirirken yaşam konforunu üst düzeye taşır.",
         "PARAGRAPH_3": "İmplant operasyonundan önce, hastanın genel sağlık durumu uzman hekimi tarafından değerlendirilir ve ağız içi muayenesi yapılır. 3D Dental Tomogrofi eşliğinde mevcut kemiğin implant için uygunluğu değerlendirilir. Alınan tomogrofi görüntüsü üzerinden milimetrik ölçümler yapılarak kemik yapısına uygun olan implantın uzunluğu ve çapı belirlenir. İmplant planlaması yapıldıktan sonra hastaya uygun tedavi yöntemi hekimleri tarafından anlatır. Daha sonra lokal anestezi altında işlem aşamasına geçilir. Çene kemiğinde implantlar için yuvalar açılır ve bu yuvalara implantlar yerleştirildikten sonra dikiş atılarak işlem sonlandırılır. Operasyondan ortalama 7 – 10 gün sonra dikişler alınır ve kontrol muayenesi yapılır."
     },
-    "SMILE_DESIGN": {
+    "smile-design": {
         "TITLE": "Gülüş Tasarımı",
         "SHORT_DESCRIPTION": "Gülüş tasarımı görsel olarak güzel ve daha beyaz dişlerle mükemmel bir gülüşe kavuşmanızı sağlar.",
         "SUBTITLE_1": "Gülüş Tasarımı Nedir?",
         "PARAGRAPH_1": "Günümüzde ağız ve diş sağlığı kadar dişlerin görüntüsü de büyük önem taşıyor. Farklı sebeplerden dolayı bozulan diş estetiği, hem sağlık hem de psikolojik olarak kişileri olumsuz etkiliyor. Bu durum ile karşılaşan hastaların imdadına “Estetik gülüş tasarımı” uygulaması yetişiyor. ",
         "PARAGRAPH_2": "Halk arasında “Hollywood gülüş tasarımı” olarak da bilinen gülüş tasarımı, çeşitli nedenlerle estetiği bozan diş ve dişetindeki farklılıkların hastanın ihtiyaçları ve yüz şekline göre doğal ve estetik bir görünüme kavuşturulmasını sağlayan tedavi yöntemidir."
     },
-    "PROSTHESIS": {
+    "prosthesis": {
         "TITLE": "Protez Tedavileri",
         "SHORT_DESCRIPTION": "Protez tedavileri, çeşitli nedenlerle kaybedilen dişlerin yerine protezler kullanarak fonksiyon ve estetiğin yeniden sağlamasıdır.",
         "SUBTITLE_1": "Protetik Diş Tedavisi Nedir?",
@@ -29,11 +29,11 @@
         "ITEM_3": "Dişleri arası boşluk bulunan hastalara,",
         "ITEM_4": "Estetik bir gülüş elde etmek isteyen hastalara"
     },
-    "PEDODONTICS": {
+    "pedodontics": {
         "TITLE": "Pedodonti",
         "SHORT_DESCRIPTION": "Pedodonti yani çocuk diş hekimliği 0-14 yaş arası çocukların diş tedavilerini yapmaktır."
     },
-    "ORTHODONTICS": {
+    "orthodontics": {
         "TITLE": "Ortodonti",
         "SHORT_DESCRIPTION": "Ortodonti, dişlerin diziliminde bulunan bozukluk ve çapraşıklıkların düzenlenmesini amaçlamaktadır.",
         "SUBTITLE_1": "Ortodonti Nedir ?",
@@ -43,7 +43,7 @@
         "PARAGRAPH_3": "",
         "PARAGRAPH_4": ""
     },
-    "ENDODONTICS": {
+    "endodontics": {
         "TITLE": "Endodonti",
         "SHORT_DESCRIPTION": "Endodonti yani kanal tedavisi bölümü kök sinir dokuları enfekte olmuş dişin kurtarılmasını amaçlar.",
         "SUBTITLE_1": "Endodonti Nedir ?",
@@ -74,7 +74,7 @@
         "ITEM_9": "Yakındaki diş etlerinde şişme ve hassasiyet",
         "ITEM_10": "Diş etlerinde kalıcı veya tekrarlayan sivilce benzeri beyaz kabarcıklar"
     },
-    "TEETH_WHITENING": {
+    "teeth-whitening": {
         "TITLE": "Diş Beyazlatma",
         "SHORT_DESCRIPTION": "Diş beyazlatma işlemi çeşitli ajanlar kullanarak dişlerin renk tonunun açılması işlemidir.",
         "SUBTITLE_1": "Diş Beyazlatma Nedir?",
@@ -91,7 +91,7 @@
         "STRONG_TITLE_CONTENT_1": "Dişin içine nüfuz etmiş ve fırçalama ile giderilemeyen lekelerdir. .Genellikle dişin büyüme ve gelişme dönemini kapsayan çocukluk çağlarında ateşli hastalık, ilaç kullanımı, dişin uğradığı travmalar, enfeksiyonlar, çürükler veya yaşlanma ile görülürler. Bu tip renk değişikliklerinde profesyonel düzeyde uygulanan tekniklere ihtiyaç duyulur.",
         "STRONG_TITLE_CONTENT_2": "Diş yüzeyine sigara, çay, kahve ve kola gibi boyayıcı bazı gıdalardan yapışan renklenmelerdir. Çoğunlukla diş taşı temizliği ve sonrasında bu lekelerden kurtulmak mümkündür. Farklı renklenmeler farklı tedaviler gerektirir. Bu sebeple ne tip bir tedavi yapılması gerektiğine diş hekiminizin karar vermesi en doğrusudur."
     },
-    "MAXILLOFACIAL_SURGERY" : {
+    "maxillofacial-surgery" : {
        "TITLE": "Ağız ve Çene Cerrahisi",
        "SHORT_DESCRIPTION": "Ağız, Diş ve Çeneleri içine alan tüm cerrahi girişimleri içine almaktadır.",
         "SUBTITLE_1": "Ağız Diş ve Çene Cerrahisi Bölümü Nedir?",

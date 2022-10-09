@@ -10,24 +10,18 @@ import { Button, CardActions } from "@mui/material";
 import { shadows } from "@mui/system";
 
 type ServiceCardProps = {
-  id: number;
-  name: string;
-  shortDesc: string;
-  imageName: string;
+  item: any
 };
 
 const ServiceCard: React.FC<ServiceCardProps> = ({
-  id,
-  name,
-  shortDesc,
-  imageName,
+  item
 }) => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
 
   const handleOnClick = useCallback(
-    () => navigate(`/our-services/${1} `),
+    () => navigate(`/our-services/${item.id} `),
     [navigate]
   );
   // sx={{
@@ -52,8 +46,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       <CardMedia
         component="img"
         height="140"
-        image={require("../../../assets/images/services/" + imageName + ".png")}
-        alt={name}
+        image={require("../../../assets/images/services/" + item.id + ".png")}
+        alt={item.title}
       />
       <CardContent
         sx={{
@@ -61,10 +55,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         }}
       >
         <Typography gutterBottom variant="h5" component="div" color="primary">
-          {name}
+          {t(`${item.id}.${item.title}`, { ns: "services" })}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {shortDesc}
+          {t(`${item.id}.${item.shortDescription}`, { ns: "services" })}
         </Typography>
       </CardContent>
       <CardActions

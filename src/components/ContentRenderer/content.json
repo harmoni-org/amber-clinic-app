@@ -87,7 +87,7 @@
     ],
     "services": [
         {
-            "id": "IMPLANT_SURGERY",
+            "id": "implant-surgery",
             "title": "TITLE",
             "shortDescription": "SHORT_DESCRIPTION",
             "sections": [
@@ -118,7 +118,7 @@
             ]
         },
         {
-            "id": "SMILE_DESIGN",
+            "id": "smile-design",
             "title": "TITLE",
             "shortDescription": "SHORT_DESCRIPTION",
             "sections": [
@@ -141,7 +141,7 @@
             ]
         },
         {
-            "id": "PROSTHESIS",
+            "id": "prosthesis",
             "title": "TITLE",
             "shortDescription": "SHORT_DESCRIPTION",
             "sections": [
@@ -180,7 +180,7 @@
             ]
         },
         {
-            "id": "PEDODONTICS",
+            "id": "pedodontics",
             "title": "TITLE",
             "shortDescription": "SHORT_DESCRIPTION",
             "sections": [
@@ -191,7 +191,7 @@
             ]
         },
         {
-            "id": "ORTHODONTICS",
+            "id": "orthodontics",
             "title": "TITLE",
             "shortDescription": "SHORT_DESCRIPTION",
             "sections": [
@@ -226,7 +226,7 @@
             ]
         },
         {
-            "id": "ENDODONTICS",
+            "id": "endodontics",
             "title": "TITLE",
             "shortDescription": "SHORT_DESCRIPTION",
             "sections": [
@@ -313,7 +313,7 @@
             ]
         },
         {
-            "id": "TEETH_WHITENING",
+            "id": "teeth-whitening",
             "title": "TITLE",
             "shortDescription": "SHORT_DESCRIPTION",
             "sections": [
@@ -370,7 +370,7 @@
             ]
         },
         {
-            "id": "MAXILLOFACIAL_SURGERY",
+            "id": "maxillofacial-surgery",
             "title": "TITLE",
             "shortDescription": "SHORT_DESCRIPTION",
             "sections": [
@@ -486,7 +486,7 @@
             ]
         },
         {
-            "id": "PERIODONTOLOJI",
+            "id": "periodontology",
             "title": "TITLE",
             "shortDescription": "SHORT_DESCRIPTION",
             "sections": [
@@ -569,7 +569,7 @@
             ]
         },
         {
-            "id": "2D-3D-VISUALIZATION",
+            "id": "2d-3d-visualization",
             "title": "TITLE",
             "shortDescription": "SHORT_DESCRIPTION",
             "sections": [
