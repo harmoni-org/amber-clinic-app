@@ -11,6 +11,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import MenuItem from "@mui/material/MenuItem";
 import logo from "../../../assets/images/amber-logo.png";
+import "./MainNavigation.scss";
 
 const MainNavigation = () => {
   const { t } = useTranslation();
@@ -43,6 +44,7 @@ const MainNavigation = () => {
             variant="h6"
             noWrap
             component="a"
+            className="logo"
             sx={{
               mr: 6,
               display: { xs: "none", md: "flex" },
