@@ -17,11 +17,11 @@ const Home: React.FC = () => {
         <section id="services">
           <Services />
         </section>
-        <section id="contact" style={{ height: "800px" }}>
-          <Contact />
-        </section>
-        <section id="blog" style={{ height: "700px" }}>
+        <section id="blog">
           <Blog />
+        </section>
+        <section id="contact">
+          <Contact />
         </section>
       </>
     </>

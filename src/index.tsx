@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./i18n";
+import "./assets/fonts/Poppins/Poppins-Bold.ttf";
 import reportWebVitals from "./reportWebVitals";
 import {
   createBrowserRouter,
@@ -24,10 +25,11 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="services" element={<Services />} />
       <Route path="about-us" element={<AboutUs />} />
-      <Route path="our-dentists/:id" element={<DentistDetail />} />
-      <Route path="our-services/:id" element={<ServiceDetail />} />
       <Route path="contact" element={<Contact />} />
       <Route path="blog" element={<Blog />} />
+      <Route path="our-dentists/:id" element={<DentistDetail />} />
+      <Route path="our-services/:id" element={<ServiceDetail />} />
+      <Route path="blog/:id" element={<ServiceDetail />} />
     </Route>
   )
 );
