@@ -26,10 +26,8 @@ const ContentRenderer = ({ id, contentType }: ContentRendererProps) => {
     const { i18n, t } = useTranslation();
 
     useEffect(() => {
-        i18n.loadNamespaces(contentType, () => {
-            setDomContent(renderContent());
-        })
-    }, [])
+        setDomContent(renderContent());
+    }, [id])
 
     const renderContent = (): JSX.Element => {
         const contentStructure = (content as ContentJSON)[contentType];

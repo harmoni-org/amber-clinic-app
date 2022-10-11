@@ -7,7 +7,7 @@ const MainFeaturedPost: React.FC = () => {
 
   const post = {
     title: t("main_featured_post.TITLE"),
-    description: "Amber ağız ve diş sağlığı kliniği.",
+    description: t("navbar.TITLE"),
     imgUrl: "./dentist-slider.png",
     imageText: "main image description",
   };

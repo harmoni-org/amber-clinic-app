@@ -7,13 +7,8 @@ import logo from "../../assets/map.png";
 
 const Contact: React.FC = () => {
   return (
-    <SectionBox id="contact" title="İLETİŞİM">
-      <Grid
-        container
-        sx={{ maxWidth: "90%" }}
-        rowSpacing={6}
-        columnSpacing={6}
-      >
+    <SectionBox id="contact" title="CONTACT">
+      <Grid container sx={{ maxWidth: "90%" }} rowSpacing={6} columnSpacing={6}>
         <Grid item xs={12} sm={12} md={6}>
           <img
             src={logo}
