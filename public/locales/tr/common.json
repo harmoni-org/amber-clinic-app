@@ -33,6 +33,13 @@
     "FAIL": "Bir hata oluştu, lütfen diğer iletişim kanallarını deneyiniz!",
     "SUCCESS": "Mesajınız iletildi!"
   },
+
+  "appointment_form_fields": {
+    "ONLINE_APPOINTMENT": "ONLINE RANDEVU",
+    "ONLINE_APPOINTMENT_DESCRIPTION": "Aşağıdaki formu eksiksiz doldurarak hızlı bir şekilde randevunuzu oluşturabilirsiniz."
+  }
+
   "DENTIST": "Diş Hekimi",
   "ORTHODONTICS": "Ortodonti Uzmanı"
+
 }

@@ -34,7 +34,7 @@ const Contact: React.FC = () => {
             Orhangazi, Esenyalı Orhangazi Mah, Alparslan Türkeş Cd No:2/A.
             Pendik/İstanbul
           </Typography>
-          <ContactUsForm />
+          <ContactUsForm formOrigin="contact" />
         </Grid>
       </Grid>
     </SectionBox>
