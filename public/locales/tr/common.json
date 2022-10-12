@@ -10,6 +10,9 @@
   "main_featured_post": {
     "TITLE": "Her şey güzel bir gülümsemeyle başlar"
   },
+  "about_us": {
+    "TEXT": "Bizim tutkumuz hastalarımızın ağız ve diş sağlığını korumak ve tedavi etmektir. Bu tutkumuzu hayata geçirirken alanında uzman diş hekimleriyle birlikte çalışır, en ileri teknolojiyi kullanır ve uluslararası standartlarında hizmet veririz.Amacımız hastalarımıza heağlığı hizmetini sunabilmek ve her hastamızın kliniklerimizden sağlıklı ve gülerek çıkmasını sağlamaktır."
+  },
   "contact_form_fields": {
     "NAME": "İsim",
     "EMAIL": "E-Posta",
@@ -30,8 +33,13 @@
     "FAIL": "Bir hata oluştu, lütfen diğer iletişim kanallarını deneyiniz!",
     "SUCCESS": "Mesajınız iletildi!"
   },
+
   "appointment_form_fields": {
     "ONLINE_APPOINTMENT": "ONLINE RANDEVU",
     "ONLINE_APPOINTMENT_DESCRIPTION": "Aşağıdaki formu eksiksiz doldurarak hızlı bir şekilde randevunuzu oluşturabilirsiniz."
   }
+
+  "DENTIST": "Diş Hekimi",
+  "ORTHODONTICS": "Ortodonti Uzmanı"
+
 }
