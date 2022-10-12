@@ -1,11 +1,12 @@
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import { CardActionArea } from "@mui/material";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
+import ImageList from "@mui/material/ImageList";
+import ImageListItem from "@mui/material/ImageListItem";
+import ImageListItemBar from "@mui/material/ImageListItemBar";
+import ListSubheader from "@mui/material/ListSubheader";
+import IconButton from "@mui/material/IconButton";
+import InfoIcon from "@mui/icons-material/Info";
 
 export interface DentistCardProps {
   item: any;
@@ -22,26 +23,32 @@ const DentistCard: React.FC<DentistCardProps> = ({ item }) => {
   );
 
   return (
-    <Card sx={{ maxWidth: 250, mt: 5 }} onClick={handleOnClick}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          height="300"
-          image={require("../../../assets/images/dentists/" +
+    <ImageList sx={{ width: 450, height: 350 }}>
+      <ImageListItem key={item.title}>
+        <img
+          src={require("../../../assets/images/dentists/" +
+            item.sections[0].content +
+            ".png")}
+          srcSet={require("../../../assets/images/dentists/" +
             item.sections[0].content +
             ".png")}
           alt={item.title}
+          loading="lazy"
         />
-        <CardContent>
-          <Typography variant="body2" component="div">
-            {t(`${item.id}.${item.name}`, { ns: "dentists" })}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {t(`${item.specialization}`, { ns: "common" })}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+        <ImageListItemBar
+          title={t(`${item.id}.${item.name}`, { ns: "dentists" })}
+          subtitle={t(`${item.specialization}`, { ns: "common" })}
+          actionIcon={
+            <IconButton
+              sx={{ color: "rgba(255, 255, 255, 0.54)" }}
+              aria-label={`info about ${item.name}`}
+            >
+              <InfoIcon />
+            </IconButton>
+          }
+        />
+      </ImageListItem>
+    </ImageList>
   );
 };
 

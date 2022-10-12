@@ -16,7 +16,12 @@ const AboutUs: React.FC = () => {
           justifyContent: "center",
         }}
       >
-        <Typography variant="body2" color="text.secondary" textAlign="center">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          textAlign="center"
+          sx={{ fontSize: 14, fontWeight: 500, letterSpacing: 0.5 }}
+        >
           {t("about_us.TEXT", { ns: "common" })}
         </Typography>
         <DentistList />

@@ -22,7 +22,7 @@ const MainFeaturedPost: React.FC = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundImage: `url(${post.imgUrl})`,
-        height: "760px",
+        height: "560px",
       }}
     >
       <Box

@@ -19,13 +19,20 @@ const SectionBox: React.FC<SectionBoxProps> = ({ title, children }) => {
         component="div"
         role="presentation"
         sx={{
-          color: "primary.main",
+          color: "primary.dark",
           borderTop: `thin solid primary["700"]`,
-          mb: 5,
+          mb: 3,
+          letterSpacing: 5,
         }}
       >
         {/* any elements nested inside the role="presentation" preserve their semantics. */}
-        <Typography variant="h5" pr={5} pl={5}>
+        <Typography
+          variant="h5"
+          px={3}
+          sx={{
+            color: "primary.light",
+          }}
+        >
           {t(`navbar.${title}`, { ns: "common" })}
         </Typography>
       </Divider>

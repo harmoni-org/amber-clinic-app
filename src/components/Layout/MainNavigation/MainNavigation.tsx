@@ -99,8 +99,12 @@ const MainNavigation = () => {
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth={false}>
+    <AppBar
+      component="nav"
+      position="static"
+      sx={{ bgcolor: "white", borderBottom: 1, borderColor: "#CECECE" }}
+    >
+      <Container maxWidth={false} sx={{ m: "auto", maxWidth: "90%" }}>
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -108,20 +112,25 @@ const MainNavigation = () => {
             component="a"
             sx={{
               display: { xs: "none", md: "flex" },
-              mr: 6,
             }}
           >
             <img src={logo} alt={t("navbar.TITLE")} />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
+              color="primary"
             >
               <MenuIcon />
             </IconButton>
@@ -150,6 +159,7 @@ const MainNavigation = () => {
                   sx={[
                     {
                       transition: "background 0.35s, color 0.35s",
+                      color: "primary",
                       "&:hover": {
                         color: "secondary.main",
                         cursor: "pointer",
@@ -194,8 +204,9 @@ const MainNavigation = () => {
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: "none", md: "flex", gap: "50px" },
+              display: { xs: "none", md: "flex", gap: "60px" },
               alignItems: "baseline",
+              justifyContent: "center",
             }}
           >
             {sections.map((section) =>
@@ -204,6 +215,7 @@ const MainNavigation = () => {
                   onMouseEnter={handleMouseOn}
                   onMouseLeave={handleClose}
                   textAlign="center"
+                  color="primary.main"
                   sx={[
                     {
                       transition: "background 0.45s, color 0.45s",
@@ -214,7 +226,7 @@ const MainNavigation = () => {
                     },
                   ]}
                 >
-                  <>
+                  <div style={{ display: "flex", alignItems: "center" }}>
                     <Link
                       key={section.title}
                       activeClass="active"
@@ -224,8 +236,11 @@ const MainNavigation = () => {
                       duration={500}
                     >
                       {section.title}
-                      <KeyboardArrowDownIcon sx={{ fontSize: 20 }} />
                     </Link>
+                    <KeyboardArrowDownIcon
+                      color="primary"
+                      sx={{ fontSize: 20 }}
+                    />
                     <Menu
                       elevation={0}
                       anchorOrigin={{
@@ -272,11 +287,12 @@ const MainNavigation = () => {
                         </MenuItem>
                       ))}
                     </Menu>
-                  </>
+                  </div>
                 </Typography>
               ) : (
                 <Typography
                   textAlign="center"
+                  color="primary.main"
                   sx={[
                     {
                       transition: "background 0.45s, color 0.45s",
