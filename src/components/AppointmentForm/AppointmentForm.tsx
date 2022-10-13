@@ -10,11 +10,15 @@ const AppointmentForm = () => {
     <SwipeableTemporaryDrawer
       buttonLabel={t("appointment_form_fields.ONLINE_APPOINTMENT")}
     >
-        <>
-            <Typography variant="h5">{t("appointment_form_fields.ONLINE_APPOINTMENT")}</Typography>
-            <Typography variant="subtitle2">{t("appointment_form_fields.ONLINE_APPOINTMENT_DESCRIPTION")}</Typography>
-            <ContactUsForm formOrigin={"appointment"}></ContactUsForm>
-        </>
+      <>
+        <Typography variant="h5">
+          {t("appointment_form_fields.ONLINE_APPOINTMENT")}
+        </Typography>
+        <Typography variant="subtitle2">
+          {t("appointment_form_fields.ONLINE_APkPOINTMENT_DESCRIPTION")}
+        </Typography>
+        <ContactUsForm formOrigin={"appointment"}></ContactUsForm>
+      </>
     </SwipeableTemporaryDrawer>
   );
 };

@@ -1,16 +1,19 @@
-import * as React from 'react';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
-import Button from '@mui/material/Button';
-import { Box } from '@mui/material';
+import * as React from "react";
+import SwipeableDrawer from "@mui/material/SwipeableDrawer";
+import Button from "@mui/material/Button";
+import { Box } from "@mui/material";
+import "./SwipeableTemporaryDrawer.scss";
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+type Anchor = "top" | "left" | "bottom" | "right";
 
 interface SwipeableTemporaryDrawerProps {
-  buttonLabel: string,
-  children: React.ReactElement
+  buttonLabel: string;
+  children: React.ReactElement;
 }
 
-const SwipeableTemporaryDrawer : React.FC<SwipeableTemporaryDrawerProps> = (props) => {
+const SwipeableTemporaryDrawer: React.FC<SwipeableTemporaryDrawerProps> = (
+  props
+) => {
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -23,9 +26,9 @@ const SwipeableTemporaryDrawer : React.FC<SwipeableTemporaryDrawerProps> = (prop
     (event: React.KeyboardEvent | React.MouseEvent) => {
       if (
         event &&
-        event.type === 'keydown' &&
-        ((event as React.KeyboardEvent).key === 'Tab' ||
-          (event as React.KeyboardEvent).key === 'Shift')
+        event.type === "keydown" &&
+        ((event as React.KeyboardEvent).key === "Tab" ||
+          (event as React.KeyboardEvent).key === "Shift")
       ) {
         return;
       }
@@ -36,8 +39,14 @@ const SwipeableTemporaryDrawer : React.FC<SwipeableTemporaryDrawerProps> = (prop
   const anchor = "right";
 
   return (
-    <React.Fragment key={anchor}>
-      <Button onClick={toggleDrawer(anchor, true)} variant="contained">{props.buttonLabel}</Button>
+    <div key={anchor} className="appointment-area">
+      <Button
+        onClick={toggleDrawer(anchor, true)}
+        variant="contained"
+        sx={{ position: "relative", zIndex: 99 }}
+      >
+        {props.buttonLabel}
+      </Button>
       <SwipeableDrawer
         anchor={anchor}
         open={state[anchor]}
@@ -53,8 +62,8 @@ const SwipeableTemporaryDrawer : React.FC<SwipeableTemporaryDrawerProps> = (prop
           {props.children}
         </Box>
       </SwipeableDrawer>
-    </React.Fragment>
+    </div>
   );
-}
+};
 
 export default SwipeableTemporaryDrawer;
