@@ -14,6 +14,7 @@ import Container from "@mui/material/Container";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import logo from "../../../assets/images/amber-logo.png";
 import "./MainNavigation.scss";
+import LanguageSelector from "../../LanguageSelector/LanguageSelector";
 
 const MainNavigation = () => {
   const { t } = useTranslation();
@@ -301,6 +302,7 @@ const MainNavigation = () => {
               )
             )}
           </Box>
+          <LanguageSelector />
         </Toolbar>
       </Container>
     </AppBar>
