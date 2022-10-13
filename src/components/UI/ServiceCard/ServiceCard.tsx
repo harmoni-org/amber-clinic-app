@@ -7,37 +7,21 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
-import { shadows } from "@mui/system";
 
 type ServiceCardProps = {
-  id: number;
-  name: string;
-  shortDesc: string;
-  imageName: string;
+  item: any;
 };
 
-const ServiceCard: React.FC<ServiceCardProps> = ({
-  id,
-  name,
-  shortDesc,
-  imageName,
-}) => {
+const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
   const { t } = useTranslation();
 
   const navigate = useNavigate();
 
   const handleOnClick = useCallback(
-    () => navigate(`/our-services/${1} `),
+    () => navigate(`/our-services/${item.id} `),
     [navigate]
   );
-  // sx={{
-  //   maxWidth: "100%",
-  //   height: "100%",
-  //   display: "flex",
-  //   flexDirection: "column",
-  //   border: "none",
-  //   boxShadow: "none",
-  // }}
+
   return (
     <Card
       sx={{
@@ -52,19 +36,29 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       <CardMedia
         component="img"
         height="140"
-        image={require("../../../assets/images/services/" + imageName + ".png")}
-        alt={name}
+        image={require("../../../assets/images/services/" + item.id + ".png")}
+        alt={item.title}
       />
       <CardContent
         sx={{
           flexGrow: 1,
         }}
       >
-        <Typography gutterBottom variant="h5" component="div" color="primary">
-          {name}
+        <Typography
+          gutterBottom
+          variant="h4"
+          component="h4"
+          color="secondary"
+          sx={{ fontSize: "1rem", fontWeight: 700 }}
+        >
+          {t(`${item.id}.${item.title}`, { ns: "services" })}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {shortDesc}
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ fontSize: 14, fontWeight: 500, letterSpacing: 0.5 }}
+        >
+          {t(`${item.id}.${item.shortDescription}`, { ns: "services" })}
         </Typography>
       </CardContent>
       <CardActions
@@ -73,8 +67,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
         <Button
           variant="outlined"
           size="small"
-          color="primary"
-          endIcon={<NavigateNextIcon color="primary" sx={{ mr: 1 }} />}
+          color="secondary"
+          endIcon={<NavigateNextIcon color="secondary" sx={{ mr: 1 }} />}
           onClick={handleOnClick}
           sx={{ textTransform: "none", borderColor: "secondary", border: 1.5 }}
         >

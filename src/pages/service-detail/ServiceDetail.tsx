@@ -14,6 +14,8 @@ import ImageIcon from "@mui/icons-material/Image";
 import WorkIcon from "@mui/icons-material/Work";
 import BeachAccessIcon from "@mui/icons-material/BeachAccess";
 
+import ContentRenderer from "../../components/ContentRenderer/ContentRenderer";
+
 type ServiceDetailProps = {
   item: {
     description: string;
@@ -39,12 +41,7 @@ const ServiceDetail: React.FC = () => {
 
   //  TODO:  After implement static data mapping, get data dynamically.
 
-  // const params = useParams();
-
-  // useEffect(() => {
-  //   const id = { params };
-  //   getDentist(id);
-  // }, []);
+  const { id } = useParams();
 
   return (
     <Container
@@ -55,7 +52,8 @@ const ServiceDetail: React.FC = () => {
       }}
     >
       <Container sx={{ py: 6 }}>
-        <Typography gutterBottom variant="h3" component="div">
+        <ContentRenderer id={id || ""} contentType="services"></ContentRenderer>
+        {/* <Typography gutterBottom variant="h3" component="div">
           jhsxhsdh
         </Typography>
         <Typography variant="body1" color="text.secondary">
@@ -114,7 +112,7 @@ const ServiceDetail: React.FC = () => {
             Straumann&Dijital Diş Hekimliği
             <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2020" />
           </ListItem>
-        </List>
+        </List> */}
       </Container>
 
       <img src={dentist} alt="Amber Ağız ve Diş Sağlığı Polikliniği" />

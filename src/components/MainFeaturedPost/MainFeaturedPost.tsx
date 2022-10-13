@@ -7,7 +7,7 @@ const MainFeaturedPost: React.FC = () => {
 
   const post = {
     title: t("main_featured_post.TITLE"),
-    description: "Amber ağız ve diş sağlığı kliniği.",
+    description: t("navbar.TITLE"),
     imgUrl: "./dentist-slider.png",
     imageText: "main image description",
   };
@@ -22,7 +22,7 @@ const MainFeaturedPost: React.FC = () => {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundImage: `url(${post.imgUrl})`,
-        height: "760px",
+        height: "560px",
       }}
     >
       <Box

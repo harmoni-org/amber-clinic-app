@@ -1,33 +1,42 @@
 {
   "navbar": {
-      "TITLE": "Amber Oral and Dental Health",
-      "HOME_PAGE": "Homepage",
-      "SERVICES": "Services",
-      "ABOUT_US": "About us",
-      "CONTACT": "Contact",
-      "BLOG": "Blog"
-    },
-    "main_featured_post": {
-      "TITLE": "Everything starts with a beautiful smile"
-    },
-    "contact_form_fields": {
-      "NAME": "Name",
-      "EMAIL": "E-mail",
-      "PHONE_NUMBER": "Phone Number",
-      "MESSAGE": "Message",
-      "SUBMIT": "Submit"
-    },
-    "contact_form_validations": {
-      "TOO_SHORT": "Too Short!!",
-      "TOO_LONG": "Too Long!",
-      "NAME_REQUIRED": "Name is required",
-      "EMAIL_REQUIRED": "E-mail is required",
-      "PHONE_NUMBER_REQUIRED": "Phone Number is required",
-      "INVALID_EMAIL": "Invalid email",
-      "INVALID_PHONE_NUMBER": "Invalid phone number"
-    },
-    "alert": {
-      "FAIL": "Something went wrong! Please try other communication channels!",
-      "SUCCESS": "Your message is sent!"
-    }
+    "TITLE": "Amber Oral and Dental Health",
+    "HOME_PAGE": "Homepage",
+    "SERVICES": "Services",
+    "ABOUT_US": "About us",
+    "CONTACT": "Contact",
+    "BLOG": "Blog"
+  },
+  "main_featured_post": {
+    "TITLE": "Everything starts with a beautiful smile"
+  },
+  "about_us": {
+    "TEXT": "Our passion is to protect and treat the oral and dental health of our patients. While realizing this passion, we work with dentists who are experts in their fields, use the most advanced technology and provide services at international standards. Our aim is to provide health services to our patients and to ensure that each of our patients leaves our clinics healthy and smiling."
+  },
+  "contact_form_fields": {
+    "NAME": "Name",
+    "EMAIL": "E-mail",
+    "PHONE_NUMBER": "Phone Number",
+    "MESSAGE": "Message",
+    "SUBMIT": "Submit"
+  },
+  "contact_form_validations": {
+    "TOO_SHORT": "Too Short!!",
+    "TOO_LONG": "Too Long!",
+    "NAME_REQUIRED": "Name is required",
+    "EMAIL_REQUIRED": "E-mail is required",
+    "PHONE_NUMBER_REQUIRED": "Phone Number is required",
+    "INVALID_EMAIL": "Invalid email",
+    "INVALID_PHONE_NUMBER": "Invalid phone number"
+  },
+  "alert": {
+    "FAIL": "Something went wrong! Please try other communication channels!",
+    "SUCCESS": "Your message is sent!"
+  },
+  "appointment_form_fields": {
+    "ONLINE_APPOINTMENT": "ONLINE APPOINTMENT",
+    "ONLINE_APPOINTMENT_DESCRIPTION": "You can quickly make an appointment by filling out the form below."
+  },
+  "DENTIST": "Dentist",
+  "ORTHODONTICS": "Orthodontics"
 }
