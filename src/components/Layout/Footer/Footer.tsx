@@ -14,10 +14,9 @@ function Copyright() {
   return (
     <Typography variant="body2" color="white" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" sx={{ textDecoration: "none" }}>
         2019 Dentmasters Dental Clinic | All Rights Reserved.
-      </Link>{" "}
-      {new Date().getFullYear()}
+      </Link>
       {"."}
     </Typography>
   );
@@ -28,23 +27,6 @@ export default function Footer() {
   const description = "Something here to give the footer a purpose!";
 
   return (
-    // <Box component="footer" sx={{ bgcolor: "primary", py: 6, flexGrow: 1}}>
-    //   <Container maxWidth="lg">
-    //     <Typography variant="h6" align="center" gutterBottom>
-    //       {title}
-    //     </Typography>
-    //     <Typography
-    //       variant="subtitle1"
-    //       align="center"
-    //       color="text.secondary"
-    //       component="p"
-    //     >
-    //       {description}
-    //     </Typography>
-    //     <Copyright />
-    //   </Container>
-    // </Box>
-
     <Box
       component="footer"
       sx={{
@@ -54,17 +36,26 @@ export default function Footer() {
         bottom: "0",
       }}
     >
-      <Grid container spacing={3} sx={{ color: "white" }}>
-        <Grid item xs>
+      <Grid
+        container
+        spacing={3}
+        sx={{
+          color: "white",
+          alignItems: "center",
+          maxWidth: "95%",
+          margin: "auto",
+        }}
+      >
+        <Grid item xs={2}>
           <Typography variant="body1" align="center" gutterBottom>
             <img
               src={logo}
               alt="Amber Ağız ve Diş Sağlığı Polikliniği"
-              style={{ width: "50%" }}
+              style={{ width: "80%" }}
             />
           </Typography>
         </Grid>
-        <Grid item xs>
+        <Grid item xs={3}>
           <Typography variant="subtitle1" align="center" component="p">
             0212 234 23 23
           </Typography>
@@ -75,41 +66,39 @@ export default function Footer() {
             0212 343 65 78
           </Typography>
         </Grid>
-        <Grid item xs>
-          <Typography variant="subtitle1" align="center" component="div">
+        <Grid item xs={2}>
+          <Typography variant="subtitle1" component="div">
             <FacebookIcon color="secondary" sx={{ mr: 1 }} />
             Facebook
           </Typography>
-          <Typography variant="subtitle1" align="center" component="div">
+          <Typography variant="subtitle1" component="div">
             <TwitterIcon color="secondary" sx={{ mr: 1 }} />
             Twitter
           </Typography>
-          <Typography variant="subtitle1" align="center" component="div">
+          <Typography variant="subtitle1" component="div">
             <InstagramIcon color="secondary" sx={{ mr: 1 }} />
             Instagram
           </Typography>
         </Grid>
-        <Grid item xs>
-          <Typography variant="subtitle1" align="center" component="p">
+        <Grid item xs={4}>
+          <Typography variant="subtitle1" component="p">
             Orhangazi, Esenyalı Orhangazi Mah, Alparslan Türkeş Cd No:2/A.
             Pendik/İstanbul
           </Typography>
-          <Typography variant="subtitle1" align="center" component="p">
+          <Typography variant="subtitle1" component="p">
             dmdentmasters@gmail.com
           </Typography>
         </Grid>
       </Grid>
-      {/* <Divider
-        component="div"
-        role="presentation"
-        sx={{
-          color: "secondary",
-          borderTop: `thick solid secondary`,
-          
-        }}
-      /> */}
       <Divider sx={{ bgcolor: "secondary.light", mx: 9, my: 2 }} />
-      <Grid container spacing={2}>
+      <Grid
+        container
+        spacing={2}
+        sx={{
+          maxWidth: "100%",
+          margin: "auto",
+        }}
+      >
         <Grid item xs={4}>
           <Typography
             variant="subtitle1"
