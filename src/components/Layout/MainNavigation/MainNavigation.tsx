@@ -18,7 +18,6 @@ import "./MainNavigation.scss";
 const MainNavigation = () => {
   const { t } = useTranslation();
 
-  //
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const handleMouseOn = (event: React.MouseEvent<HTMLElement>) => {
@@ -32,13 +31,11 @@ const MainNavigation = () => {
 
   const handleNavigate = useCallback(
     (id: any) => {
-      console.log("id", id);
-      navigate(`/our-services/${id} `);
+      navigate(`/our-services/${id}`);
       setAnchorEl(null);
     },
     [navigate]
   );
-  //
 
   const sections = [
     { title: t("navbar.HOME_PAGE"), url: "home" },

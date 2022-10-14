@@ -4,11 +4,17 @@ import AboutUs from "../about-us/AboutUs";
 import Services from "../services/Services";
 import Contact from "../contact/Contact";
 import Blog from "../blog/Blog";
+import "./Home.scss";
 
 const Home: React.FC = () => {
   return (
     <>
-      <ScrollToTop smooth color="#6f00ff" />
+      <ScrollToTop
+        smooth
+        color="white"
+        className="scroll-top-button"
+        top={500}
+      />
       <MainFeaturedPost />
       <>
         <section id="about-us">
