@@ -1,14 +1,11 @@
 import emailjs from "@emailjs/browser";
 import { ContactInfo } from "../ContactUsForm/ContactUsForm";
-import { AlertColor } from "@mui/material/Alert";
-import { useTranslation } from "react-i18next";
-import i18n from "../../i18n";
 
 const serviceId = "service_szot7ev";
 const templateId = "template_moqukoh";
-const publicKey = "********";
+const publicKey = "xOryHOGs6_QIKpX3Bz";
 
-export const sendEmail = (values:ContactInfo, callback:(sev:AlertColor, hide_duration:number, alert_message:string) => void) => {
+export const sendEmail = (values:ContactInfo, onFulfilled:() => void, onRejected:() => void) => {
 
   emailjs
       .send(
@@ -26,15 +23,11 @@ export const sendEmail = (values:ContactInfo, callback:(sev:AlertColor, hide_dur
       )
       .then(
         (result) => {
-            callback("success", 3000, i18n.t("alert.SUCCESS"));
+            onFulfilled();
           console.log("result: ", result);
         },
         (error) => {
-            callback(
-            "warning",
-            6000,
-            i18n.t("alert.FAIL")
-          );
+          onRejected();
           console.log(error.text);
         }
       );

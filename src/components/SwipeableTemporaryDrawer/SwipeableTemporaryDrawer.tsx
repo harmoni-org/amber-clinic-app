@@ -9,17 +9,18 @@ type Anchor = "top" | "left" | "bottom" | "right";
 interface SwipeableTemporaryDrawerProps {
   buttonLabel: string;
   children: React.ReactElement;
+  onClose: () => void;
+  onOpen: () => void;
+  showDrawer?: boolean;
+  anchor: Anchor
 }
+
 
 const SwipeableTemporaryDrawer: React.FC<SwipeableTemporaryDrawerProps> = (
   props
 ) => {
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+  const [showDrawer, setShowDrawer] = React.useState(false);
+  const anchor = props.anchor;
 
   const toggleDrawer =
     (anchor: Anchor, open: boolean) =>
@@ -33,13 +34,19 @@ const SwipeableTemporaryDrawer: React.FC<SwipeableTemporaryDrawerProps> = (
         return;
       }
 
-      setState({ ...state, [anchor]: open });
+      if (props.showDrawer === undefined) {
+        setShowDrawer(open);
+      }
+
+      if (open) {
+        props.onOpen();
+      } else {
+        props.onClose();
+      }
     };
 
-  const anchor = "right";
-
   return (
-    <div key={anchor} className="appointment-area">
+    <div className="appointment-area">
       <Button
         onClick={toggleDrawer(anchor, true)}
         variant="contained"
@@ -49,7 +56,8 @@ const SwipeableTemporaryDrawer: React.FC<SwipeableTemporaryDrawerProps> = (
       </Button>
       <SwipeableDrawer
         anchor={anchor}
-        open={state[anchor]}
+        // open={state[anchor]}
+        open={props.showDrawer !== undefined ? props.showDrawer : showDrawer}
         onClose={toggleDrawer(anchor, false)}
         onOpen={toggleDrawer(anchor, true)}
       >
