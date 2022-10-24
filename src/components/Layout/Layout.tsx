@@ -44,9 +44,7 @@ const Layout = () => {
       <Container disableGutters maxWidth={false}>
         <MainNavigation />
         <AppointmentForm />
-        <main>
-          <Outlet />
-        </main>
+        <Outlet />
       </Container>
       <Footer />
     </ThemeProvider>

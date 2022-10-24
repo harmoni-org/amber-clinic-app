@@ -20,7 +20,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ id, title, imageName }) => {
 
   const navigate = useNavigate();
 
-  const handleOnClick = useCallback(() => navigate(`/blog/${1} `), [navigate]);
+  const handleOnClick = useCallback(() => {
+    navigate(`/blog/${id}`);
+    window.scrollTo(0, 0);
+  }, [navigate]);
 
   return (
     <Card
