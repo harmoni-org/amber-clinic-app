@@ -39,5 +39,11 @@
     "ONLINE_APPOINTMENT_DESCRIPTION": "Aşağıdaki formu eksiksiz doldurarak hızlı bir şekilde randevunuzu oluşturabilirsiniz."
   },
   "DENTIST": "Diş Hekimi",
-  "ORTHODONTICS": "Ortodonti Uzmanı"
+  "ORTHODONTICS": "Ortodonti Uzmanı",
+
+  "not_found": {
+    "TITLE": "404 Sayfa bulunamadı",
+    "TEXT": "The page you are looking for can’t be found.",
+    "BUTTON_TEXT": "Go to Home Page"
+  }
 }

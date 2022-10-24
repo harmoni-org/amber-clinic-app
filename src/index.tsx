@@ -18,18 +18,16 @@ import Blog from "./pages/blog/Blog";
 import DentistDetail from "./pages/dentist-detail/DentistDetail";
 import "./index.css";
 import ServiceDetail from "./pages/service-detail/ServiceDetail";
+import Error from "./pages/error/Error";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
+    <Route path="/" element={<Layout />} errorElement={<Error />}>
       <Route index element={<Home />} />
-      <Route path="services" element={<Services />} />
-      <Route path="about-us" element={<AboutUs />} />
-      <Route path="contact" element={<Contact />} />
-      <Route path="blog" element={<Blog />} />
       <Route path="our-dentists/:id" element={<DentistDetail />} />
       <Route path="our-services/:id" element={<ServiceDetail />} />
       <Route path="blog/:id" element={<ServiceDetail />} />
+      {/* <Route path="*" element={<Home />} /> */}
     </Route>
   )
 );
