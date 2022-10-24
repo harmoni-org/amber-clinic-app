@@ -1,7 +1,8 @@
 import React, { useCallback } from "react";
-import { useNavigate, Link as RouterLink } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-scroll";
+import Scroll, { Link as Link1 } from "react-scroll";
+import Link from "@mui/material/Link";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -16,26 +17,54 @@ import logo from "../../../assets/images/amber-logo.png";
 import "./MainNavigation.scss";
 
 const MainNavigation = () => {
+  const scroller = Scroll.scroller;
   const { t } = useTranslation();
 
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleMouseOn = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const path = useLocation().pathname;
+  const location = path.split("/")[1];
+
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const [anchorElSubMenu, setAnchorElSubMenu] =
+    React.useState<null | HTMLElement>(null);
+  const handleOpenSubMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElSubMenu(event.currentTarget);
+  };
+  const handleCloseSubMenu = () => {
+    setAnchorElSubMenu(null);
   };
 
   const navigate = useNavigate();
 
   const handleNavigate = useCallback(
-    (id: any) => {
-      navigate(`/our-services/${id}`);
-      setAnchorEl(null);
+    (page: string, id: any) => {
+      navigate(`/${page}/${id}`);
+      // setAnchorEl(null);
     },
     [navigate]
   );
+
+  const goToMainAndScroll = async () => {
+    await closeMobile();
+    navigate(`/`);
+    // await scroller.scrollTo("about-us", {
+    //   duration: 1500,
+    //   delay: 100,
+    //   smooth: true,
+    //   offset: 50,
+    // });
+    window.scrollTo({ top: 10000, left: 0, behavior: "smooth" });
+  };
+
+  const closeMobile = () => {};
 
   const sections = [
     { title: t("navbar.HOME_PAGE"), url: "home" },
@@ -47,53 +76,41 @@ const MainNavigation = () => {
       submenu: [
         {
           title: t("services:implant-surgery.TITLE"),
-          url: "implant-surgery",
+          url: "web-design",
         },
         {
           title: t("services:smile-design.TITLE"),
-          url: "smile-design",
+          url: "web-design",
         },
         {
           title: t("services:prosthesis.TITLE"),
-          url: "prosthesis",
+          url: "web-design",
         },
         {
           title: t("services:pedodontics.TITLE"),
-          url: "pedodontics",
+          url: "web-design",
         },
         {
           title: t("services:orthodontics.TITLE"),
-          url: "orthodontics",
+          url: "web-design",
         },
         {
           title: t("services:endodontics.TITLE"),
-          url: "endodontics",
+          url: "web-design",
         },
         {
           title: t("services:teeth-whitening.TITLE"),
-          url: "teeth-whitening",
+          url: "web-design",
         },
         {
           title: t("services:maxillofacial-surgery.TITLE"),
-          url: "maxillofacial-surgery",
+          url: "web-design",
         },
       ],
     },
-    { title: t("navbar.CONTACT"), url: "contact" },
     { title: t("navbar.BLOG"), url: "blog" },
+    { title: t("navbar.CONTACT"), url: "contact" },
   ];
-
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
 
   return (
     <AppBar
@@ -165,7 +182,7 @@ const MainNavigation = () => {
                   ]}
                 >
                   <Typography textAlign="center">
-                    <Link
+                    <Link1
                       key={section.title}
                       activeClass="active"
                       to={section.url}
@@ -174,7 +191,7 @@ const MainNavigation = () => {
                       duration={500}
                     >
                       {section.title}
-                    </Link>
+                    </Link1>
                   </Typography>
                 </MenuItem>
               ))}
@@ -208,8 +225,8 @@ const MainNavigation = () => {
             {sections.map((section) =>
               section.submenu ? (
                 <Typography
-                  onMouseEnter={handleMouseOn}
-                  onMouseLeave={handleClose}
+                  onMouseEnter={handleOpenSubMenu}
+                  onMouseLeave={handleCloseSubMenu}
                   textAlign="center"
                   color="primary.main"
                   sx={[
@@ -223,16 +240,29 @@ const MainNavigation = () => {
                   ]}
                 >
                   <div style={{ display: "flex", alignItems: "center" }}>
-                    <Link
-                      key={section.title}
-                      activeClass="active"
-                      to={section.url}
-                      spy={true}
-                      smooth={true}
-                      duration={500}
-                    >
-                      {section.title}
-                    </Link>
+                    {location.length === 0 ? (
+                      <Link1
+                        key={section.title}
+                        activeClass="active"
+                        to={section.url}
+                        spy={true}
+                        smooth={true}
+                        duration={500}
+                      >
+                        {section.title}
+                      </Link1>
+                    ) : (
+                      <Link
+                        key={section.title}
+                        component="button"
+                        variant="body2"
+                        onClick={goToMainAndScroll}
+                        underline="none"
+                        sx={{ fontSize: "1rem" }}
+                      >
+                        {section.title}
+                      </Link>
+                    )}
                     <KeyboardArrowDownIcon
                       color="primary"
                       sx={{ fontSize: 20 }}
@@ -247,13 +277,14 @@ const MainNavigation = () => {
                         vertical: "top",
                         horizontal: "right",
                       }}
+                      open={Boolean(anchorElSubMenu)}
                       id="demo-customized-menu"
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
+                      anchorEl={anchorElSubMenu}
+                      onClose={handleCloseSubMenu}
                       PaperProps={{
                         elevation: 0,
                         sx: {
+                          display: { xs: "none", md: "flex" },
                           overflow: "visible",
                           filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                           mt: 2,
@@ -278,7 +309,11 @@ const MainNavigation = () => {
                       }}
                     >
                       {section.submenu.map((item) => (
-                        <MenuItem onClick={() => handleNavigate(item.url)}>
+                        <MenuItem
+                          onClick={() =>
+                            handleNavigate("our-services", item.url)
+                          }
+                        >
                           {item.title}
                         </MenuItem>
                       ))}
@@ -299,16 +334,29 @@ const MainNavigation = () => {
                     },
                   ]}
                 >
-                  <Link
-                    key={section.title}
-                    activeClass="active"
-                    to={section.url}
-                    spy={true}
-                    smooth={true}
-                    duration={500}
-                  >
-                    {section.title}
-                  </Link>
+                  {location.length === 0 ? (
+                    <Link1
+                      key={section.title}
+                      activeClass="active"
+                      to={section.url}
+                      spy={true}
+                      smooth={true}
+                      duration={500}
+                    >
+                      {section.title}
+                    </Link1>
+                  ) : (
+                    <Link
+                      key={section.title}
+                      component="button"
+                      variant="body2"
+                      onClick={goToMainAndScroll}
+                      underline="none"
+                      sx={{ fontSize: "1rem" }}
+                    >
+                      {section.title}
+                    </Link>
+                  )}
                 </Typography>
               )
             )}

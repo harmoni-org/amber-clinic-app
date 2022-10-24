@@ -17,10 +17,10 @@ const DentistCard: React.FC<DentistCardProps> = ({ item }) => {
 
   const navigate = useNavigate();
 
-  const handleOnClick = useCallback(
-    () => navigate(`/our-dentists/${item.id} `),
-    [navigate]
-  );
+  const handleOnClick = useCallback(() => {
+    navigate(`/our-dentists/${item.id}`);
+    window.scrollTo(0, 0);
+  }, [navigate]);
 
   return (
     <ImageList sx={{ width: 450, height: 350 }}>
@@ -42,6 +42,7 @@ const DentistCard: React.FC<DentistCardProps> = ({ item }) => {
             <IconButton
               sx={{ color: "rgba(255, 255, 255, 0.54)" }}
               aria-label={`info about ${item.name}`}
+              onClick={handleOnClick}
             >
               <InfoIcon />
             </IconButton>

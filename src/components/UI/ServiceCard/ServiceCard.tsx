@@ -17,10 +17,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
 
   const navigate = useNavigate();
 
-  const handleOnClick = useCallback(
-    () => navigate(`/our-services/${item.id}`),
-    [navigate]
-  );
+  const handleOnClick = useCallback(() => {
+    navigate(`/our-services/${item.id}`);
+    window.scrollTo(0, 0);
+  }, [navigate]);
 
   return (
     <Card
