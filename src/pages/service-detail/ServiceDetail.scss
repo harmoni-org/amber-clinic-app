@@ -1,0 +1,15 @@
+@import "../../assets/theme/colors";
+
+.title {
+  color: $primary-main;
+}
+
+.subtitle {
+  color: $secondary-main;
+}
+
+.image {
+  float: left;
+  shape-outside: inset();
+  margin: 0px 50px 20px 0px;
+}

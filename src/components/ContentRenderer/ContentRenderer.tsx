@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react"
+import {useState, useEffect} from "react";
 import content from "./content.json";
 import { useTranslation } from "react-i18next";
+import { url } from "inspector";
 
 interface ContentRendererProps {
     contentType: string;
@@ -22,17 +23,23 @@ interface Section {
 }
 
 const ContentRenderer = ({ id, contentType }: ContentRendererProps) => {
-    const [domContent, setDomContent] = useState<JSX.Element>(<></>)
-    const { i18n, t } = useTranslation();
+    const [DOMContent, setDOMContent] = useState()
+    const { t } = useTranslation();
 
     useEffect(() => {
-        setDomContent(renderContent());
-    }, [id])
 
-    const renderContent = (): JSX.Element => {
+    })
+
+
+    const renderContent = (): JSX.Element[] => {
         const contentStructure = (content as ContentJSON)[contentType];
-        const index = contentStructure.findIndex((section) => section.id === id);
+        const index = contentStructure.findIndex((section) => {
+            console.log("comparing", section.id, " with ", id);
+            console.log(section.id === id)
+            return section.id === id;
+        });
         const parsedStructure: JSX.Element[] = []
+        console.log(index);
 
         if (index > -1) {
             const sections = contentStructure[index].sections;
@@ -48,7 +55,7 @@ const ContentRenderer = ({ id, contentType }: ContentRendererProps) => {
                         break;
                     case "image":
                         const image = require(`../../assets/images/dentists/${section.content}.png`)
-                        parsedStructure.push(<img key={contentID} src={image} />)
+                        parsedStructure.push(<img key={contentID} src={image} style={{ shapeOutside: 'url(image)', float: 'left'}}/>)
                         break;
                     case "list":
                         parsedStructure.push(
@@ -63,10 +70,9 @@ const ContentRenderer = ({ id, contentType }: ContentRendererProps) => {
                 contentID++;
             })
         }
-        return <>{parsedStructure}</>;
+        return parsedStructure;
     }
-
-    return domContent;
+    return <div>{renderContent()}</div>
 }
 
 export default ContentRenderer;

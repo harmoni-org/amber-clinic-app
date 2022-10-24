@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link as RouterLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-scroll";
 import AppBar from "@mui/material/AppBar";
@@ -47,35 +47,35 @@ const MainNavigation = () => {
       submenu: [
         {
           title: t("services:implant-surgery.TITLE"),
-          url: "web-design",
+          url: "implant-surgery",
         },
         {
           title: t("services:smile-design.TITLE"),
-          url: "web-design",
+          url: "smile-design",
         },
         {
           title: t("services:prosthesis.TITLE"),
-          url: "web-design",
+          url: "prosthesis",
         },
         {
           title: t("services:pedodontics.TITLE"),
-          url: "web-design",
+          url: "pedodontics",
         },
         {
           title: t("services:orthodontics.TITLE"),
-          url: "web-design",
+          url: "orthodontics",
         },
         {
           title: t("services:endodontics.TITLE"),
-          url: "web-design",
+          url: "endodontics",
         },
         {
           title: t("services:teeth-whitening.TITLE"),
-          url: "web-design",
+          url: "teeth-whitening",
         },
         {
           title: t("services:maxillofacial-surgery.TITLE"),
-          url: "web-design",
+          url: "maxillofacial-surgery",
         },
       ],
     },
@@ -117,7 +117,6 @@ const MainNavigation = () => {
           <Box
             sx={{
               flexGrow: 1,
-
               display: { xs: "flex", md: "none" },
             }}
           >

@@ -18,7 +18,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
   const navigate = useNavigate();
 
   const handleOnClick = useCallback(
-    () => navigate(`/our-services/${item.id} `),
+    () => navigate(`/our-services/${item.id}`),
     [navigate]
   );
 
