@@ -10,7 +10,8 @@ const theme = createTheme({
   palette: {
     primary: {
       main: "#3D3732",
-      light: "#8F6429",
+      dark: "#8F6429",
+      light: "#585965",
     },
     secondary: { main: "#F2A81D", light: "#F5B80D" },
     error: { main: "#D32F2F" },
@@ -43,9 +44,7 @@ const Layout = () => {
       <Container disableGutters maxWidth={false}>
         <MainNavigation />
         <AppointmentForm />
-        <main>
-          <Outlet />
-        </main>
+        <Outlet />
       </Container>
       <Footer />
     </ThemeProvider>

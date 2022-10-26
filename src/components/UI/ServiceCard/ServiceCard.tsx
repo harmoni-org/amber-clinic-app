@@ -17,10 +17,10 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
 
   const navigate = useNavigate();
 
-  const handleOnClick = useCallback(
-    () => navigate(`/our-services/${item.id} `),
-    [navigate]
-  );
+  const handleOnClick = useCallback(() => {
+    navigate(`/our-services/${item.id}`);
+    window.scrollTo(0, 0);
+  }, [navigate]);
 
   return (
     <Card
@@ -44,10 +44,20 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
           flexGrow: 1,
         }}
       >
-        <Typography gutterBottom variant="h5" component="div" color="primary">
+        <Typography
+          gutterBottom
+          variant="h4"
+          component="h4"
+          color="secondary"
+          sx={{ fontSize: "1rem", fontWeight: 700 }}
+        >
           {t(`${item.id}.${item.title}`, { ns: "services" })}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{ fontSize: 14, fontWeight: 500, letterSpacing: 0.5 }}
+        >
           {t(`${item.id}.${item.shortDescription}`, { ns: "services" })}
         </Typography>
       </CardContent>
@@ -57,8 +67,8 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
         <Button
           variant="outlined"
           size="small"
-          color="primary"
-          endIcon={<NavigateNextIcon color="primary" sx={{ mr: 1 }} />}
+          color="secondary"
+          endIcon={<NavigateNextIcon color="secondary" sx={{ mr: 1 }} />}
           onClick={handleOnClick}
           sx={{ textTransform: "none", borderColor: "secondary", border: 1.5 }}
         >

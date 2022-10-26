@@ -36,5 +36,13 @@
   "appointment_form_fields": {
     "ONLINE_APPOINTMENT": "ONLINE APPOINTMENT",
     "ONLINE_APPOINTMENT_DESCRIPTION": "You can quickly make an appointment by filling out the form below."
+  },
+  "DENTIST": "Dentist",
+  "ORTHODONTICS": "Orthodontics",
+
+  "not_found": {
+    "TITLE": "404 This page could not be found.",
+    "TEXT": "The page you are looking for can’t be found.",
+    "BUTTON_TEXT": "Go to Home Page"
   }
 }

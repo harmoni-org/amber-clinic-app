@@ -1,19 +1,57 @@
+import useScrollTrigger from "@mui/material/useScrollTrigger";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import Box from "@mui/material/Box";
+import Fab from "@mui/material/Fab";
+import Fade from "@mui/material/Fade";
 import MainFeaturedPost from "../../components/MainFeaturedPost/MainFeaturedPost";
-import ScrollToTop from "react-scroll-to-top";
 import AboutUs from "../about-us/AboutUs";
 import Services from "../services/Services";
-import Contact from "../contact/Contact";
 import Blog from "../blog/Blog";
+import Contact from "../contact/Contact";
+
+import * as Scroll from "react-scroll";
+
+import "./Home.scss";
+
+function ScrollTop() {
+  const trigger = useScrollTrigger();
+
+  const handleClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    const anchor = (
+      (event.target as HTMLDivElement).ownerDocument || document
+    ).querySelector("#back-to-top-anchor");
+
+    if (anchor) {
+      anchor.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  };
+
+  return (
+    <Fade in={trigger}>
+      <Box
+        onClick={handleClick}
+        role="presentation"
+        sx={{ position: "fixed", bottom: 16, right: 16 }}
+      >
+        <Fab size="small" aria-label="scroll back to top" color="primary">
+          <KeyboardArrowUpIcon />
+        </Fab>
+      </Box>
+    </Fade>
+  );
+}
 
 const Home: React.FC = () => {
+  const Element = Scroll.Element;
   return (
     <>
-      <ScrollToTop smooth color="#6f00ff" />
+      <div id="back-to-top-anchor" />
+      <ScrollTop />
       <MainFeaturedPost />
       <>
-        <section id="about-us">
+        <Element name="about-us">
           <AboutUs />
-        </section>
+        </Element>
         <section id="services">
           <Services />
         </section>
