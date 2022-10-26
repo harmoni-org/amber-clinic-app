@@ -68,15 +68,24 @@ export default function Footer() {
         </Grid>
         <Grid item xs={2}>
           <Typography variant="subtitle1" component="div">
-            <FacebookIcon color="secondary" sx={{ mr: 1 }} />
+            <FacebookIcon
+              color="secondary"
+              sx={{ mr: 1, width: 14, height: 14 }}
+            />
             Facebook
           </Typography>
           <Typography variant="subtitle1" component="div">
-            <TwitterIcon color="secondary" sx={{ mr: 1 }} />
+            <TwitterIcon
+              color="secondary"
+              sx={{ mr: 1, width: 14, height: 14 }}
+            />
             Twitter
           </Typography>
           <Typography variant="subtitle1" component="div">
-            <InstagramIcon color="secondary" sx={{ mr: 1 }} />
+            <InstagramIcon
+              color="secondary"
+              sx={{ mr: 1, width: 14, height: 14 }}
+            />
             Instagram
           </Typography>
         </Grid>
