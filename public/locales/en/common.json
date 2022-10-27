@@ -1,7 +1,7 @@
 {
   "navbar": {
     "TITLE": "Amber Oral and Dental Health",
-    "HOME_PAGE": "Homepage",
+    "HOME_PAGE": "Home",
     "SERVICES": "Services",
     "ABOUT_US": "About us",
     "CONTACT": "Contact",
@@ -44,5 +44,7 @@
     "TITLE": "404 This page could not be found.",
     "TEXT": "The page you are looking for can’t be found.",
     "BUTTON_TEXT": "Go to Home Page"
-  }
+  },
+
+  "language": { "TURKISH": "TURKISH", "ENGLISH": "ENGLISH" }
 }

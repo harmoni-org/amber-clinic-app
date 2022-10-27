@@ -44,5 +44,6 @@
     "TITLE": "404 Sayfa bulunamadı",
     "TEXT": "The page you are looking for can’t be found.",
     "BUTTON_TEXT": "Go to Home Page"
-  }
+  },
+  "language": { "TURKISH": "TÜRKÇE", "ENGLISH": "İNGİLİZCE" }
 }

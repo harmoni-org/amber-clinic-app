@@ -369,8 +369,8 @@ const MainNavigation = () => {
                 </Typography>
               )
             )}
+            <LanguageSelector />
           </Box>
-          <LanguageSelector />
         </Toolbar>
       </Container>
     </AppBar>
