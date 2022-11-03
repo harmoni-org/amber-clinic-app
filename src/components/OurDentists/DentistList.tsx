@@ -12,11 +12,11 @@ const DentistList: React.FC = () => {
       }}
     >
       <Grid container columnSpacing={3} sx={{ width: "100%" }}>
-        {Content.dentists.map((item) => (
+        {/* {Content.dentists.map((item) => (
           <Grid item xs={12} sm={6} md={3} key={item.id}>
             <DentistCard key={item.id} item={item} />
           </Grid>
-        ))}
+        ))} */}ß
       </Grid>
     </Box>
   );

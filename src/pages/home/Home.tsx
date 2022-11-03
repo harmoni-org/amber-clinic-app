@@ -8,6 +8,8 @@ import AboutUs from "../about-us/AboutUs";
 import Services from "../services/Services";
 import Blog from "../blog/Blog";
 import Contact from "../contact/Contact";
+import { useOutletContext } from "react-router-dom";
+import { ServiceItem } from "../services/Services";
 
 import * as Scroll from "react-scroll";
 
@@ -43,6 +45,7 @@ function ScrollTop() {
 
 const Home: React.FC = () => {
   const Element = Scroll.Element;
+  const [services, blogs, dentists] = useOutletContext<[ServiceItem[], ServiceItem[], ServiceItem[]]>();
   return (
     <>
       <div id="back-to-top-anchor" />
@@ -50,13 +53,13 @@ const Home: React.FC = () => {
       <MainFeaturedPost />
       <>
         <Element name="about-us">
-          <AboutUs />
+          <AboutUs data={dentists}/>
         </Element>
         <section id="services">
-          <Services />
+          <Services data={services}/>
         </section>
         <section id="blog">
-          <Blog />
+          <Blog data={blogs} />
         </section>
         <section id="contact">
           <Contact />

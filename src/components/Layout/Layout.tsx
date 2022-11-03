@@ -5,6 +5,11 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Footer from "./Footer/Footer";
 import MainNavigation from "./MainNavigation/MainNavigation";
 import AppointmentForm from "../AppointmentForm/AppointmentForm";
+import { useLoaderData } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import { ServiceItem } from "../../pages/services/Services";
+import Categories from "../../assets/settings/categories";
+import { MainPageContent } from "../Utils/routeLoaders";
 
 const theme = createTheme({
   palette: {
@@ -38,13 +43,24 @@ const theme = createTheme({
 });
 
 const Layout = () => {
+  const {services, blogs, dentists} = useLoaderData() as MainPageContent;
+  const { i18n } = useTranslation();
+
+  const applyLanguageFilter = (services: ServiceItem[]) => {
+    return services.filter((item) => item.categories.indexOf(Categories[i18n.language]))
+  }
+
+  const filteredServices = applyLanguageFilter(services);
+  const filteredBlogs = blogs;
+  const filteredDentists = dentists;
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container disableGutters maxWidth={false}>
-        <MainNavigation />
+        <MainNavigation services={filteredServices} />
         <AppointmentForm />
-        <Outlet />
+        <Outlet context={[filteredServices, filteredBlogs, filteredDentists]}/>
       </Container>
       <Footer />
     </ThemeProvider>

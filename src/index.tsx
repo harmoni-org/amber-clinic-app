@@ -11,23 +11,20 @@ import {
 } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/home/Home";
-import Services from "./pages/services/Services";
-import AboutUs from "./pages/about-us/AboutUs";
-import Contact from "./pages/contact/Contact";
-import Blog from "./pages/blog/Blog";
 import DentistDetail from "./pages/dentist-detail/DentistDetail";
 import "./index.css";
 import ServiceDetail from "./pages/service-detail/ServiceDetail";
 import Error from "./pages/error/Error";
+import { getMainPageContent, getService, getBlog, getDentist } from "./components/Utils/routeLoaders";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />} errorElement={<Error />}>
-      <Route index element={<Home />} />
-      <Route path="our-dentists/:id" element={<DentistDetail />} />
-      <Route path="our-services/:id" element={<ServiceDetail />} />
-      <Route path="blog/:id" element={<ServiceDetail />} />
-      {/* <Route path="*" element={<Home />} /> */}
+    <Route path="/" element={<Layout />} loader={getMainPageContent} errorElement={<Error />}>
+      <Route index element={<Home />}/>
+      <Route path="our-dentists/:id" element={<DentistDetail />} loader={({ params }) => { return getDentist(params.id)}}/>
+      <Route path="our-services/:id" element={<ServiceDetail />} loader={({ params }) => { return getService(params.id)}} />
+      <Route path="blog/:id" element={<ServiceDetail />} loader={({ params }) => { return getBlog(params.id)}}/>
+      <Route path="*" element={<Home />} />
     </Route>
   )
 );

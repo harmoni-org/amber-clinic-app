@@ -7,41 +7,49 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
+import { ServiceItem } from "../../../pages/services/Services";
+import DentistData from "../../../assets/data/dentists.json";
 
-export interface DentistCardProps {
-  item: any;
+interface DentistData {
+  [id:string]: {
+    [language: string] : {
+      title: string;
+    }
+  } 
 }
 
-const DentistCard: React.FC<DentistCardProps> = ({ item }) => {
-  const { t } = useTranslation();
+export interface DentistCardProps {
+  dentist: ServiceItem;
+}
+
+const DentistCard: React.FC<DentistCardProps> = ({ dentist }) => {
+  const { i18n } = useTranslation();
 
   const navigate = useNavigate();
 
+  const getImageUrlFromSlug = (slug: string) => {
+    return `${slug.substring(11)}`;
+  }
+
   const handleOnClick = useCallback(() => {
-    navigate(`/our-dentists/${item.id}`);
+    navigate(`/our-dentists/${dentist.id}`);
     window.scrollTo(0, 0);
   }, [navigate]);
 
   return (
     <ImageList sx={{ width: 450, height: 350 }}>
-      <ImageListItem key={item.title}>
+      <ImageListItem key={dentist.id}>
         <img
-          src={require("../../../assets/images/dentists/" +
-            item.sections[0].content +
-            ".png")}
-          srcSet={require("../../../assets/images/dentists/" +
-            item.sections[0].content +
-            ".png")}
-          alt={item.title}
+          src={'http://clinicamber.com/wordpress/wp-content/uploads/'+ getImageUrlFromSlug(dentist.slug) + '.png'}
           loading="lazy"
         />
         <ImageListItemBar
-          title={t(`${item.id}.${item.name}`, { ns: "dentists" })}
-          subtitle={t(`${item.specialization}`, { ns: "common" })}
+          title={dentist.title.rendered}
+          subtitle={(DentistData as DentistData)[dentist.id.toString()][i18n.language].title}
           actionIcon={
             <IconButton
               sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-              aria-label={`info about ${item.name}`}
+              aria-label={`info about ${dentist.id}`}
               onClick={handleOnClick}
             >
               <InfoIcon />

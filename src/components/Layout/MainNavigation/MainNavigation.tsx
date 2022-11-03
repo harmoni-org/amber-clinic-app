@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Scroll, { Link as Link1 } from "react-scroll";
+import Scroll, { Link as ScrollLink } from "react-scroll";
 import Link from "@mui/material/Link";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,8 +15,13 @@ import Container from "@mui/material/Container";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import logo from "../../../assets/images/amber-logo.png";
 import "./MainNavigation.scss";
+import { ServiceItem } from "../../../pages/services/Services";
 
-const MainNavigation = () => {
+interface Props {
+  services: ServiceItem[]
+}
+
+const MainNavigation = (props: Props) => {
   const scroller = Scroll.scroller;
   const { t } = useTranslation();
 
@@ -182,7 +187,7 @@ const MainNavigation = () => {
                   ]}
                 >
                   <Typography textAlign="center">
-                    <Link1
+                    <ScrollLink
                       key={section.title}
                       activeClass="active"
                       to={section.url}
@@ -191,7 +196,7 @@ const MainNavigation = () => {
                       duration={500}
                     >
                       {section.title}
-                    </Link1>
+                    </ScrollLink>
                   </Typography>
                 </MenuItem>
               ))}
@@ -224,9 +229,11 @@ const MainNavigation = () => {
           >
             {sections.map((section) =>
               section.submenu ? (
-                <Typography
+                <Box
+                  key={section.title}
                   onMouseEnter={handleOpenSubMenu}
                   onMouseLeave={handleCloseSubMenu}
+                  component="div"
                   textAlign="center"
                   color="primary.main"
                   sx={[
@@ -241,7 +248,7 @@ const MainNavigation = () => {
                 >
                   <div style={{ display: "flex", alignItems: "center" }}>
                     {location.length === 0 ? (
-                      <Link1
+                      <ScrollLink
                         key={section.title}
                         activeClass="active"
                         to={section.url}
@@ -250,7 +257,7 @@ const MainNavigation = () => {
                         duration={500}
                       >
                         {section.title}
-                      </Link1>
+                      </ScrollLink>
                     ) : (
                       <Link
                         key={section.title}
@@ -308,20 +315,22 @@ const MainNavigation = () => {
                         },
                       }}
                     >
-                      {section.submenu.map((item) => (
+                      {props.services.map((item) => (
                         <MenuItem
+                          key={item.slug}
                           onClick={() =>
-                            handleNavigate("our-services", item.url)
+                            handleNavigate("our-services", item.slug)
                           }
                         >
-                          {item.title}
+                          {item.title.rendered}
                         </MenuItem>
                       ))}
                     </Menu>
                   </div>
-                </Typography>
+                </Box>
               ) : (
                 <Typography
+                  key={section.title}
                   textAlign="center"
                   color="primary.main"
                   sx={[
@@ -335,7 +344,7 @@ const MainNavigation = () => {
                   ]}
                 >
                   {location.length === 0 ? (
-                    <Link1
+                    <ScrollLink
                       key={section.title}
                       activeClass="active"
                       to={section.url}
@@ -344,7 +353,7 @@ const MainNavigation = () => {
                       duration={500}
                     >
                       {section.title}
-                    </Link1>
+                    </ScrollLink>
                   ) : (
                     <Link
                       key={section.title}
