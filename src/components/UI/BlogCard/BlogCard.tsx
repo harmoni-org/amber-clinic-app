@@ -25,6 +25,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ id, title, imageName }) => {
     window.scrollTo(0, 0);
   }, [navigate]);
 
+  const getImageUrlFromSlug = (slug: string) => {
+    return `${slug.substring(8)}`;
+  }
+
   return (
     <Card
       sx={{
@@ -39,7 +43,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ id, title, imageName }) => {
       <CardMedia
         component="img"
         height="200"
-        image={require("../../../assets/images/blog/" + imageName + ".png")}
+        image={'http://clinicamber.com/wordpress/wp-content/uploads/'+ getImageUrlFromSlug(imageName) + '.png'}
         alt={title}
       />
       <CardContent

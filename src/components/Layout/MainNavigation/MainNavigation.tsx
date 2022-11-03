@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Scroll, { Link as Link1 } from "react-scroll";
+import Scroll, { Link as ScrollLink } from "react-scroll";
 import Link from "@mui/material/Link";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,9 +15,14 @@ import Container from "@mui/material/Container";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import logo from "../../../assets/images/amber-logo.png";
 import "./MainNavigation.scss";
+import { ServiceItem } from "../../../pages/services/Services";
+
+interface Props {
+  services: ServiceItem[]
+}
 import LanguageSelector from "../../LanguageSelector/LanguageSelector";
 
-const MainNavigation = () => {
+const MainNavigation = (props: Props) => {
   const { t } = useTranslation();
 
   const path = useLocation().pathname;
@@ -61,35 +66,35 @@ const MainNavigation = () => {
       submenu: [
         {
           title: t("services:implant-surgery.TITLE"),
-          url: "implant-surgery",
+          url: "web-design",
         },
         {
           title: t("services:smile-design.TITLE"),
-          url: "smile-design",
+          url: "web-design",
         },
         {
           title: t("services:prosthesis.TITLE"),
-          url: "prosthesis",
+          url: "web-design",
         },
         {
           title: t("services:pedodontics.TITLE"),
-          url: "pedodontics",
+          url: "web-design",
         },
         {
           title: t("services:orthodontics.TITLE"),
-          url: "orthodontics",
+          url: "web-design",
         },
         {
           title: t("services:endodontics.TITLE"),
-          url: "endodontics",
+          url: "web-design",
         },
         {
           title: t("services:teeth-whitening.TITLE"),
-          url: "teeth-whitening",
+          url: "web-design",
         },
         {
           title: t("services:maxillofacial-surgery.TITLE"),
-          url: "maxillofacial-surgery",
+          url: "web-design",
         },
       ],
     },
@@ -142,7 +147,6 @@ const MainNavigation = () => {
           <Box
             sx={{
               flexGrow: 1,
-
               display: { xs: "flex", md: "none" },
             }}
           >
@@ -191,7 +195,7 @@ const MainNavigation = () => {
                   ]}
                 >
                   <Typography textAlign="center">
-                    <Link1
+                    <ScrollLink
                       key={section.title}
                       activeClass="active"
                       to={section.url}
@@ -200,7 +204,7 @@ const MainNavigation = () => {
                       duration={500}
                     >
                       {section.title}
-                    </Link1>
+                    </ScrollLink>
                   </Typography>
                 </MenuItem>
               ))}
@@ -233,9 +237,11 @@ const MainNavigation = () => {
           >
             {sections.map((section) =>
               section.submenu ? (
-                <Typography
+                <Box
+                  key={section.title}
                   onMouseEnter={handleOpenSubMenu}
                   onMouseLeave={handleCloseSubMenu}
+                  component="div"
                   textAlign="center"
                   color="primary.main"
                   sx={[
@@ -250,7 +256,7 @@ const MainNavigation = () => {
                 >
                   <div style={{ display: "flex", alignItems: "center" }}>
                     {location.length === 0 ? (
-                      <Link1
+                      <ScrollLink
                         key={section.title}
                         activeClass="active"
                         to={section.url}
@@ -259,7 +265,7 @@ const MainNavigation = () => {
                         duration={500}
                       >
                         {section.title}
-                      </Link1>
+                      </ScrollLink>
                     ) : (
                       <Link
                         key={section.title}
@@ -317,20 +323,22 @@ const MainNavigation = () => {
                         },
                       }}
                     >
-                      {section.submenu.map((item) => (
+                      {props.services.map((item) => (
                         <MenuItem
+                          key={item.slug}
                           onClick={() =>
-                            handleNavigate("our-services", item.url)
+                            handleNavigate("our-services", item.slug)
                           }
                         >
-                          {item.title}
+                          {item.title.rendered}
                         </MenuItem>
                       ))}
                     </Menu>
                   </div>
-                </Typography>
+                </Box>
               ) : (
                 <Typography
+                  key={section.title}
                   textAlign="center"
                   color="primary.main"
                   sx={[
@@ -344,7 +352,7 @@ const MainNavigation = () => {
                   ]}
                 >
                   {location.length === 0 ? (
-                    <Link1
+                    <ScrollLink
                       key={section.title}
                       activeClass="active"
                       to={section.url}
@@ -353,7 +361,7 @@ const MainNavigation = () => {
                       duration={500}
                     >
                       {section.title}
-                    </Link1>
+                    </ScrollLink>
                   ) : (
                     <Link
                       key={section.title}

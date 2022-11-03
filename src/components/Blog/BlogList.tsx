@@ -93,20 +93,7 @@ const BLOG = [
 
 const BlogList: React.FC = () => {
   return (
-    <Box sx={{ width: "90%" }} textAlign="left">
-      <Grid container rowSpacing={6} columnSpacing={6}>
-        {BLOG.map((item) => (
-          <Grid item xs={12} sm={6} md={4} key={item.id}>
-            <BlogCard
-              key={item.id}
-              id={item.id}
-              title={item.title}
-              imageName={item.imgName}
-            />
-          </Grid>
-        ))}
-      </Grid>
-    </Box>
+    <></>
   );
 };
 
