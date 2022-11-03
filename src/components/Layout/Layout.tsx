@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
@@ -44,23 +45,40 @@ const theme = createTheme({
 
 const Layout = () => {
   const {services, blogs, dentists} = useLoaderData() as MainPageContent;
+  const [languageFilteredServices, setLanguageFilteredServices] = useState<ServiceItem[]>([]);
+  const [languageFilteredBlogs, setLanguageFilteredBlogs] = useState<ServiceItem[]>([]);
+  const [languageFilteredDentists, setLanguageFilteredDentists] = useState<ServiceItem[]>([]);
   const { i18n } = useTranslation();
 
   const applyLanguageFilter = (services: ServiceItem[]) => {
-    return services.filter((item) => item.categories.indexOf(Categories[i18n.language]))
+    return services.filter((item) => {
+     const index = item.categories.indexOf(Categories[i18n.language]);
+     if ( index > -1 ) {
+       return true;
+     } else return false;
+    })
   }
 
-  const filteredServices = applyLanguageFilter(services);
-  const filteredBlogs = blogs;
-  const filteredDentists = dentists;
+  useEffect(() => {
+    setLanguageFilteredBlogs(applyLanguageFilter(blogs));
+  }, [blogs, i18n.language])
+
+  useEffect(() => {
+    setLanguageFilteredServices(applyLanguageFilter(services));
+    console.log(applyLanguageFilter(services))
+  }, [services, i18n.language])
+
+  useEffect(() => {
+    setLanguageFilteredDentists(applyLanguageFilter(dentists));
+  }, [dentists, i18n.language])
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container disableGutters maxWidth={false}>
-        <MainNavigation services={filteredServices} />
+        <MainNavigation services={languageFilteredServices} />
         <AppointmentForm />
-        <Outlet context={[filteredServices, filteredBlogs, filteredDentists]}/>
+        <Outlet context={[languageFilteredServices, languageFilteredBlogs, languageFilteredDentists]}/>
       </Container>
       <Footer />
     </ThemeProvider>
