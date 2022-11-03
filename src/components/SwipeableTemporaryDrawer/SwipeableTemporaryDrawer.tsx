@@ -2,6 +2,7 @@ import * as React from "react";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import "./SwipeableTemporaryDrawer.scss";
 
 type Anchor = "top" | "left" | "bottom" | "right";
@@ -43,7 +44,17 @@ const SwipeableTemporaryDrawer: React.FC<SwipeableTemporaryDrawerProps> = (
       <Button
         onClick={toggleDrawer(anchor, true)}
         variant="contained"
-        sx={{ position: "relative", zIndex: 99 }}
+        sx={{
+          position: "relative",
+          zIndex: 99,
+
+          fontWeight: 700,
+          letterSpacing: ".2rem",
+          height: 50,
+          borderRadius: 4,
+          lineHeight: 1.3,
+        }}
+        startIcon={<CalendarMonthIcon color="secondary" sx={{ mr: 0.5 }} />}
       >
         {props.buttonLabel}
       </Button>

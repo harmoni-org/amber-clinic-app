@@ -20,9 +20,9 @@ import { ServiceItem } from "../../../pages/services/Services";
 interface Props {
   services: ServiceItem[]
 }
+import LanguageSelector from "../../LanguageSelector/LanguageSelector";
 
 const MainNavigation = (props: Props) => {
-  const scroller = Scroll.scroller;
   const { t } = useTranslation();
 
   const path = useLocation().pathname;
@@ -56,21 +56,6 @@ const MainNavigation = (props: Props) => {
     },
     [navigate]
   );
-
-  const goToMainAndScroll = async () => {
-    await closeMobile();
-    navigate(`/`);
-    // await scroller.scrollTo("about-us", {
-    //   duration: 1500,
-    //   delay: 100,
-    //   smooth: true,
-    //   offset: 50,
-    // });
-    window.scrollTo({ top: 10000, left: 0, behavior: "smooth" });
-  };
-
-  const closeMobile = () => {};
-
   const sections = [
     { title: t("navbar.HOME_PAGE"), url: "home" },
     { title: t("navbar.ABOUT_US"), url: "about-us" },
@@ -116,6 +101,26 @@ const MainNavigation = (props: Props) => {
     { title: t("navbar.BLOG"), url: "blog" },
     { title: t("navbar.CONTACT"), url: "contact" },
   ];
+  const goToMainAndScroll = async (title: string) => {
+    const sectionArray = sections.map((item) => item.title);
+    let index = sectionArray.indexOf(title);
+    const y = index * 10000 + window.scrollY;
+
+    await closeMobile();
+    navigate(`/`);
+    const scroller = Scroll.scroller;
+
+    // await scroller.scrollTo("contact", {
+    //   duration: 1500,
+    //   delay: 100,
+    //   smooth: true,
+    //   offset: 15,
+    // });
+    console.log("scroll", sectionArray);
+    window.scrollTo({ top: y, left: 0, behavior: "smooth" });
+  };
+
+  const closeMobile = () => {};
 
   return (
     <AppBar
@@ -123,7 +128,10 @@ const MainNavigation = (props: Props) => {
       position="static"
       sx={{ bgcolor: "white", borderBottom: 1, borderColor: "#CECECE" }}
     >
-      <Container maxWidth={false} sx={{ m: "auto", maxWidth: "90%" }}>
+      <Container
+        maxWidth={false}
+        sx={{ m: "auto", maxWidth: "90%", letterSpacing: "0.45px" }}
+      >
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -263,7 +271,7 @@ const MainNavigation = (props: Props) => {
                         key={section.title}
                         component="button"
                         variant="body2"
-                        onClick={goToMainAndScroll}
+                        onClick={() => goToMainAndScroll(section.title)}
                         underline="none"
                         sx={{ fontSize: "1rem" }}
                       >
@@ -359,7 +367,7 @@ const MainNavigation = (props: Props) => {
                       key={section.title}
                       component="button"
                       variant="body2"
-                      onClick={goToMainAndScroll}
+                      onClick={() => goToMainAndScroll(section.title)}
                       underline="none"
                       sx={{ fontSize: "1rem" }}
                     >
@@ -369,6 +377,7 @@ const MainNavigation = (props: Props) => {
                 </Typography>
               )
             )}
+            <LanguageSelector />
           </Box>
         </Toolbar>
       </Container>

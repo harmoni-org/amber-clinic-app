@@ -1,7 +1,7 @@
 {
   "navbar": {
     "TITLE": "Amber Oral and Dental Health",
-    "HOME_PAGE": "Homepage",
+    "HOME_PAGE": "Home",
     "SERVICES": "Services",
     "ABOUT_US": "About us",
     "CONTACT": "Contact",
@@ -11,7 +11,7 @@
     "TITLE": "Everything starts with a beautiful smile"
   },
   "about_us": {
-    "TEXT": "Our passion is to protect and treat the oral and dental health of our patients. While realizing this passion, we work with dentists who are experts in their fields, use the most advanced technology and provide services at international standards. Our aim is to provide health services to our patients and to ensure that each of our patients leaves our clinics healthy and smiling."
+    "TEXT": "Our passion is to protect and treat the oral and dental health of our patients. While realizing this passion, we work with dentists who are experts in their fields, use the most advanced technology and provide services at international standards. Our aim is to provide health care to our patients and to ensure that each of our patients leaves our clinics healthy and smiling."
   },
   "contact_form_fields": {
     "NAME": "Name",
@@ -44,5 +44,7 @@
     "TITLE": "404 This page could not be found.",
     "TEXT": "The page you are looking for can’t be found.",
     "BUTTON_TEXT": "Go to Home Page"
-  }
+  },
+
+  "language": { "TURKISH": "TURKISH", "ENGLISH": "ENGLISH" }
 }
