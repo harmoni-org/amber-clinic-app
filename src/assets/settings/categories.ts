@@ -3,8 +3,8 @@ interface Categories {
 }
 
 const categories: Categories = {
-    "en": 4,
-    "tr-TR": 5,
+    "en": 12,
+    "tr": 13,
     "services": 3,
     "blogs": 6,
     "dentist": 9
