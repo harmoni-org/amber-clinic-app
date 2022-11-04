@@ -1,34 +1,26 @@
 {
     "206": {
-        "en": {
-            "title": "Dentist"
-        },
-        "tr": {
-            "title": "Diş Hekimi"
-        }
+        "title": "Diş Hekimi"
     },
     "203": {
-        "en": {
-            "title": "Dentist"
-        },
-        "tr": {
-            "title": "Diş Hekimi"
-        }
+        "title": "Diş Hekimi"
     },
     "201": {
-        "en": {
-            "title": "Dentist"
-        },
-        "tr": {
-            "title": "Diş Hekimi"
-        }
+        "title": "Diş Hekimi"
     },
     "199": {
-        "en": {
-            "title": "Dentist"
-        },
-        "tr": {
-            "title": "Diş Hekimi"
-        }
+        "title": "Diş Hekimi"
+    },
+    "240": {
+        "title": "Dentist"
+    },
+    "244": {
+        "title": "Dentist"
+    },
+    "247": {
+        "title": "Dentist"
+    },
+    "250": {
+        "title": "Dentist"
     }
 }

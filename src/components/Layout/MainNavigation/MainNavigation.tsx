@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Scroll, { Link as ScrollLink } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
 import Link from "@mui/material/Link";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -16,11 +16,11 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import logo from "../../../assets/images/amber-logo.png";
 import "./MainNavigation.scss";
 import { ServiceItem } from "../../../pages/services/Services";
+import LanguageSelector from "../../LanguageSelector/LanguageSelector";
 
 interface Props {
   services: ServiceItem[]
 }
-import LanguageSelector from "../../LanguageSelector/LanguageSelector";
 
 const MainNavigation = (props: Props) => {
   const { t } = useTranslation();
@@ -108,14 +108,7 @@ const MainNavigation = (props: Props) => {
 
     await closeMobile();
     navigate(`/`);
-    const scroller = Scroll.scroller;
 
-    // await scroller.scrollTo("contact", {
-    //   duration: 1500,
-    //   delay: 100,
-    //   smooth: true,
-    //   offset: 15,
-    // });
     console.log("scroll", sectionArray);
     window.scrollTo({ top: y, left: 0, behavior: "smooth" });
   };
@@ -296,6 +289,8 @@ const MainNavigation = (props: Props) => {
                       id="demo-customized-menu"
                       anchorEl={anchorElSubMenu}
                       onClose={handleCloseSubMenu}
+                      hideBackdrop
+                      MenuListProps={{onMouseLeave: handleCloseSubMenu}}
                       PaperProps={{
                         elevation: 0,
                         sx: {

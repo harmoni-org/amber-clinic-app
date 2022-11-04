@@ -12,9 +12,7 @@ import DentistData from "../../../assets/data/dentists.json";
 
 interface DentistData {
   [id:string]: {
-    [language: string] : {
-      title: string;
-    }
+    title: string;
   } 
 }
 
@@ -45,7 +43,7 @@ const DentistCard: React.FC<DentistCardProps> = ({ dentist }) => {
         />
         <ImageListItemBar
           title={dentist.title.rendered}
-          subtitle={(DentistData as DentistData)[dentist.id.toString()][i18n.language].title}
+          subtitle={(DentistData as DentistData)[dentist.id.toString()].title}
           actionIcon={
             <IconButton
               sx={{ color: "rgba(255, 255, 255, 0.54)" }}
