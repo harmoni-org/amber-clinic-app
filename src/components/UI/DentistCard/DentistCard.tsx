@@ -1,14 +1,12 @@
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 import { ServiceItem } from "../../../pages/services/Services";
-import DentistData from "../../../assets/data/dentists.json";
+import DentistTitleData from "../../../assets/data/dentists.json";
 
 interface DentistData {
   [id:string]: {
@@ -21,8 +19,6 @@ export interface DentistCardProps {
 }
 
 const DentistCard: React.FC<DentistCardProps> = ({ dentist }) => {
-  const { i18n } = useTranslation();
-
   const navigate = useNavigate();
 
   const getImageUrlFromSlug = (slug: string) => {
@@ -32,18 +28,19 @@ const DentistCard: React.FC<DentistCardProps> = ({ dentist }) => {
   const handleOnClick = useCallback(() => {
     navigate(`/our-dentists/${dentist.id}`);
     window.scrollTo(0, 0);
-  }, [navigate]);
+  }, [navigate, dentist.id]);
 
   return (
     <ImageList sx={{ width: 450, height: 350 }}>
       <ImageListItem key={dentist.id}>
         <img
           src={'http://clinicamber.com/wordpress/wp-content/uploads/'+ getImageUrlFromSlug(dentist.slug) + '.png'}
+          alt={dentist.slug}
           loading="lazy"
         />
         <ImageListItemBar
           title={dentist.title.rendered}
-          subtitle={(DentistData as DentistData)[dentist.id.toString()].title}
+          subtitle={(DentistTitleData as DentistData)[dentist.id.toString()].title}
           actionIcon={
             <IconButton
               sx={{ color: "rgba(255, 255, 255, 0.54)" }}
