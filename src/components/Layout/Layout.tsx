@@ -28,49 +28,42 @@ const theme = createTheme({
     fontWeightRegular: 400,
     fontWeightMedium: 500,
   },
-  transitions: {
-    easing: {
-      // This is the most common easing curve.
-      easeInOut: "cubic-bezier(0.4, 0, 0.2, 1)",
-      // Objects enter the screen at full velocity from off-screen and
-      // slowly decelerate to a resting point.
-      easeOut: "cubic-bezier(0.0, 0, 0.2, 1)",
-      // Objects leave the screen at full velocity. They do not decelerate when off-screen.
-      easeIn: "cubic-bezier(0.4, 0, 1, 1)",
-      // The sharp curve is used by objects that may return to the screen at any time.
-      sharp: "cubic-bezier(0.4, 0, 0.6, 1)",
-    },
-  },
 });
 
 const Layout = () => {
-  const {services, blogs, dentists} = useLoaderData() as MainPageContent;
-  const [languageFilteredServices, setLanguageFilteredServices] = useState<ServiceItem[]>([]);
-  const [languageFilteredBlogs, setLanguageFilteredBlogs] = useState<ServiceItem[]>([]);
-  const [languageFilteredDentists, setLanguageFilteredDentists] = useState<ServiceItem[]>([]);
+  const { services, blogs, dentists } = useLoaderData() as MainPageContent;
+  const [languageFilteredServices, setLanguageFilteredServices] = useState<
+    ServiceItem[]
+  >([]);
+  const [languageFilteredBlogs, setLanguageFilteredBlogs] = useState<
+    ServiceItem[]
+  >([]);
+  const [languageFilteredDentists, setLanguageFilteredDentists] = useState<
+    ServiceItem[]
+  >([]);
   const { i18n } = useTranslation();
 
   const applyLanguageFilter = (services: ServiceItem[]) => {
     return services.filter((item) => {
-     const index = item.categories.indexOf(Categories[i18n.language]);
-     if ( index > -1 ) {
-       return true;
-     } else return false;
-    })
-  }
+      const index = item.categories.indexOf(Categories[i18n.language]);
+      if (index > -1) {
+        return true;
+      } else return false;
+    });
+  };
 
   useEffect(() => {
     setLanguageFilteredBlogs(applyLanguageFilter(blogs));
-  }, [blogs, i18n.language])
+  }, [blogs, i18n.language]);
 
   useEffect(() => {
     setLanguageFilteredServices(applyLanguageFilter(services));
-    console.log(applyLanguageFilter(services))
-  }, [services, i18n.language])
+    console.log(applyLanguageFilter(services));
+  }, [services, i18n.language]);
 
   useEffect(() => {
     setLanguageFilteredDentists(applyLanguageFilter(dentists));
-  }, [dentists, i18n.language])
+  }, [dentists, i18n.language]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -78,7 +71,13 @@ const Layout = () => {
       <Container disableGutters maxWidth={false}>
         <MainNavigation services={languageFilteredServices} />
         <AppointmentForm />
-        <Outlet context={[languageFilteredServices, languageFilteredBlogs, languageFilteredDentists]}/>
+        <Outlet
+          context={[
+            languageFilteredServices,
+            languageFilteredBlogs,
+            languageFilteredDentists,
+          ]}
+        />
       </Container>
       <Footer />
     </ThemeProvider>

@@ -19,7 +19,7 @@ import { ServiceItem } from "../../../pages/services/Services";
 import LanguageSelector from "../../LanguageSelector/LanguageSelector";
 
 interface Props {
-  services: ServiceItem[]
+  services: ServiceItem[];
 }
 
 const MainNavigation = (props: Props) => {
@@ -123,7 +123,7 @@ const MainNavigation = (props: Props) => {
     >
       <Container
         maxWidth={false}
-        sx={{ m: "auto", maxWidth: "90%", letterSpacing: "0.45px" }}
+        sx={{ m: "auto", maxWidth: "100%", letterSpacing: "0.45px" }}
       >
         <Toolbar disableGutters>
           <Typography
@@ -223,7 +223,7 @@ const MainNavigation = (props: Props) => {
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: "none", md: "flex", gap: "60px" },
+              display: { xs: "none", md: "flex", gap: "50px" },
               alignItems: "baseline",
               justifyContent: "center",
             }}
@@ -290,7 +290,7 @@ const MainNavigation = (props: Props) => {
                       anchorEl={anchorElSubMenu}
                       onClose={handleCloseSubMenu}
                       hideBackdrop
-                      MenuListProps={{onMouseLeave: handleCloseSubMenu}}
+                      MenuListProps={{ onMouseLeave: handleCloseSubMenu }}
                       PaperProps={{
                         elevation: 0,
                         sx: {
