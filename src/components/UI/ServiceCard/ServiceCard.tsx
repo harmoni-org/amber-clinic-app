@@ -1,5 +1,6 @@
 import React, { useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -13,6 +14,7 @@ type ServiceCardProps = {
 };
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
 
@@ -23,7 +25,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
 
   const getImageUrlFromSlug = (slug: string) => {
     return `${slug.substring(3)}`;
-  }
+  };
 
   return (
     <Card
@@ -39,7 +41,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
       <CardMedia
         component="img"
         height="140"
-        src={'http://clinicamber.com/wordpress/wp-content/uploads/'+ getImageUrlFromSlug(item.slug) + '.jpg'}
+        src={
+          "http://clinicamber.com/wordpress/wp-content/uploads/" +
+          getImageUrlFromSlug(item.slug) +
+          ".jpg"
+        }
         alt={item.title.rendered}
       />
       <CardContent
@@ -51,7 +57,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
           gutterBottom
           variant="h4"
           component="h4"
-          color="secondary"
+          color="primary.main"
           sx={{ fontSize: "1rem", fontWeight: 700 }}
         >
           {item.title.rendered}
@@ -61,7 +67,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
           color="text.secondary"
           sx={{ fontSize: 14, fontWeight: 500, letterSpacing: 0.5 }}
         >
-         <span dangerouslySetInnerHTML={{__html: item.excerpt.rendered}}></span>
+          <span
+            dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }}
+          ></span>
         </Typography>
       </CardContent>
       <CardActions
@@ -75,7 +83,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
           onClick={handleOnClick}
           sx={{ textTransform: "none", borderColor: "secondary", border: 1.5 }}
         >
-          Daha Fazlası
+          {t("more")}
         </Button>
       </CardActions>
     </Card>

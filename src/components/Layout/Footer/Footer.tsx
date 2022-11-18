@@ -17,7 +17,6 @@ function Copyright() {
       <Link color="inherit" sx={{ textDecoration: "none" }}>
         2019 Dentmasters Dental Clinic | All Rights Reserved.
       </Link>
-      {"."}
     </Typography>
   );
 }
@@ -107,8 +106,11 @@ export default function Footer() {
           maxWidth: "100%",
           margin: "auto",
         }}
+        alignItems="center"
+        justifyContent="center"
       >
-        <Grid item xs={4}>
+        {/* TODO: Upcoming feature, adding "Terms and Policy" */}
+        {/* <Grid item xs={4}>
           <Typography
             variant="subtitle1"
             align="center"
@@ -117,7 +119,7 @@ export default function Footer() {
           >
             Kişisel Veri İzleme Politikası
           </Typography>
-        </Grid>
+        </Grid> */}
         <Grid item xs={8}>
           <Copyright />
         </Grid>
