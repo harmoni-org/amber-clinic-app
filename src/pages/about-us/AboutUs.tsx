@@ -11,7 +11,7 @@ interface Props {
   data: ServiceItem[];
 }
 
-const AboutUs= (props: Props) => {
+const AboutUs = (props: Props) => {
   const { t } = useTranslation();
 
   return (
@@ -23,14 +23,16 @@ const AboutUs= (props: Props) => {
           justifyContent: "center",
         }}
       >
-        {<Typography
-          variant="body2"
-          color="text.secondary"
-          textAlign="center"
-          sx={{ fontSize: 14, fontWeight: 500, letterSpacing: 0.5 }}
-        >
-          {t("about_us.TEXT", { ns: "common" })}
-        </Typography>}
+        {
+          <Typography
+            variant="body2"
+            color="text.secondary"
+            textAlign="center"
+            sx={{ fontSize: 14, fontWeight: 500, letterSpacing: 0.5 }}
+          >
+            {t("about_us.TEXT", { ns: "common" })}
+          </Typography>
+        }
         <Box
           sx={{
             margin: "auto",
@@ -38,11 +40,12 @@ const AboutUs= (props: Props) => {
           }}
         >
           <Grid container columnSpacing={3} sx={{ width: "100%" }}>
-            {props.data && props.data.map((dentist) => (
-              <Grid item xs={12} sm={6} md={3} key={dentist.id}>
-                <DentistCard key={dentist.id} dentist={dentist} />
-              </Grid>
-            ))}
+            {props.data &&
+              props.data.map((dentist) => (
+                <Grid item xs={12} sm={6} md={3} key={dentist.id}>
+                  <DentistCard key={dentist.id} dentist={dentist} />
+                </Grid>
+              ))}
           </Grid>
         </Box>
       </Container>

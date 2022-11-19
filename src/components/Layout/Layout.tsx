@@ -10,7 +10,7 @@ import { useLoaderData } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { ServiceItem } from "../../pages/services/Services";
 import Categories from "../../assets/settings/categories";
-import { MainPageContent } from "../Utils/routeLoaders";
+import { MainPageContent } from "../../utils/routeLoaders";
 
 const theme = createTheme({
   palette: {

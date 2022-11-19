@@ -12,18 +12,47 @@ import {
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/home/Home";
 import DentistDetail from "./pages/dentist-detail/DentistDetail";
-import "./index.css";
 import ServiceDetail from "./pages/service-detail/ServiceDetail";
 import Error from "./pages/error/Error";
-import { getMainPageContent, getService, getBlog, getDentist } from "./components/Utils/routeLoaders";
+import {
+  getMainPageContent,
+  getService,
+  getBlog,
+  getDentist,
+} from "./utils/routeLoaders";
+
+import "./index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />} loader={getMainPageContent} errorElement={<Error />}>
-      <Route index element={<Home />}/>
-      <Route path="our-dentists/:id" element={<DentistDetail />} loader={({ params }) => { return getDentist(params.id)}}/>
-      <Route path="our-services/:id" element={<ServiceDetail />} loader={({ params }) => { return getService(params.id)}} />
-      <Route path="blog/:id" element={<ServiceDetail />} loader={({ params }) => { return getBlog(params.id)}}/>
+    <Route
+      path="/"
+      element={<Layout />}
+      loader={getMainPageContent}
+      errorElement={<Error />}
+    >
+      <Route index element={<Home />} />
+      <Route
+        path="our-dentists/:id"
+        element={<DentistDetail />}
+        loader={({ params }) => {
+          return getDentist(params.id);
+        }}
+      />
+      <Route
+        path="our-services/:id"
+        element={<ServiceDetail />}
+        loader={({ params }) => {
+          return getService(params.id);
+        }}
+      />
+      <Route
+        path="blog/:id"
+        element={<ServiceDetail />}
+        loader={({ params }) => {
+          return getBlog(params.id);
+        }}
+      />
       <Route path="*" element={<Home />} />
     </Route>
   )
