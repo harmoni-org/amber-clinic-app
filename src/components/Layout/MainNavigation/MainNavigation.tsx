@@ -108,8 +108,6 @@ const MainNavigation = (props: Props) => {
 
     await closeMobile();
     navigate(`/`);
-
-    console.log("scroll", sectionArray);
     window.scrollTo({ top: y, left: 0, behavior: "smooth" });
   };
 

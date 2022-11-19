@@ -16,7 +16,6 @@ const Blog = (props: Props) => {
   const [blogs, setBlogs] = useState<ServiceItem[]>([]);
   const { i18n } = useTranslation();
 
-  console.log("blogs:", blogs);
   useEffect(() => {
     setBlogs(
       props.data.filter((item) =>
