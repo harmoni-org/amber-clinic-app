@@ -24,7 +24,6 @@ const LanguageSelector = () => {
   ) => {
     setSelectedIndex(index);
     setAnchorEl(null);
-    console.log("HAHHAHA", options[index]["lang"]);
     i18n.changeLanguage(options[index]["translationCode"]);
   };
 
