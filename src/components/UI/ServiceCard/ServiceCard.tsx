@@ -51,6 +51,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
       <CardContent
         sx={{
           flexGrow: 1,
+          pb: 0,
         }}
       >
         <Typography
@@ -72,9 +73,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
           ></span>
         </Typography>
       </CardContent>
-      <CardActions
-        sx={{ justifyContent: "left", display: "grid", paddingLeft: 2 }}
-      >
+      <CardActions sx={{ justifyContent: "left", paddingLeft: 2, height: 50 }}>
         <Button
           variant="outlined"
           size="small"

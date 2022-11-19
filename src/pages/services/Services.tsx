@@ -8,27 +8,24 @@ interface Props {
 }
 
 export interface ServiceItem {
-  id: number,
-  title: { rendered: string},
-  content: { rendered: string},
-  categories: number[],
-  slug: string,
-  excerpt: {rendered: string},
+  id: number;
+  title: { rendered: string };
+  content: { rendered: string };
+  categories: number[];
+  slug: string;
+  excerpt: { rendered: string };
 }
 
 const Services = (props: Props) => {
-
   return (
     <SectionBox id="services" title="SERVICES">
-      <Box sx={{ width: "90%" }}>
-      <Grid container rowSpacing={3} columnSpacing={2} sx={{ width: "100%" }}>
+      <Grid container rowSpacing={3} columnSpacing={2} maxWidth="90%">
         {props.data.map((item) => (
           <Grid item xs={12} sm={6} md={3} key={item.id}>
             <ServiceCard key={item.id} item={item} />
           </Grid>
         ))}
       </Grid>
-    </Box>
     </SectionBox>
   );
 };

@@ -45,18 +45,19 @@ function ScrollTop() {
 
 const Home: React.FC = () => {
   const Element = Scroll.Element;
-  const [services, blogs, dentists] = useOutletContext<[ServiceItem[], ServiceItem[], ServiceItem[]]>();
+  const [services, blogs, dentists] =
+    useOutletContext<[ServiceItem[], ServiceItem[], ServiceItem[]]>();
   return (
     <>
       <div id="back-to-top-anchor" />
       <ScrollTop />
       <MainFeaturedPost />
       <>
-        <Element name="about-us">
-          <AboutUs data={dentists}/>
-        </Element>
+        <section id="about-us">
+          <AboutUs data={dentists} />
+        </section>
         <section id="services">
-          <Services data={services}/>
+          <Services data={services} />
         </section>
         <section id="blog">
           <Blog data={blogs} />

@@ -1,10 +1,8 @@
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
@@ -22,9 +20,6 @@ function Copyright() {
 }
 
 export default function Footer() {
-  const title = "Footer";
-  const description = "Something here to give the footer a purpose!";
-
   return (
     <Box
       component="footer"
