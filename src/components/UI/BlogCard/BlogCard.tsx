@@ -35,19 +35,19 @@ const BlogCard: React.FC<BlogCardProps> = (props: BlogCardProps) => {
           padding: 0,
         }}
       >
-        <Typography
+        {/* <Typography
           sx={{ display: "inline", fontSize: "0.7em" }}
           component="span"
           variant="body2"
           color="text.secondary"
         >
           Ekim 1, 2022
-        </Typography>
+        </Typography> */}
         <Typography
           gutterBottom
           variant="h5"
           component="p"
-          sx={{ fontSize: 21 }}
+          sx={{ fontSize: 21, mt: 2 }}
         >
           <Renderer translate nodes={props.blog.blogTitle.nodes}/>
         </Typography>

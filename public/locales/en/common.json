@@ -49,5 +49,7 @@
     "moreButton": "Show more"
   },
 
-  "language": { "TURKISH": "TURKISH", "ENGLISH": "ENGLISH" }
+  "language": { "TURKISH": "TURKISH", "ENGLISH": "ENGLISH" },
+  "read_more": "Read More",
+  "more": "Learn More"
 }

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState } from "react";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
@@ -15,7 +15,7 @@ interface SwipeableTemporaryDrawerProps {
 const SwipeableTemporaryDrawer: React.FC<SwipeableTemporaryDrawerProps> = (
   props
 ) => {
-  const [state, setState] = React.useState({
+  const [state, setState] = useState({
     top: false,
     left: false,
     bottom: false,
@@ -47,9 +47,9 @@ const SwipeableTemporaryDrawer: React.FC<SwipeableTemporaryDrawerProps> = (
         sx={{
           position: "relative",
           zIndex: 99,
-
+          width: 180,
           fontWeight: 700,
-          letterSpacing: ".2rem",
+          letterSpacing: ".15rem",
           height: 50,
           borderRadius: 4,
           lineHeight: 1.3,

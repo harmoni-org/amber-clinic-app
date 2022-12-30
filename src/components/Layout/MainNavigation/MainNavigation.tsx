@@ -119,8 +119,6 @@ const MainNavigation = () => {
 
     await closeMobile();
     navigate(`/`);
-
-    console.log("scroll", sectionArray);
     window.scrollTo({ top: y, left: 0, behavior: "smooth" });
   };
 
@@ -134,7 +132,7 @@ const MainNavigation = () => {
     >
       <Container
         maxWidth={false}
-        sx={{ m: "auto", maxWidth: "90%", letterSpacing: "0.45px" }}
+        sx={{ m: "auto", maxWidth: "100%", letterSpacing: "0.45px" }}
       >
         <Toolbar disableGutters>
           <Typography
@@ -234,7 +232,7 @@ const MainNavigation = () => {
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: "none", md: "flex", gap: "60px" },
+              display: { xs: "none", md: "flex", gap: "50px" },
               alignItems: "baseline",
               justifyContent: "center",
             }}

@@ -4,7 +4,7 @@ import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import AlertBar from "../UI/AlertBar/AlertBar";
 import { AlertColor } from "@mui/material/Alert";
-import { sendEmail } from "../Utils/emailUtils";
+import { sendEmail } from "../../utils/emailUtils";
 import useValidationBuilder from "./useValidationBuilder";
 import { useTranslation } from "react-i18next";
 
@@ -16,10 +16,10 @@ export interface ContactInfo {
 }
 
 interface ContactUsFormProps {
-  formOrigin: string
+  formOrigin: string;
 }
 
-const ContactUsForm : React.FC<ContactUsFormProps> = (props) => {
+const ContactUsForm: React.FC<ContactUsFormProps> = (props) => {
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [severity, setSeverity] = useState<AlertColor | undefined>(undefined);
   const [hideDuration, setHideDuration] = useState<number | null>(null);
@@ -28,15 +28,22 @@ const ContactUsForm : React.FC<ContactUsFormProps> = (props) => {
   const validationSchema = useValidationBuilder();
   const { t } = useTranslation();
 
-  const showAlertMessage = (sev:AlertColor, hide_duration:number, alert_message:string) => {
+  const showAlertMessage = (
+    sev: AlertColor,
+    hide_duration: number,
+    alert_message: string
+  ) => {
     setShowAlert(true);
     setSeverity(sev);
     setHideDuration(hide_duration);
     setAlertMessage(alert_message);
   };
 
-  const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
-    if (reason === 'clickaway') {
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason === "clickaway") {
       return;
     }
     setShowAlert(false);
@@ -50,7 +57,7 @@ const ContactUsForm : React.FC<ContactUsFormProps> = (props) => {
       message: "",
     },
     validationSchema: validationSchema || null,
-    onSubmit: (values:ContactInfo) => {
+    onSubmit: (values: ContactInfo) => {
       sendEmail(values, showAlertMessage);
       formik.resetForm();
     },
@@ -104,7 +111,7 @@ const ContactUsForm : React.FC<ContactUsFormProps> = (props) => {
           helperText={formik.touched.phoneNumber && formik.errors.phoneNumber}
           sx={{ marginTop: "1rem" }}
         />
-        {props.formOrigin === "contact" ?
+        {props.formOrigin === "contact" ? (
           <TextField
             multiline
             fullWidth
@@ -119,9 +126,7 @@ const ContactUsForm : React.FC<ContactUsFormProps> = (props) => {
             rows={4}
             sx={{ marginTop: "1rem" }}
           />
-        :
-        null
-        }
+        ) : null}
         <Button
           color="primary"
           variant="contained"

@@ -13,7 +13,6 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/home/Home";
 import DentistDetail from "./pages/dentist-detail/DentistDetail";
-import "./index.css";
 import ServiceDetail from "./pages/service-detail/ServiceDetail";
 import Error from "./pages/error/Error";
 import BlogDetail from "./pages/blog-detail/BlogDetail";
@@ -28,8 +27,6 @@ const router = createBrowserRouter(
     </Route>
   )
 );
-
-
 
 const client = new ApolloClient({
   uri: 'http://clinicamber.com/wordpress/graphql',

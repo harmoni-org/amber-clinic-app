@@ -59,22 +59,21 @@ const ServiceCard = (props: Props) => {
       <CardContent
         sx={{
           flexGrow: 1,
+          pb: 0,
         }}
       >
         <Typography
           gutterBottom
           variant="h4"
           component="h4"
-          color="secondary"
+          color="primary.main"
           sx={{ fontSize: "1rem", fontWeight: 700 }}
         >
           <Renderer translate nodes={props.service.serviceTitle.nodes} />
         </Typography>
         <Renderer translate parseAndSanitize nodes={props.service.shortDescription.nodes} parserOptions={titleParserOptions} />
       </CardContent>
-      <CardActions
-        sx={{ justifyContent: "left", display: "grid", paddingLeft: 2 }}
-      >
+      <CardActions sx={{ justifyContent: "left", paddingLeft: 2, height: 50 }}>
         <Button
           variant="outlined"
           size="small"

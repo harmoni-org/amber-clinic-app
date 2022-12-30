@@ -1,10 +1,8 @@
-import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import * as React from "react";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Divider from "@mui/material/Divider";
@@ -17,15 +15,11 @@ function Copyright() {
       <Link color="inherit" sx={{ textDecoration: "none" }}>
         2019 Dentmasters Dental Clinic | All Rights Reserved.
       </Link>
-      {"."}
     </Typography>
   );
 }
 
 export default function Footer() {
-  const title = "Footer";
-  const description = "Something here to give the footer a purpose!";
-
   return (
     <Box
       component="footer"
@@ -107,8 +101,11 @@ export default function Footer() {
           maxWidth: "100%",
           margin: "auto",
         }}
+        alignItems="center"
+        justifyContent="center"
       >
-        <Grid item xs={4}>
+        {/* TODO: Upcoming feature, adding "Terms and Policy" */}
+        {/* <Grid item xs={4}>
           <Typography
             variant="subtitle1"
             align="center"
@@ -117,7 +114,7 @@ export default function Footer() {
           >
             Kişisel Veri İzleme Politikası
           </Typography>
-        </Grid>
+        </Grid> */}
         <Grid item xs={8}>
           <Copyright />
         </Grid>

@@ -6,7 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
-import { capitalizeFirstLetter } from "../Utils/common";
+import { capitalizeFirstLetter } from "../../utils/common";
 
 const LanguageSelector = () => {
   const { i18n } = useTranslation();
@@ -24,7 +24,6 @@ const LanguageSelector = () => {
   ) => {
     setSelectedIndex(index);
     setAnchorEl(null);
-    console.log("HAHHAHA", options[index]["lang"]);
     i18n.changeLanguage(options[index]["translationCode"]);
   };
 
