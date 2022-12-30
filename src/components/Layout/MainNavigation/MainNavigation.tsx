@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Link as ScrollLink } from "react-scroll";
@@ -15,22 +15,33 @@ import Container from "@mui/material/Container";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import logo from "../../../assets/images/amber-logo.png";
 import "./MainNavigation.scss";
-import { ServiceItem } from "../../../pages/services/Services";
 import LanguageSelector from "../../LanguageSelector/LanguageSelector";
+import Popover from '@mui/material/Popover';
+import { usePopper } from 'react-popper';
 
-interface Props {
-  services: ServiceItem[];
-}
 
-const MainNavigation = (props: Props) => {
+const MainNavigation = () => {
   const { t } = useTranslation();
 
   const path = useLocation().pathname;
-  const location = path.split("/")[1];
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+
+  const [referenceElement, setReferenceElement] = useState(null);
+  //const [popperElement, setPopperElement] = useState(null);
+  //const [arrowElement, setArrowElement] = useState(null);
+  const popperElement = useRef(null);
+  const arrowElement = useRef(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement.current, {
+    modifiers: [{ name: 'arrow', options: { element: arrowElement.current } }],
+  });
+
+  const isInMainPage = () => {
+    return path === '/';
+  }
+
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -112,7 +123,7 @@ const MainNavigation = (props: Props) => {
   };
 
   const closeMobile = () => {};
-
+  // @ts-ignore
   return (
     <AppBar
       component="nav"
@@ -226,12 +237,16 @@ const MainNavigation = (props: Props) => {
               justifyContent: "center",
             }}
           >
+            // ! Ref Element For Menu Popper
             {sections.map((section) =>
               section.submenu ? (
                 <Box
                   key={section.title}
+                  ref={setReferenceElement}
                   onMouseEnter={handleOpenSubMenu}
-                  onMouseLeave={handleCloseSubMenu}
+                  onMouseLeave={() => {
+                    console.log("Left!");
+                    setAnchorElSubMenu(null)}}
                   component="div"
                   textAlign="center"
                   color="primary.main"
@@ -246,7 +261,7 @@ const MainNavigation = (props: Props) => {
                   ]}
                 >
                   <div style={{ display: "flex", alignItems: "center" }}>
-                    {location.length === 0 ? (
+                    {isInMainPage() ? (
                       <ScrollLink
                         key={section.title}
                         activeClass="active"
@@ -273,7 +288,8 @@ const MainNavigation = (props: Props) => {
                       color="primary"
                       sx={{ fontSize: 20 }}
                     />
-                    <Menu
+                    
+                    {/* <Popover
                       elevation={0}
                       anchorOrigin={{
                         vertical: "bottom",
@@ -287,8 +303,10 @@ const MainNavigation = (props: Props) => {
                       id="demo-customized-menu"
                       anchorEl={anchorElSubMenu}
                       onClose={handleCloseSubMenu}
+                      onMouseLeave={() => setAnchorElSubMenu(null)}
                       hideBackdrop
-                      MenuListProps={{ onMouseLeave: handleCloseSubMenu }}
+                      disableScrollLock
+                      // MenuListProps={{onMouseLeave: handleCloseSubMenu}}
                       PaperProps={{
                         elevation: 0,
                         sx: {
@@ -326,7 +344,7 @@ const MainNavigation = (props: Props) => {
                           {item.title.rendered}
                         </MenuItem>
                       ))}
-                    </Menu>
+                    </Popover> */}
                   </div>
                 </Box>
               ) : (
@@ -344,7 +362,7 @@ const MainNavigation = (props: Props) => {
                     },
                   ]}
                 >
-                  {location.length === 0 ? (
+                  {isInMainPage() ? (
                     <ScrollLink
                       key={section.title}
                       activeClass="active"

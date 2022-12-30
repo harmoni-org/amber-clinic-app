@@ -45,6 +45,9 @@
     "TEXT": "The page you are looking for can’t be found.",
     "BUTTON_TEXT": "Go to Home Page"
   },
+  "dentistCard": {
+    "moreButton": "Show more"
+  },
 
   "language": { "TURKISH": "TURKISH", "ENGLISH": "ENGLISH" },
   "read_more": "Read More",
