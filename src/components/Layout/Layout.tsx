@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import CssBaseline from "@mui/material/CssBaseline";
 import Container from "@mui/material/Container";
@@ -6,11 +5,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Footer from "./Footer/Footer";
 import MainNavigation from "./MainNavigation/MainNavigation";
 import AppointmentForm from "../AppointmentForm/AppointmentForm";
-import { useLoaderData } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { ServiceItem } from "../../pages/services/Services";
-import Categories from "../../assets/settings/categories";
-import { MainPageContent } from "../Utils/routeLoaders";
 
 const theme = createTheme({
   palette: {
@@ -44,41 +38,14 @@ const theme = createTheme({
 });
 
 const Layout = () => {
-  const {services, blogs, dentists} = useLoaderData() as MainPageContent;
-  const [languageFilteredServices, setLanguageFilteredServices] = useState<ServiceItem[]>([]);
-  const [languageFilteredBlogs, setLanguageFilteredBlogs] = useState<ServiceItem[]>([]);
-  const [languageFilteredDentists, setLanguageFilteredDentists] = useState<ServiceItem[]>([]);
-  const { i18n } = useTranslation();
-
-  const applyLanguageFilter = (services: ServiceItem[]) => {
-    return services.filter((item) => {
-     const index = item.categories.indexOf(Categories[i18n.language]);
-     if ( index > -1 ) {
-       return true;
-     } else return false;
-    })
-  }
-
-  useEffect(() => {
-    setLanguageFilteredBlogs(applyLanguageFilter(blogs));
-  }, [blogs, i18n.language])
-
-  useEffect(() => {
-    setLanguageFilteredServices(applyLanguageFilter(services));
-    console.log(applyLanguageFilter(services))
-  }, [services, i18n.language])
-
-  useEffect(() => {
-    setLanguageFilteredDentists(applyLanguageFilter(dentists));
-  }, [dentists, i18n.language])
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container disableGutters maxWidth={false}>
-        <MainNavigation services={languageFilteredServices} />
+        <MainNavigation />
         <AppointmentForm />
-        <Outlet context={[languageFilteredServices, languageFilteredBlogs, languageFilteredDentists]}/>
+        <Outlet/>
       </Container>
       <Footer />
     </ThemeProvider>

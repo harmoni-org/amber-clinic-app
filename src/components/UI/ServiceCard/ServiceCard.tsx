@@ -1,32 +1,46 @@
-import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
-import { ServiceItem } from "../../../pages/services/Services";
+import { ServiceWithShortDescription } from "../../../models/Service";
+import { HTMLReactParserOptions, domToReact } from "html-react-parser";
+import { Element } from "html-react-parser";
+import { useTranslation } from "react-i18next";
+import Renderer from "../../Renderer"
 
-type ServiceCardProps = {
-  item: ServiceItem;
-};
+interface Props {
+  service: ServiceWithShortDescription;
+  onClick?: (serviceId: string) => void;
+}
 
-const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
+const titleParserOptions: HTMLReactParserOptions = {
+  replace: (domNode) => {
+    let element = domNode as Element;
 
-  const navigate = useNavigate();
-
-  const handleOnClick = useCallback(() => {
-    navigate(`/our-services/${item.id}`);
-    window.scrollTo(0, 0);
-  }, [navigate]);
-
-  const getImageUrlFromSlug = (slug: string) => {
-    return `${slug.substring(3)}`;
+    if (element.attribs && element.type === 'tag') {
+      switch (element.name) {
+        case 'p':
+          return (
+            <Typography 
+              color="text.secondary"
+              sx={{ fontSize: 14, fontWeight: 500, letterSpacing: 0.5 }}
+            >
+              {domToReact(element.children)}
+            </Typography>
+          )
+      }
+    }
   }
+}
 
+const ServiceCard = (props: Props) => {
+  const { t } = useTranslation();
   return (
     <Card
+      // @ts-ignore
+      onClick={props.onClick ? () => props.onClick(props.service.id) : () => {}}
       sx={{
         maxWidth: "100%",
         boxShadow: 1,
@@ -38,9 +52,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
     >
       <CardMedia
         component="img"
-        height="140"
-        src={'http://clinicamber.com/wordpress/wp-content/uploads/'+ getImageUrlFromSlug(item.slug) + '.jpg'}
-        alt={item.title.rendered}
+        width="200"
+        src={props.service.image.mediaItemUrl}
+        alt={props.service.slug}
       />
       <CardContent
         sx={{
@@ -54,15 +68,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
           color="secondary"
           sx={{ fontSize: "1rem", fontWeight: 700 }}
         >
-          {item.title.rendered}
+          <Renderer translate nodes={props.service.serviceTitle.nodes} />
         </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{ fontSize: 14, fontWeight: 500, letterSpacing: 0.5 }}
-        >
-         <span dangerouslySetInnerHTML={{__html: item.excerpt.rendered}}></span>
-        </Typography>
+        <Renderer translate parseAndSanitize nodes={props.service.shortDescription.nodes} parserOptions={titleParserOptions} />
       </CardContent>
       <CardActions
         sx={{ justifyContent: "left", display: "grid", paddingLeft: 2 }}
@@ -72,10 +80,11 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ item }) => {
           size="small"
           color="secondary"
           endIcon={<NavigateNextIcon color="secondary" sx={{ mr: 1 }} />}
-          onClick={handleOnClick}
-          sx={{ textTransform: "none", borderColor: "secondary", border: 1.5 }}
+           // @ts-ignore
+          onClick={props.onClick ? () => props.onClick(props.service.id) : () => {}}
+          sx={{ textTransform: "none", borderColor: "secondary"}}
         >
-          Daha Fazlası
+          {t("dentistCard.moreButton")}
         </Button>
       </CardActions>
     </Card>
