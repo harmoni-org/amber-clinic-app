@@ -13,8 +13,6 @@ const Services = () => {
   const navigate = useNavigate();
   const services = (data && data.services.nodes) as ServiceWithShortDescription[] || [];
 
-  console.log('Services are : ', services);
-
   return (
     <>
     {loading && (

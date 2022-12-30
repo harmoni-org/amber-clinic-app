@@ -5,8 +5,7 @@ import ImageListItemBar from "@mui/material/ImageListItemBar";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
 import { Dentist } from "../../../models/Dentist";
-import { useTranslation } from "react-i18next";
-import { languageSwitch } from "../../Utils/common";
+import Renderer from "../../Renderer";
 
 export interface DentistCardProps {
   dentist: Dentist;
@@ -14,7 +13,6 @@ export interface DentistCardProps {
 }
 
 const DentistCard: React.FC<DentistCardProps> = ({ dentist, onClick }) => {
-  const { i18n } = useTranslation();
 
   return (
     <ImageList sx={{ width: 450, height: 350 }}>
@@ -30,7 +28,7 @@ const DentistCard: React.FC<DentistCardProps> = ({ dentist, onClick }) => {
         />
         <ImageListItemBar
           title={dentist.name}
-          subtitle={languageSwitch(i18n.language, dentist.branchTitle.nodes)}
+          subtitle={<Renderer nodes={dentist.branchTitle.nodes} translate/>}
           actionIcon={
             <IconButton
               sx={{ color: "rgba(255, 255, 255, 0.54)" }}

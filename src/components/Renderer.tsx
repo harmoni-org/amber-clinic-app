@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { languageSwitch } from "./Utils/common";
 import parse, { HTMLReactParserOptions } from "html-react-parser";
 import sanitizeHTML from "sanitize-html";
 import { LocalizedContent } from "../models/Generic";
+import { languageSwitch } from "../utils/common";
 
 interface Props {
   nodes: LocalizedContent[];

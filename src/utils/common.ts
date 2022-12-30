@@ -1,4 +1,4 @@
-import { LocalizedContent } from "../../models/Generic";
+import { LocalizedContent } from "../models/Generic";
 
 export const capitalizeFirstLetter = (string: string) => {
   return string.charAt(0).toUpperCase() + string.slice(1).toLocaleLowerCase();
