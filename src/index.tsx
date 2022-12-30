@@ -9,37 +9,38 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/home/Home";
-import Services from "./pages/services/Services";
-import AboutUs from "./pages/about-us/AboutUs";
-import Contact from "./pages/contact/Contact";
-import Blog from "./pages/blog/Blog";
 import DentistDetail from "./pages/dentist-detail/DentistDetail";
-import "./index.css";
 import ServiceDetail from "./pages/service-detail/ServiceDetail";
+import Error from "./pages/error/Error";
+import BlogDetail from "./pages/blog-detail/BlogDetail";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
-      <Route path="services" element={<Services />} />
-      <Route path="about-us" element={<AboutUs />} />
-      <Route path="contact" element={<Contact />} />
-      <Route path="blog" element={<Blog />} />
+    <Route path="/" element={<Layout />} errorElement={<Error />}>
+      <Route index element={<Home />}/>
       <Route path="our-dentists/:id" element={<DentistDetail />} />
       <Route path="our-services/:id" element={<ServiceDetail />} />
-      <Route path="blog/:id" element={<ServiceDetail />} />
+      <Route path="blog/:id" element={<BlogDetail />} />
     </Route>
   )
 );
+
+const client = new ApolloClient({
+  uri: 'http://clinicamber.com/wordpress/graphql',
+  cache: new InMemoryCache(),
+});
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <ApolloProvider client={client}>
+      <RouterProvider router={router} />
+    </ApolloProvider>
   </React.StrictMode>
 );
 

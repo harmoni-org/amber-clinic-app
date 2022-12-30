@@ -1,122 +1,42 @@
-import { useEffect } from "react";
+import { useQuery } from "@apollo/client";
+import { Box, CircularProgress, Container } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { Container } from "@mui/material";
-import Typography from "@mui/material/Typography";
-import dentist from "../../assets/images/dentists/group-miray-uz.png";
-
-import * as React from "react";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
-import Avatar from "@mui/material/Avatar";
-import ImageIcon from "@mui/icons-material/Image";
-import WorkIcon from "@mui/icons-material/Work";
-import BeachAccessIcon from "@mui/icons-material/BeachAccess";
-
-import ContentRenderer from "../../components/ContentRenderer/ContentRenderer";
-
-type ServiceDetailProps = {
-  item: {
-    description: string;
-    image: string;
-    imageText: string;
-    linkText: string;
-    title: string;
-  };
-};
+import { GET_SERVICE } from "../../graphql-queries/Service";
+import Grid from "@mui/material/Unstable_Grid2";
+import { ServiceWithDescription } from "../../models/Service";
+import "./ServiceDetail.scss";
+import Renderer from "../../components/Renderer";
 
 const ServiceDetail: React.FC = () => {
-  function getDentist(id: any) {
-    return {
-      item: {
-        description: "string",
-        image: "string",
-        imageText: "string",
-        linkText: "string",
-        title: "string",
-      },
-    };
-  }
-
-  //  TODO:  After implement static data mapping, get data dynamically.
-
   const { id } = useParams();
+  const { loading, error, data } = useQuery(GET_SERVICE, { variables: { id }});
+  const service = (data && data.service) as ServiceWithDescription;
 
   return (
-    <Container
-      maxWidth="xl"
-      sx={{
-        display: "flex",
-        mt: 10,
-      }}
-    >
-      <Container sx={{ py: 6 }}>
-        <ContentRenderer id={id || ""} contentType="services"></ContentRenderer>
-        {/* <Typography gutterBottom variant="h3" component="div">
-          jhsxhsdh
-        </Typography>
-        <Typography variant="body1" color="text.secondary">
-          1995 Tekirdağ doğumludur. 2013 yılında Tekirdağ Fen Lisesini
-          bitirdikten sonra aynı yılda İstanbul Üniversitesi Diş Hekimliği
-          Fakültesini kazandı. 2018 yılında ‘Maksiller Defektli Hastalarda
-          Tedavi Yöntemleri’ isimli tez çalışmasıyla mezun olmuştur.
-        </Typography>
-        <Typography
-          gutterBottom
-          variant="h6"
-          component="div"
-          sx={{ mt: 4, mb: 2 }}
-        >
-          Katıldığı Kongre, Seminer ve Kurslar
-        </Typography>
-        <List sx={{ bgcolor: "background.paper" }}>
-          <ListItem sx={{ py: 0 }}>
-            2. Dental Tribune Türkiye Sempozyumu IDEX
-            <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2017" />
-          </ListItem>
-          <ListItem sx={{ py: 0 }}>
-            TDB 23. Uluslararası Diş Hekimliği Kongresi
-            <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2017" />
-          </ListItem>
-          <ListItem sx={{ py: 0 }}>
-            Ağıziçi Porselen Tamiri- Kompozit Tabakalama Tekniği ve Makyaj
-            <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2018" />
-          </ListItem>
-          <ListItem sx={{ py: 0 }}>
-            İmplantüstü Protezler
-            <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2019" />
-          </ListItem>
-          <ListItem sx={{ py: 0 }}>
-            Anterior Direk Restorasyonlar Temel Konseptlerden Yeniliklere
-            <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2019" />
-          </ListItem>
-          <ListItem sx={{ py: 0 }}>
-            Canlı Pulpadan Periapikal Cerrahiye Endodonti
-            <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2020" />
-          </ListItem>
-          <ListItem sx={{ py: 0 }}>
-            Fiber Destekli Adeziv Köprüler
-            <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2020" />
-          </ListItem>
-          <ListItem sx={{ py: 0 }}>
-            GC&Serhat Köken Kompozit Restorasyonlar
-            <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2020" />
-          </ListItem>
-          <ListItem sx={{ py: 0 }}>
-            Straumann&Estetik Bölge İmplant Uygulamalarında 5 Temel İpucu,
-            İstanbul
-            <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2020" />
-          </ListItem>
-          <ListItem sx={{ py: 0 }}>
-            Straumann&Dijital Diş Hekimliği
-            <ListItemText sx={{ pl: 4 }} secondary="İstanbul, 2020" />
-          </ListItem>
-        </List> */}
+    <>
+    {loading && (
+      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '300px' }}>
+        <CircularProgress color='secondary' size={60}/>
+      </Box>
+    )}
+    {!loading && !error && (
+      <Container className="" maxWidth="lg" sx={{marginTop: '10px'}}>
+        <Grid container spacing={1}>
+          <Grid xs={6} sm={6} md={6} xsOffset={3} smOffset={3} mdOffset={3}>
+            <img className="picture" width="100%" height="auto" src={service.image.mediaItemUrl} alt={service.image.altText}/>
+          </Grid>
+          <Grid xs={12} xsOffset={1} sm={12} smOffset={1} md={12} sx={{mt: '10px'}}>
+            {/* <h3 className="subtitle">
+              <Renderer translate nodes={service.serviceTitle.nodes} />
+            </h3> */}
+            <div className="content">
+              <Renderer translate parseAndSanitize nodes={service.description.nodes} />
+            </div>
+          </Grid>
+        </Grid>
       </Container>
-
-      <img src={dentist} alt="Amber Ağız ve Diş Sağlığı Polikliniği" />
-    </Container>
+    )}
+   </>
   );
 };
 

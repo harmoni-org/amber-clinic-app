@@ -11,7 +11,7 @@ i18n
     load: "languageOnly",
     ns: ["common", "services", "dentists"],
     fallbackLng: "en",
-    debug: true,
+    debug: false,
   });
 
 export default i18n;

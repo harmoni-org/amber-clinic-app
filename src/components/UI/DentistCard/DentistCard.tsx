@@ -1,47 +1,40 @@
-import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import React from "react";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
 import ImageListItemBar from "@mui/material/ImageListItemBar";
-import ListSubheader from "@mui/material/ListSubheader";
 import IconButton from "@mui/material/IconButton";
 import InfoIcon from "@mui/icons-material/Info";
+import { Dentist } from "../../../models/Dentist";
+import { useTranslation } from "react-i18next";
+import { languageSwitch } from "../../Utils/common";
 
 export interface DentistCardProps {
-  item: any;
+  dentist: Dentist;
+  onClick?: (dentistId: string) => void;
 }
 
-const DentistCard: React.FC<DentistCardProps> = ({ item }) => {
-  const { t } = useTranslation();
-
-  const navigate = useNavigate();
-
-  const handleOnClick = useCallback(
-    () => navigate(`/our-dentists/${item.id} `),
-    [navigate]
-  );
+const DentistCard: React.FC<DentistCardProps> = ({ dentist, onClick }) => {
+  const { i18n } = useTranslation();
 
   return (
     <ImageList sx={{ width: 450, height: 350 }}>
-      <ImageListItem key={item.title}>
+      <ImageListItem
+        sx={{ cursor: 'pointer'}}
+        onClick={onClick ? () => onClick(dentist.id) : () => {}}
+        key={dentist.id}
+      >
         <img
-          src={require("../../../assets/images/dentists/" +
-            item.sections[0].content +
-            ".png")}
-          srcSet={require("../../../assets/images/dentists/" +
-            item.sections[0].content +
-            ".png")}
-          alt={item.title}
+          src={dentist.dentistImage.mediaItemUrl}
+          alt={''}
           loading="lazy"
         />
         <ImageListItemBar
-          title={t(`${item.id}.${item.name}`, { ns: "dentists" })}
-          subtitle={t(`${item.specialization}`, { ns: "common" })}
+          title={dentist.name}
+          subtitle={languageSwitch(i18n.language, dentist.branchTitle.nodes)}
           actionIcon={
             <IconButton
               sx={{ color: "rgba(255, 255, 255, 0.54)" }}
-              aria-label={`info about ${item.name}`}
+              aria-label={`info about ${dentist.id}`}
             >
               <InfoIcon />
             </IconButton>

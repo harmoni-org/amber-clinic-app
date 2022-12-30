@@ -2,6 +2,9 @@ import { useTranslation } from "react-i18next";
 import SwipeableTemporaryDrawer from "../SwipeableTemporaryDrawer/SwipeableTemporaryDrawer";
 import ContactUsForm from "../ContactUsForm/ContactUsForm";
 import { Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import CloseIcon from "@mui/icons-material/Close";
+import { useState } from "react";
 
 const AppointmentForm = () => {
   const { t } = useTranslation();
@@ -11,11 +14,20 @@ const AppointmentForm = () => {
       buttonLabel={t("appointment_form_fields.ONLINE_APPOINTMENT")}
     >
       <>
-        <Typography variant="h5">
-          {t("appointment_form_fields.ONLINE_APPOINTMENT")}
-        </Typography>
+        <Box
+          sx={{
+            flexGrow: 1,
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
+          <Typography variant="h5">
+            {t("appointment_form_fields.ONLINE_APPOINTMENT")}
+          </Typography>
+          <CloseIcon />
+        </Box>
         <Typography variant="subtitle2">
-          {t("appointment_form_fields.ONLINE_APkPOINTMENT_DESCRIPTION")}
+          {t("appointment_form_fields.ONLINE_APPOINTMENT_DESCRIPTION")}
         </Typography>
         <ContactUsForm formOrigin={"appointment"}></ContactUsForm>
       </>

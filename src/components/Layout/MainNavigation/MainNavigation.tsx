@@ -1,7 +1,8 @@
-import React, { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useCallback, useRef, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-scroll";
+import { Link as ScrollLink } from "react-scroll";
+import Link from "@mui/material/Link";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,32 +15,58 @@ import Container from "@mui/material/Container";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import logo from "../../../assets/images/amber-logo.png";
 import "./MainNavigation.scss";
+import LanguageSelector from "../../LanguageSelector/LanguageSelector";
+import Popover from '@mui/material/Popover';
+import { usePopper } from 'react-popper';
+
 
 const MainNavigation = () => {
   const { t } = useTranslation();
 
-  //
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-  const handleMouseOn = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget);
+  const path = useLocation().pathname;
+
+  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+    null
+  );
+
+  const [referenceElement, setReferenceElement] = useState(null);
+  //const [popperElement, setPopperElement] = useState(null);
+  //const [arrowElement, setArrowElement] = useState(null);
+  const popperElement = useRef(null);
+  const arrowElement = useRef(null);
+  const { styles, attributes } = usePopper(referenceElement, popperElement.current, {
+    modifiers: [{ name: 'arrow', options: { element: arrowElement.current } }],
+  });
+
+  const isInMainPage = () => {
+    return path === '/';
+  }
+
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
   };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const [anchorElSubMenu, setAnchorElSubMenu] =
+    React.useState<null | HTMLElement>(null);
+  const handleOpenSubMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElSubMenu(event.currentTarget);
+  };
+  const handleCloseSubMenu = () => {
+    setAnchorElSubMenu(null);
   };
 
   const navigate = useNavigate();
 
   const handleNavigate = useCallback(
-    (id: any) => {
-      console.log("id", id);
-      navigate(`/our-services/${id} `);
-      setAnchorEl(null);
+    (page: string, id: any) => {
+      navigate(`/${page}/${id}`);
+      // setAnchorEl(null);
     },
     [navigate]
   );
-  //
-
   const sections = [
     { title: t("navbar.HOME_PAGE"), url: "home" },
     { title: t("navbar.ABOUT_US"), url: "about-us" },
@@ -82,29 +109,31 @@ const MainNavigation = () => {
         },
       ],
     },
-    { title: t("navbar.CONTACT"), url: "contact" },
     { title: t("navbar.BLOG"), url: "blog" },
+    { title: t("navbar.CONTACT"), url: "contact" },
   ];
+  const goToMainAndScroll = async (title: string) => {
+    const sectionArray = sections.map((item) => item.title);
+    let index = sectionArray.indexOf(title);
+    const y = index * 10000 + window.scrollY;
 
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
+    await closeMobile();
+    navigate(`/`);
+    window.scrollTo({ top: y, left: 0, behavior: "smooth" });
   };
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
+  const closeMobile = () => {};
+  // @ts-ignore
   return (
     <AppBar
       component="nav"
       position="static"
       sx={{ bgcolor: "white", borderBottom: 1, borderColor: "#CECECE" }}
     >
-      <Container maxWidth={false} sx={{ m: "auto", maxWidth: "90%" }}>
+      <Container
+        maxWidth={false}
+        sx={{ m: "auto", maxWidth: "100%", letterSpacing: "0.45px" }}
+      >
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -120,7 +149,6 @@ const MainNavigation = () => {
           <Box
             sx={{
               flexGrow: 1,
-
               display: { xs: "flex", md: "none" },
             }}
           >
@@ -169,7 +197,7 @@ const MainNavigation = () => {
                   ]}
                 >
                   <Typography textAlign="center">
-                    <Link
+                    <ScrollLink
                       key={section.title}
                       activeClass="active"
                       to={section.url}
@@ -178,7 +206,7 @@ const MainNavigation = () => {
                       duration={500}
                     >
                       {section.title}
-                    </Link>
+                    </ScrollLink>
                   </Typography>
                 </MenuItem>
               ))}
@@ -204,16 +232,22 @@ const MainNavigation = () => {
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: "none", md: "flex", gap: "60px" },
+              display: { xs: "none", md: "flex", gap: "50px" },
               alignItems: "baseline",
               justifyContent: "center",
             }}
           >
+            // ! Ref Element For Menu Popper
             {sections.map((section) =>
               section.submenu ? (
-                <Typography
-                  onMouseEnter={handleMouseOn}
-                  onMouseLeave={handleClose}
+                <Box
+                  key={section.title}
+                  ref={setReferenceElement}
+                  onMouseEnter={handleOpenSubMenu}
+                  onMouseLeave={() => {
+                    console.log("Left!");
+                    setAnchorElSubMenu(null)}}
+                  component="div"
                   textAlign="center"
                   color="primary.main"
                   sx={[
@@ -227,21 +261,35 @@ const MainNavigation = () => {
                   ]}
                 >
                   <div style={{ display: "flex", alignItems: "center" }}>
-                    <Link
-                      key={section.title}
-                      activeClass="active"
-                      to={section.url}
-                      spy={true}
-                      smooth={true}
-                      duration={500}
-                    >
-                      {section.title}
-                    </Link>
+                    {isInMainPage() ? (
+                      <ScrollLink
+                        key={section.title}
+                        activeClass="active"
+                        to={section.url}
+                        spy={true}
+                        smooth={true}
+                        duration={500}
+                      >
+                        {section.title}
+                      </ScrollLink>
+                    ) : (
+                      <Link
+                        key={section.title}
+                        component="button"
+                        variant="body2"
+                        onClick={() => goToMainAndScroll(section.title)}
+                        underline="none"
+                        sx={{ fontSize: "1rem" }}
+                      >
+                        {section.title}
+                      </Link>
+                    )}
                     <KeyboardArrowDownIcon
                       color="primary"
                       sx={{ fontSize: 20 }}
                     />
-                    <Menu
+                    
+                    {/* <Popover
                       elevation={0}
                       anchorOrigin={{
                         vertical: "bottom",
@@ -251,13 +299,18 @@ const MainNavigation = () => {
                         vertical: "top",
                         horizontal: "right",
                       }}
+                      open={Boolean(anchorElSubMenu)}
                       id="demo-customized-menu"
-                      anchorEl={anchorEl}
-                      open={open}
-                      onClose={handleClose}
+                      anchorEl={anchorElSubMenu}
+                      onClose={handleCloseSubMenu}
+                      onMouseLeave={() => setAnchorElSubMenu(null)}
+                      hideBackdrop
+                      disableScrollLock
+                      // MenuListProps={{onMouseLeave: handleCloseSubMenu}}
                       PaperProps={{
                         elevation: 0,
                         sx: {
+                          display: { xs: "none", md: "flex" },
                           overflow: "visible",
                           filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
                           mt: 2,
@@ -281,16 +334,22 @@ const MainNavigation = () => {
                         },
                       }}
                     >
-                      {section.submenu.map((item) => (
-                        <MenuItem onClick={() => handleNavigate(item.url)}>
-                          {item.title}
+                      {props.services.map((item) => (
+                        <MenuItem
+                          key={item.slug}
+                          onClick={() =>
+                            handleNavigate("our-services", item.slug)
+                          }
+                        >
+                          {item.title.rendered}
                         </MenuItem>
                       ))}
-                    </Menu>
+                    </Popover> */}
                   </div>
-                </Typography>
+                </Box>
               ) : (
                 <Typography
+                  key={section.title}
                   textAlign="center"
                   color="primary.main"
                   sx={[
@@ -303,19 +362,33 @@ const MainNavigation = () => {
                     },
                   ]}
                 >
-                  <Link
-                    key={section.title}
-                    activeClass="active"
-                    to={section.url}
-                    spy={true}
-                    smooth={true}
-                    duration={500}
-                  >
-                    {section.title}
-                  </Link>
+                  {isInMainPage() ? (
+                    <ScrollLink
+                      key={section.title}
+                      activeClass="active"
+                      to={section.url}
+                      spy={true}
+                      smooth={true}
+                      duration={500}
+                    >
+                      {section.title}
+                    </ScrollLink>
+                  ) : (
+                    <Link
+                      key={section.title}
+                      component="button"
+                      variant="body2"
+                      onClick={() => goToMainAndScroll(section.title)}
+                      underline="none"
+                      sx={{ fontSize: "1rem" }}
+                    >
+                      {section.title}
+                    </Link>
+                  )}
                 </Typography>
               )
             )}
+            <LanguageSelector />
           </Box>
         </Toolbar>
       </Container>
