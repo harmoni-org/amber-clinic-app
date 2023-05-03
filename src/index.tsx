@@ -9,7 +9,6 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import Layout from "./components/Layout/Layout";
 import Home from "./pages/home/Home";
 import DentistDetail from "./pages/dentist-detail/DentistDetail";
@@ -30,19 +29,12 @@ const router = createBrowserRouter(
   )
 );
 
-const client = new ApolloClient({
-  uri: 'http://clinicamber.com/wordpress/graphql',
-  cache: new InMemoryCache(),
-});
-
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <RouterProvider router={router} />
-    </ApolloProvider>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 

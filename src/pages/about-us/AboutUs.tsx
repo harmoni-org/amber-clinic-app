@@ -5,16 +5,13 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import DentistCard from "../../components/UI/DentistCard/DentistCard";
 import SectionBox from "../../components/UI/SectionBox/SectionBox";
-import { useQuery } from "@apollo/client";
 import { Dentist } from "../../models/Dentist";
-import { GET_DENTISTS } from "../../graphql-queries/Dentist";
 import { useNavigate } from "react-router-dom";
 
 const AboutUs= () => {
   const { t } = useTranslation();
-  const { loading, error, data } = useQuery(GET_DENTISTS);
+  
   const navigate = useNavigate();
-  const dentists = (data && data.dentists.nodes) as Dentist[];
 
   const handleCardClick = (dentistId: string) => {
     navigate(`/our-dentists/${dentistId}`);
@@ -47,7 +44,7 @@ const AboutUs= () => {
               width: "90%",
             }}
           >
-            {loading && (
+            {/* {loading && (
               <Grid container columnSpacing={3} sx={{ width: "100%" }}>
                 {[...Array(4)].map((e, i) => (
                   <Grid item xs={12} sm={6} md={3} key={i}>
@@ -55,8 +52,8 @@ const AboutUs= () => {
                   </Grid>
                 ))}
               </Grid>
-            )}
-            {(!loading && !error) && (
+            )} */}
+            {/* {(!loading && !error) && (
               <Grid container columnSpacing={3} sx={{ width: "100%" }}>
                 {dentists.map((dentist) => (
                   <Grid item xs={12} sm={6} md={3} key={dentist.id}>
@@ -64,7 +61,7 @@ const AboutUs= () => {
                   </Grid>
                 ))}
               </Grid>
-            )}
+            )} */}
           </Box>
         </Container>
       </SectionBox>

@@ -2,20 +2,16 @@ import { useParams } from "react-router-dom";
 import { Box, CircularProgress, Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import * as React from "react";
-import { useQuery } from "@apollo/client";
-import { GET_BLOG } from "../../graphql-queries/Blog";
 import { Blog } from "../../models/Blog";
 import Renderer from "../../components/Renderer";
 import "./BlogDetail.scss";
 
 const BlogDetail: React.FC = () => {
   const { id } = useParams();
-  const { loading, error, data } = useQuery(GET_BLOG, { variables: { id }});
-  const blog = (data && data.blog) as Blog;
 
   return (
     <>
-    {loading && (
+    {/* {loading && (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '300px' }}>
         <CircularProgress color='secondary' size={60}/>
       </Box>
@@ -36,7 +32,7 @@ const BlogDetail: React.FC = () => {
           </Grid>
         </Grid>
       </Container>
-    )}
+    )} */}
    </>
   );
 };
