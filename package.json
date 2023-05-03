@@ -2,7 +2,7 @@
   "name": "amber-clinic-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://www.clinicamber.com/",
+  "homepage": "http://www.clinicamber.com",
   "dependencies": {
     "@apollo/client": "^3.7.1",
     "@emailjs/browser": "^3.7.0",
