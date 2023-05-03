@@ -1,28 +1,24 @@
-import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
 import Container from "@mui/material/Container";
 import { Typography } from "@mui/material";
 import Box from '@mui/material/Box';
 import CircularProgress from "@mui/material/CircularProgress";
-import { GET_DENTIST } from "../../graphql-queries/Dentist";
 import { DentistWithDescription } from "../../models/Dentist";
 import Renderer from "../../components/Renderer";
 import "./DentistDetail.scss";
 
 const DentistDetail: React.FC = () => {
   const { id } = useParams();
-  const { loading, error, data } = useQuery(GET_DENTIST, { variables: { id }});
-  const dentist = (data && data.dentist) as DentistWithDescription;
 
   return (
    <>
-    {loading && (
+    {/* {loading && (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '300px' }}>
         <CircularProgress color='secondary' size={60}/>
       </Box>
-    )}
-    {!loading && !error && (
+    )} */}
+    {/* {!loading && !error && (
       <Container className="dentist-detail" maxWidth="lg" sx={{marginTop: '10px'}}>
         <Grid container spacing={2}>
           <Grid xs={6} sm={6} md={5} xsOffset={3} smOffset={3} mdOffset={0}>
@@ -39,7 +35,7 @@ const DentistDetail: React.FC = () => {
           </Grid>
         </Grid>
       </Container>
-    )}
+    )} */}
    </>
   );
 };

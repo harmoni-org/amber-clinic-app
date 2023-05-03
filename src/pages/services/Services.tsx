@@ -1,8 +1,6 @@
 import SectionBox from "../../components/UI/SectionBox/SectionBox";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import { GET_SERVICES } from "../../graphql-queries/Service";
-import { useQuery } from "@apollo/client";
 import { useNavigate, useRouteLoaderData } from "react-router-dom";
 import { Service, ServiceWithShortDescription } from "../../models/Service";
 import ServiceCard from "../../components/UI/ServiceCard/ServiceCard";
