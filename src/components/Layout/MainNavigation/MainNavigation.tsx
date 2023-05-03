@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Link as ScrollLink } from "react-scroll";
@@ -16,8 +16,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import logo from "../../../assets/images/amber-logo.png";
 import "./MainNavigation.scss";
 import LanguageSelector from "../../LanguageSelector/LanguageSelector";
-import Popover from '@mui/material/Popover';
-import { usePopper } from 'react-popper';
+import { useLoaderData } from "react-router-dom";
+import { Fade, Popper } from "@mui/material";
 
 
 const MainNavigation = () => {
@@ -28,15 +28,9 @@ const MainNavigation = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
+  const [open, setOpen] = React.useState<boolean>(false);
 
-  const [referenceElement, setReferenceElement] = useState(null);
-  //const [popperElement, setPopperElement] = useState(null);
-  //const [arrowElement, setArrowElement] = useState(null);
-  const popperElement = useRef(null);
-  const arrowElement = useRef(null);
-  const { styles, attributes } = usePopper(referenceElement, popperElement.current, {
-    modifiers: [{ name: 'arrow', options: { element: arrowElement.current } }],
-  });
+  const services = useLoaderData() as any[];
 
   const isInMainPage = () => {
     return path === '/';
@@ -53,9 +47,11 @@ const MainNavigation = () => {
     React.useState<null | HTMLElement>(null);
   const handleOpenSubMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElSubMenu(event.currentTarget);
+    setOpen(true);
   };
   const handleCloseSubMenu = () => {
     setAnchorElSubMenu(null);
+    setOpen(false);
   };
 
   const navigate = useNavigate();
@@ -242,11 +238,8 @@ const MainNavigation = () => {
               section.submenu ? (
                 <Box
                   key={section.title}
-                  ref={setReferenceElement}
                   onMouseEnter={handleOpenSubMenu}
-                  onMouseLeave={() => {
-                    console.log("Left!");
-                    setAnchorElSubMenu(null)}}
+                  onMouseLeave={handleCloseSubMenu}
                   component="div"
                   textAlign="center"
                   color="primary.main"
@@ -286,65 +279,34 @@ const MainNavigation = () => {
                     )}
                     <KeyboardArrowDownIcon
                       color="primary"
-                      sx={{ fontSize: 20 }}
+                      sx={{ 
+                        fontSize: 20,
+                        transition: "background 0.45s, color 0.45s",
+                        color: open ? "secondary.main": "",
+                        cursor: open ? "pointer": ""
+                      }}
                     />
                     
-                    {/* <Popover
-                      elevation={0}
-                      anchorOrigin={{
-                        vertical: "bottom",
-                        horizontal: "right",
-                      }}
-                      transformOrigin={{
-                        vertical: "top",
-                        horizontal: "right",
-                      }}
-                      open={Boolean(anchorElSubMenu)}
-                      id="demo-customized-menu"
-                      anchorEl={anchorElSubMenu}
-                      onClose={handleCloseSubMenu}
-                      onMouseLeave={() => setAnchorElSubMenu(null)}
-                      hideBackdrop
-                      disableScrollLock
-                      // MenuListProps={{onMouseLeave: handleCloseSubMenu}}
-                      PaperProps={{
-                        elevation: 0,
-                        sx: {
-                          display: { xs: "none", md: "flex" },
-                          overflow: "visible",
-                          filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                          mt: 2,
-                          "& .MuiAvatar-root": {
-                            width: 32,
-                            height: 32,
-                            ml: -0.5,
-                            mr: 1,
-                          },
-                          "&:before": {
-                            content: '""',
-                            display: "block",
-                            position: "absolute",
-                            top: 0,
-                            right: 14,
-                            width: 10,
-                            height: 10,
-                            bgcolor: "background.paper",
-                            zIndex: 0,
-                          },
-                        },
-                      }}
-                    >
-                      {props.services.map((item) => (
-                        <MenuItem
-                          key={item.slug}
-                          onClick={() =>
-                            handleNavigate("our-services", item.slug)
-                          }
-                        >
-                          {item.title.rendered}
-                        </MenuItem>
-                      ))}
-                    </Popover> */}
+                    <Popper open={open} anchorEl={anchorElSubMenu} transition>
+                      {({ TransitionProps }) => (
+                        <Fade {...TransitionProps}>
+                          <Box sx={{
+                            backgroundColor: "white",
+                            borderRadius: "6px"
+                          }}>
+                            {services.map((item: any) => (
+                              <MenuItem
+                                key={item.slug}
+                                onClick={() =>
+                                  handleNavigate("our-services", item.slug)
+                                }
+                              >
+                                {item.acm_fields.titleEN}
+                              </MenuItem>
+                            ))}
+                          </Box>
+                        </Fade>)}
+                    </Popper>
                   </div>
                 </Box>
               ) : (

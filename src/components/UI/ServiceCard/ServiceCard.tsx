@@ -4,39 +4,20 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
-import { ServiceWithShortDescription } from "../../../models/Service";
-import { HTMLReactParserOptions, domToReact } from "html-react-parser";
-import { Element } from "html-react-parser";
+import { Service } from "../../../models/Service";
+import parse from "html-react-parser";
 import { useTranslation } from "react-i18next";
-import Renderer from "../../Renderer"
+
 
 interface Props {
-  service: ServiceWithShortDescription;
+  service: Service;
   onClick?: (serviceId: string) => void;
 }
 
-const titleParserOptions: HTMLReactParserOptions = {
-  replace: (domNode) => {
-    let element = domNode as Element;
-
-    if (element.attribs && element.type === 'tag') {
-      switch (element.name) {
-        case 'p':
-          return (
-            <Typography 
-              color="text.secondary"
-              sx={{ fontSize: 14, fontWeight: 500, letterSpacing: 0.5 }}
-            >
-              {domToReact(element.children)}
-            </Typography>
-          )
-      }
-    }
-  }
-}
-
 const ServiceCard = (props: Props) => {
-  const { t } = useTranslation();
+  const { i18n, t } = useTranslation();
+
+  console.log(i18n.language.toUpperCase())
   return (
     <Card
       // @ts-ignore
@@ -53,8 +34,8 @@ const ServiceCard = (props: Props) => {
       <CardMedia
         component="img"
         width="200"
-        src={props.service.image.mediaItemUrl}
-        alt={props.service.slug}
+        src={props.service.acm_fields.image.source_url}
+        alt={props.service.acm_fields.image.alt_text}
       />
       <CardContent
         sx={{
@@ -69,9 +50,11 @@ const ServiceCard = (props: Props) => {
           color="primary.main"
           sx={{ fontSize: "1rem", fontWeight: 700 }}
         >
-          <Renderer translate nodes={props.service.serviceTitle.nodes} />
+          {i18n.language === 'en' && props.service.acm_fields.titleEN}
+          {i18n.language === 'tr' && props.service.acm_fields.titleTR}
         </Typography>
-        <Renderer translate parseAndSanitize nodes={props.service.shortDescription.nodes} parserOptions={titleParserOptions} />
+          {i18n.language === 'en' && parse(props.service.acm_fields.shortDescriptionEN)}
+          {i18n.language === 'tr' && parse(props.service.acm_fields.shortDescriptionTR)}
       </CardContent>
       <CardActions sx={{ justifyContent: "left", paddingLeft: 2, height: 50 }}>
         <Button

@@ -18,6 +18,18 @@ const LanguageSelector = () => {
     setAnchorEl(event.currentTarget);
   };
 
+  const initilizeLanguageFromCache = () :number  => {
+    const language = localStorage.getItem('language');
+
+    if (language) {
+      return 1;
+    } else {
+      return 0;
+    }
+
+
+  }
+
   const handleMenuItemClick = (
     event: React.MouseEvent<HTMLElement>,
     index: number
@@ -86,8 +98,6 @@ const LanguageSelector = () => {
         {options.map((option, index) => (
           <MenuItem
             key={option.code}
-            // disabled={index === 0}
-            // selected={index === selectedIndex}
             onClick={(event) => handleMenuItemClick(event, index)}
           >
             <Flag code={option.code} style={{ width: 25, marginRight: 4 }} />
