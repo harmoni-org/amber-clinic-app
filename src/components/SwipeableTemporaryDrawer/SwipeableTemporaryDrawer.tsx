@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import "./SwipeableTemporaryDrawer.scss";
 
@@ -40,7 +40,14 @@ const SwipeableTemporaryDrawer: React.FC<SwipeableTemporaryDrawerProps> = (
   const anchor = "right";
 
   return (
-    <div key={anchor} className="appointment-area">
+    <Container key={anchor} 
+      sx={{
+        right: '0',
+        top: '70px',
+        position: 'fixed',
+        zIndex: '99',
+        width: 'fit-content'
+      }}>
       <Button
         onClick={toggleDrawer(anchor, true)}
         variant="contained"
@@ -73,7 +80,7 @@ const SwipeableTemporaryDrawer: React.FC<SwipeableTemporaryDrawerProps> = (
           {props.children}
         </Box>
       </SwipeableDrawer>
-    </div>
+    </Container>
   );
 };
 

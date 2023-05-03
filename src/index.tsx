@@ -16,13 +16,15 @@ import DentistDetail from "./pages/dentist-detail/DentistDetail";
 import ServiceDetail from "./pages/service-detail/ServiceDetail";
 import Error from "./pages/error/Error";
 import BlogDetail from "./pages/blog-detail/BlogDetail";
+import { MainnavigationLoader } from "./loaders/MainNavigationLoader";
+import { ServiceLoader } from "./loaders/ServiceLoader";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />} errorElement={<Error />}>
+    <Route path="/" element={<Layout />} errorElement={<Error />} loader={MainnavigationLoader} id="root">
       <Route index element={<Home />}/>
       <Route path="our-dentists/:id" element={<DentistDetail />} />
-      <Route path="our-services/:id" element={<ServiceDetail />} />
+      <Route path="our-services/:id" element={<ServiceDetail />} loader={({params}) => ServiceLoader(params.id)}/>
       <Route path="blog/:id" element={<BlogDetail />} />
     </Route>
   )

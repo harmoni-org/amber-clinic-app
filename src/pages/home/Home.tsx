@@ -12,6 +12,7 @@ import Contact from "../contact/Contact";
 import * as Scroll from "react-scroll";
 
 import "./Home.scss";
+import { useLoaderData } from "react-router-dom";
 
 function ScrollTop() {
   const trigger = useScrollTrigger();
@@ -43,6 +44,9 @@ function ScrollTop() {
 
 const Home: React.FC = () => {
   const Element = Scroll.Element;
+  const dentist = useLoaderData();
+
+  console.log("Service data from laoder",dentist)
   
   return (
     <>
