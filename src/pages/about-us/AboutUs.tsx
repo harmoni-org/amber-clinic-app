@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { Container, Skeleton } from "@mui/material";
+import { Container } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -8,7 +8,11 @@ import SectionBox from "../../components/UI/SectionBox/SectionBox";
 import { Dentist } from "../../models/Dentist";
 import { useNavigate } from "react-router-dom";
 
-const AboutUs= () => {
+interface AboutUsProps {
+  data: Dentist[];
+}
+
+const AboutUs= (props: AboutUsProps) => {
   const { t } = useTranslation();
   
   const navigate = useNavigate();
@@ -44,24 +48,13 @@ const AboutUs= () => {
               width: "90%",
             }}
           >
-            {/* {loading && (
-              <Grid container columnSpacing={3} sx={{ width: "100%" }}>
-                {[...Array(4)].map((e, i) => (
-                  <Grid item xs={12} sm={6} md={3} key={i}>
-                    <Skeleton variant="rectangular" width={223} height={350} />
-                  </Grid>
-                ))}
-              </Grid>
-            )} */}
-            {/* {(!loading && !error) && (
-              <Grid container columnSpacing={3} sx={{ width: "100%" }}>
-                {dentists.map((dentist) => (
-                  <Grid item xs={12} sm={6} md={3} key={dentist.id}>
-                    <DentistCard key={dentist.id} dentist={dentist} onClick={handleCardClick}/>
-                  </Grid>
-                ))}
-              </Grid>
-            )} */}
+            <Grid container columnSpacing={3} sx={{ width: "100%" }}>
+              {props.data.map((dentist) => (
+                <Grid item xs={12} sm={6} md={3} key={dentist.slug}>
+                  <DentistCard key={dentist.slug} dentist={dentist} onClick={handleCardClick}/>
+                </Grid>
+              ))}
+            </Grid>
           </Box>
         </Container>
       </SectionBox>

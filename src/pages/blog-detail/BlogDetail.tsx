@@ -1,38 +1,61 @@
-import { useParams } from "react-router-dom";
-import { Box, CircularProgress, Container } from "@mui/material";
+import { useLoaderData } from "react-router-dom";
+import { Container } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2";
 import * as React from "react";
 import { Blog } from "../../models/Blog";
-import Renderer from "../../components/Renderer";
 import "./BlogDetail.scss";
+import { useTranslation } from "react-i18next";
+import { AxiosResponse } from "axios";
+import parse from "html-react-parser";
 
 const BlogDetail: React.FC = () => {
-  const { id } = useParams();
+  const {i18n} = useTranslation();
+
+  const blog = ((useLoaderData() as AxiosResponse).data[0] as Blog);
+
+  const { title, content } = React.useMemo(() => {
+    let title = "";
+    let content = "";
+
+    switch(i18n.language.toUpperCase()) {
+      case 'EN':
+        title = blog.acm_fields.titleEN;
+        content = blog.acm_fields.descriptionEN;
+        break;
+      case 'TR':
+        title = blog.acm_fields.titleTR;
+        content = blog.acm_fields.descriptionTR;
+        break;
+      default:
+        title = blog.acm_fields.titleTR;
+        content = blog.acm_fields.descriptionTR;
+    }
+    return {title, content};
+  }, [i18n.language])
 
   return (
     <>
-    {/* {loading && (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', width: '100%', height: '300px' }}>
-        <CircularProgress color='secondary' size={60}/>
-      </Box>
-    )}
-    {!loading && !error && (
       <Container className="" maxWidth="lg" sx={{marginTop: '10px'}}>
         <Grid container spacing={1}>
           <Grid xs={6} sm={6} md={6} xsOffset={3} smOffset={3} mdOffset={3}>
-            <img className="picture" width="100%" height="auto" src={blog.image.mediaItemUrl} alt={blog.image.altText}/>
+            <img 
+              className="picture" 
+              width="100%" 
+              height="auto" 
+              src={blog.acm_fields.image.source_url} 
+              alt={blog.acm_fields.image.alt_text}
+            />
           </Grid>
           <Grid xs={12} xsOffset={1} sm={12} smOffset={1} md={12} sx={{mt: '10px'}}>
             <h3 className="subtitle">
-              <Renderer translate nodes={blog.blogTitle.nodes} />
+              {title}
             </h3>
             <div className="content">
-              <Renderer translate parseAndSanitize nodes={blog.content.nodes} />
+              {parse(content)}
             </div>
           </Grid>
         </Grid>
       </Container>
-    )} */}
    </>
   );
 };
