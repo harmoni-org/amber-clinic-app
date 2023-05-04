@@ -13,6 +13,7 @@ import * as Scroll from "react-scroll";
 
 import "./Home.scss";
 import { useLoaderData } from "react-router-dom";
+import { MainPageLoaderData } from "../../models/MainPageLoader";
 
 function ScrollTop() {
   const trigger = useScrollTrigger();
@@ -44,9 +45,10 @@ function ScrollTop() {
 
 const Home: React.FC = () => {
   const Element = Scroll.Element;
-  const dentist = useLoaderData();
+  const data = useLoaderData() as MainPageLoaderData;
 
-  console.log("Service data from laoder",dentist)
+  const { dentists, services, blogs } = data;
+
   
   return (
     <>
@@ -55,13 +57,13 @@ const Home: React.FC = () => {
       <MainFeaturedPost />
       <>
         <Element name="about-us">
-          <AboutUs />
+          <AboutUs data={dentists}/>
         </Element>
         <section id="services">
-          <Services />
+          <Services data={services}/>
         </section>
         <section id="blog">
-          <Blog />
+          <Blog  data={blogs}/>
         </section>
         <section id="contact">
           <Contact />

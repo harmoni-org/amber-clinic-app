@@ -13,18 +13,20 @@ import Layout from "./components/Layout/Layout";
 import Home from "./pages/home/Home";
 import DentistDetail from "./pages/dentist-detail/DentistDetail";
 import ServiceDetail from "./pages/service-detail/ServiceDetail";
-import Error from "./pages/error/Error";
 import BlogDetail from "./pages/blog-detail/BlogDetail";
 import { MainnavigationLoader } from "./loaders/MainNavigationLoader";
 import { ServiceLoader } from "./loaders/ServiceLoader";
+import { MainPageLoader } from "./loaders/MainPageLoader";
+import { DentistLoader } from "./loaders/DentistLoader";
+import { BlogLoader } from "./loaders/BlogLoader";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />} errorElement={<Error />} loader={MainnavigationLoader} id="root">
-      <Route index element={<Home />}/>
-      <Route path="our-dentists/:id" element={<DentistDetail />} />
+    <Route path="/" element={<Layout />}  loader={MainnavigationLoader} id="root">
+      <Route index element={<Home />} loader={MainPageLoader}/>
+      <Route path="our-dentists/:id" element={<DentistDetail />} loader={({params}) => DentistLoader(params.id)}/>
       <Route path="our-services/:id" element={<ServiceDetail />} loader={({params}) => ServiceLoader(params.id)}/>
-      <Route path="blog/:id" element={<BlogDetail />} />
+      <Route path="blog/:id" element={<BlogDetail />} loader={({params}) => BlogLoader(params.id)}/>
     </Route>
   )
 );

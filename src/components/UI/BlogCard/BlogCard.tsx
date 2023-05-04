@@ -5,7 +5,8 @@ import Typography from "@mui/material/Typography";
 import { Button, CardActions } from "@mui/material";
 import logo from "../../../assets/vector.png";
 import { Blog } from "../../../models/Blog";
-import Renderer from "../../Renderer";
+import { useTranslation } from "react-i18next";
+import { useMemo } from "react";
 
 type BlogCardProps = {
   blog: Blog
@@ -13,6 +14,29 @@ type BlogCardProps = {
 };
 
 const BlogCard: React.FC<BlogCardProps> = (props: BlogCardProps) => {
+  const {i18n} = useTranslation();
+
+  const { title, shortDescription } = useMemo(() => {
+    let title = "";
+    let shortDescription = "";
+
+    switch(i18n.language.toUpperCase()) {
+      case 'EN':
+        title = props.blog.acm_fields.titleEN;
+        shortDescription = props.blog.acm_fields.shortDescriptionEN;
+        break;
+      case 'TR':
+        title = props.blog.acm_fields.titleTR;
+        shortDescription = props.blog.acm_fields.shortDescriptionTR;
+        break;
+      default:
+        title = props.blog.acm_fields.titleTR;
+        shortDescription = props.blog.acm_fields.shortDescriptionTR;
+    }
+    return {title, shortDescription};
+  }, [i18n.language])
+
+
   return (
     <Card
       sx={{
@@ -27,7 +51,7 @@ const BlogCard: React.FC<BlogCardProps> = (props: BlogCardProps) => {
       <CardMedia
         component="img"
         height="200"
-        image={props.blog.image.mediaItemUrl}
+        image={props.blog.acm_fields.image.source_url}
       />
       <CardContent
         sx={{
@@ -35,24 +59,16 @@ const BlogCard: React.FC<BlogCardProps> = (props: BlogCardProps) => {
           padding: 0,
         }}
       >
-        {/* <Typography
-          sx={{ display: "inline", fontSize: "0.7em" }}
-          component="span"
-          variant="body2"
-          color="text.secondary"
-        >
-          Ekim 1, 2022
-        </Typography> */}
         <Typography
           gutterBottom
           variant="h5"
           component="p"
           sx={{ fontSize: 21, mt: 2 }}
         >
-          <Renderer translate nodes={props.blog.blogTitle.nodes}/>
+          {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {/* {shortDesc} */}
+          {shortDescription}
         </Typography>
       </CardContent>
       <CardActions sx={{ justifyContent: "left", display: "grid", padding: 0 }}>

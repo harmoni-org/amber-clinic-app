@@ -1,13 +1,15 @@
-import { LocalizedContent } from "./Generic";
-
 export interface Blog {
-  image: {
-    mediaItemUrl: string;
-    id: string;
-    altText: string;
-  },
-  blogTitle: { nodes: LocalizedContent[]};
-  content: { nodes: LocalizedContent[]};
-  id: string;
-  modelSlug: string;
+  slug: string;
+  acm_fields: {
+    image: {
+      alt_text: string;
+      source_url: string;
+    },
+    descriptionTR: string;
+    descriptionEN: string;
+    shortDescriptionTR: string;
+    shortDescriptionEN: string;
+    titleTR: string;
+    titleEN: string;
+  }
 }

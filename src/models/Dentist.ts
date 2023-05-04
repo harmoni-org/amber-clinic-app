@@ -1,14 +1,19 @@
 import { LocalizedContent } from "./Generic";
 
 export interface Dentist {
-  dentistImage: {
-    mediaItemUrl: string;
-    id: string;
-  },
-  name: string;
-  id: string;
-  branchTitle: {nodes:  LocalizedContent[]};
-  urlSlug: string;
+  slug: string
+  acm_fields: {
+  fullName: string,
+  roleTR: string,
+  roleEN: string,
+  bioTR: string,
+  bioEN: string,
+  image: {
+      alt_text: string,
+      source_url: string
+  }
+    
+  }
 }
 
 export interface DentistWithDescription extends Dentist{

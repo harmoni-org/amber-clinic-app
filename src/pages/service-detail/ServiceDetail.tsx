@@ -1,7 +1,7 @@
 import { Container } from "@mui/material";
 import { useLoaderData } from "react-router-dom";
 import Grid from "@mui/material/Unstable_Grid2";
-import { Service, ServiceWithDescription } from "../../models/Service";
+import { ServiceWithDescription } from "../../models/Service";
 import "./ServiceDetail.scss";
 import { useTranslation } from "react-i18next";
 import parse from "html-react-parser";
@@ -12,7 +12,6 @@ const ServiceDetail: React.FC = () => {
   
   const {i18n} = useTranslation();
   
-  console.log(i18n.language.toUpperCase() )
   return (
     <>
       <Container className="" maxWidth="lg" sx={{marginTop: '10px'}}>

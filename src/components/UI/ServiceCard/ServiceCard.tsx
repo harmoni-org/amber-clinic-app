@@ -17,7 +17,6 @@ interface Props {
 const ServiceCard = (props: Props) => {
   const { i18n, t } = useTranslation();
 
-  console.log(i18n.language.toUpperCase())
   return (
     <Card
       // @ts-ignore
