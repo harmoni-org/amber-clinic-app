@@ -12,6 +12,9 @@ i18n
     ns: ["common", "services", "dentists"],
     fallbackLng: "en",
     debug: false,
+    react: {
+      useSuspense: false
+    }
   });
 
 export default i18n;
